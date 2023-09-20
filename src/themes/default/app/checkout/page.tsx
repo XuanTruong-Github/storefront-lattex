@@ -6,7 +6,7 @@ export default function Page() {
     <article className='grid h-full w-full grid-cols-1 md:grid-cols-2'>
       <section className='order-last px-4 py-10 md:order-first md:overflow-y-auto'>
         <div className='mx-auto sm:max-w-lg md:ml-auto md:max-w-xl xl:ml-auto xl:mr-6'>
-          <Logo className='mx-auto mb-6 h-14 w-1/3 hidden md:block' />
+          <Logo className='mx-auto mb-6 hidden h-14 w-1/3 md:block' />
           <InformationForm />
         </div>
       </section>

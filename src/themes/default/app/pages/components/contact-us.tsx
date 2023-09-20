@@ -4,7 +4,11 @@ import { Label } from '@/core/components/ui/label';
 import { Input } from '@/core/components/ui/input';
 import { Textarea } from '@/core/components/ui/textarea';
 import { Button } from '@/core/components/ui/button';
-import { Alert, AlertDescription, AlertTitle } from '@/core/components/ui/alert';
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from '@/core/components/ui/alert';
 import { cn } from '@/core/lib/utils';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
@@ -46,7 +50,7 @@ export default function ContactUs({ pageData }: Props) {
           onSubmit={handleSubmit(onSubmit)}
         >
           {isSuccess && (
-            <Alert className='mb-4' variant='success'>
+            <Alert className='mb-4'>
               <AlertTitle>
                 <i className='fas fa-check mr-2 text-[#28a745]'></i>
                 Success!
@@ -93,7 +97,7 @@ export default function ContactUs({ pageData }: Props) {
             <Textarea
               id='message'
               {...register('message')}
-              className='rounded-none border-b border-l-0 border-r-0 border-t-0 px-0 hover:border-b-info focus:border-b-info focus-visible:border-b-info'
+              className='hover:border-b-info focus:border-b-info focus-visible:border-b-info rounded-none border-b border-l-0 border-r-0 border-t-0 px-0'
               placeholder='Start to typing here'
               rows={6}
               required

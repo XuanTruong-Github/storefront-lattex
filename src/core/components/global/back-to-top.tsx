@@ -21,7 +21,7 @@ export default function BackToTop() {
     return (
       <Button
         size='icon'
-        className='fixed bottom-8 right-6 lg:bottom-10 bg-black/60 duration-500 ease-in-out hover:scale-110 hover:transition lg:h-12 lg:w-12'
+        className='fixed bottom-8 right-6 bg-black/60 duration-500 ease-in-out hover:scale-110 hover:transition lg:bottom-10 lg:h-12 lg:w-12'
         title='Scroll to top'
         onClick={onBackToTop}
       >

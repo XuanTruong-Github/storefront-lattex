@@ -10,7 +10,9 @@ export default function Price({ product, className }: Props) {
       <h2 className='text-destructive'>
         {helpers.formatMoney(product.original_final_price)}
       </h2>
-      <span className='text-xl text-gray-400 font-medium line-through'>{helpers.formatMoney(product.price)}</span>
+      <span className='text-xl font-medium text-gray-400 line-through'>
+        {helpers.formatMoney(product.price)}
+      </span>
     </div>
   );
 }
