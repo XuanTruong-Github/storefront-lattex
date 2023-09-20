@@ -1,0 +1,520 @@
+{
+  "pages": {
+    "checkout": {},
+    "collections": {},
+    "fixed": {
+      "footer": {
+        "name": "footer",
+        "label": "Footer",
+        "type": "footer",
+        "block": [
+          {
+            "order": "1",
+            "label": "Infor",
+            "component": "footer",
+            "config": [
+              {
+                "label": "Address",
+                "driver": "input-area",
+                "default": "2803 Philadelphia Pike, Suite B #252,Claymont, DE 19703.",
+                "value": "2803 Philadelphia Pike, Suite B #252,Claymont, DE 19703. "
+              },
+              {
+                "label": "Email",
+                "driver": "input-area",
+                "default": "@gmail.com",
+                "value": "@gmail.com"
+              },
+              {
+                "label": "Copyright",
+                "driver": "input-area",
+                "default": "© 2021 64Hydro | All Rights Reserved.",
+                "value": "© 2021 64Hydro | All Rights Reserved."
+              },
+              {
+                "label": "Logo Footer",
+                "driver": "image-select",
+                "default": "https://www.kuits.com/core/uploads/300x200.png",
+                "value": "https://www.kuits.com/core/uploads/300x200.png"
+              },
+              {
+                "label": "Sub copyright ",
+                "driver": "input-area",
+                "default": "© 2021 64Hydro.",
+                "value": "© 2021 64Hydro."
+              }
+            ]
+          },
+          {
+            "order": "2",
+            "label": "Menu",
+            "component": "menu",
+            "config": [
+              {
+                "label": "Menu1",
+                "driver": "select",
+                "default": null,
+                "value": null
+              },
+              {
+                "label": "Menu12",
+                "driver": "select",
+                "default": null,
+                "value": null
+              }
+            ]
+          },
+          {
+            "order": "3",
+            "label": "Payment icon",
+            "component": "icon",
+            "config": [
+              {
+                "label": "Icon 1",
+                "driver": "select",
+                "default": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922019838f80646e54.png",
+                "value": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922019838f80646e54.png"
+              },
+              {
+                "label": "Icon 1",
+                "driver": "select",
+                "default": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922020076c1bb52999.png",
+                "value": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922020076c1bb52999.png"
+              },
+              {
+                "label": "Icon 1",
+                "driver": "select",
+                "default": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922019918b655acee4.png",
+                "value": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922019918b655acee4.png"
+              },
+              {
+                "label": "Icon 1",
+                "driver": "select",
+                "default": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922020002a13189909.png",
+                "value": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922020002a13189909.png"
+              }
+            ]
+          }
+        ]
+      },
+      "header": {
+        "name": "header",
+        "label": "Header",
+        "block": [
+          {
+            "order": "1",
+            "label": "Topbar",
+            "component": "top-bar",
+            "config": [
+              {
+                "label": "Show TopBar",
+                "driver": "select-input",
+                "options": [true, false],
+                "default": true,
+                "value": true
+              },
+              {
+                "label": "Title",
+                "driver": "input-area",
+                "default": "dec 1/1 flash sale - buy 2 + items to get 10% off",
+                "value": "dec 1/1 flash sale - buy 2 + items to get 10% off"
+              }
+            ]
+          },
+          {
+            "order": "1",
+            "label": "Logo",
+            "component": "logo",
+            "config": [
+              {
+                "label": "Logo Desktop",
+                "driver": "image-select",
+                "default": "https://www.kuits.com/core/uploads/300x200.png",
+                "value": "https://www.kuits.com/core/uploads/300x200.png"
+              },
+              {
+                "label": "Logo Mobile",
+                "driver": "image-select",
+                "default": "https://www.kuits.com/core/uploads/300x200.png",
+                "value": "https://www.kuits.com/core/uploads/300x200.png"
+              }
+            ]
+          },
+          {
+            "order": "3",
+            "label": "Menu Header",
+            "component": "mega-menu",
+            "config": [
+              {
+                "label": "Mega-menu",
+                "driver": "select",
+                "default": null,
+                "value": null
+              }
+            ]
+          }
+        ],
+        "type": "header"
+      }
+    },
+    "homepage": {
+      "head-image": {
+        "settings": {
+          "order": "1",
+          "label": "Banner",
+          "component": "head-image",
+          "slides": [
+            {
+              "image": "https://img.btdmp.com/files/10110793/2020/09/09/0x2048@15996439913cb6c76349.jpeg",
+              "heading": {
+                "content": "Walk the walk.",
+                "colorDesktop": "#FFFFFF",
+                "colorMobile": "#000000"
+              },
+              "subHeading": {
+                "content": "A fashion can become the prevailing style in behaviors or manifest the newest creations of designers, technologists, engineers, and design managers.",
+                "colorDesktop": "#FFFFFF",
+                "colorMobile": "#000000"
+              },
+              "buttonLabel": {
+                "title": "Shop Now",
+                "color": {
+                  "desktop": "#FFFFFF",
+                  "mobile": "#000000"
+                },
+                "background": {
+                  "desktop": "#000000",
+                  "mobile": "#F29E0D"
+                },
+                "position": "center"
+              },
+              "urlButton": {
+                "name": "home"
+              }
+            }
+          ],
+          "content": {
+            "mobile": [
+              {
+                "image": "https://minio.lattehub.com/img/0/0/resize/60d9a7f8454744683569f1e1/2021/08/20/lattehub-image-611f5c964fe89a9efa26b416.jpg",
+                "heading": {
+                  "content": "Walk the walk.",
+                  "color": "#FFFFFF"
+                },
+                "subHeading": {
+                  "content": "A fashion can become the prevailing style in behaviour or manifest the newest creations of designers, technologists, engineers, and design managers.",
+                  "color": "#FFFFFF"
+                },
+                "buttonLabel": {
+                  "title": "Shop Now Test",
+                  "color": "#FFFFFF",
+                  "background": "#FFFFFF"
+                },
+                "urlButton": {
+                  "name": "home"
+                },
+                "position": "center"
+              }
+            ],
+            "desktop": [
+              {
+                "image": "https://minio.lattehub.com/img/0/0/resize/60d9a7f8454744683569f1e1/2021/08/20/lattehub-image-611f5c964fe89a9efa26b416.jpg",
+                "heading": {
+                  "content": "Walk the walk.",
+                  "color": "#FFFFFF"
+                },
+                "subHeading": {
+                  "content": "A fashion can become the prevailing style in behaviour or manifest the newest creations of designers, technologists, engineers, and design managers.",
+                  "color": "#FFFFFF"
+                },
+                "buttonLabel": {
+                  "title": "Shop Now Test",
+                  "color": "#FFFFFF",
+                  "background": "#FFFFFF"
+                },
+                "urlButton": {
+                  "name": "home"
+                },
+                "position": "center"
+              }
+            ]
+          }
+        },
+        "change_slides_every": 6,
+        "opacity_image": 50,
+        "show_content": false,
+        "text_animation": "fade_down",
+        "title": "Banner",
+        "type": "head-image",
+        "visible": true
+      },
+      "feature-content": {
+        "type": "feature-content",
+        "settings": {
+          "blocks": [
+            {
+              "image": "https://img.btdmp.com/files/10110793/2020/09/10/180x180@1599711359f32d671ca3.png",
+              "heading": "REMEMBER TO DRINKs",
+              "content": "Always remember to drink water with hourly markers on the bottle!"
+            },
+            {
+              "image": "https://img.btdmp.com/files/10110793/2020/09/10/180x180@1599711359f32d671ca3.png",
+              "heading": "REMEMBER TO DRINK",
+              "content": "Always remember to drink water with hourly markers on the bottle!"
+            },
+            {
+              "image": "https://img.btdmp.com/files/10110793/2020/09/10/180x180@1599711359f32d671ca3.png",
+              "heading": "REMEMBER TO DRINK",
+              "content": "Always remember to drink water with hourly markers on the bottle!"
+            }
+          ],
+          "choose_layout": "image_with_text_above",
+          "images_per_row": 3,
+          "promotions_animation": "fade_in",
+          "text_alignment": "left"
+        }
+      },
+      "image_with_text": {
+        "settings": {
+          "blocks": [
+            {
+              "image": "https://img.btdmp.com/files/10110793/2020/09/10/0x720@1599727788a159ee8f37.jpeg",
+              "heading": "Water Tracker Bottle with Inspired Designs",
+              "show_button": false,
+              "content": "Stay hydrated and elegant with 64Hydro's awesome reusable water bottles. We are inspired by contemporary art and always find the best way to combine styles for unique designs. Whether you prefer steel or plastic, a stunning look or a funny quote, you're sure to find water bottles for your healthy life!",
+              "button_label": "VIEW COLLECTION",
+              "url_button": {
+                "name": "home"
+              },
+              "position": "left"
+            },
+            {
+              "image": "https://img.btdmp.com/files/10110793/2020/09/10/0x720@1599727788a159ee8f37.jpeg",
+              "heading": "Water Tracker Bottle with Inspired Designs",
+              "show_button": false,
+              "content": "Stay hydrated and elegant with 64Hydro's awesome reusable water bottles. We are inspired by contemporary art and always find the best way to combine styles for unique designs. Whether you prefer steel or plastic, a stunning look or a funny quote, you're sure to find water bottles for your healthy life!",
+              "button_label": "VIEW COLLECTION",
+              "url_button": {
+                "name": "home"
+              },
+              "position": "right"
+            }
+          ],
+          "choose_layout": "image_with_text_above",
+          "images_per_row": 3,
+          "promotions_animation": "fade_in",
+          "text_alignment": "left"
+        },
+        "type": "image_with_text",
+        "visible": true
+      },
+      "product-widget": {
+        "settings": {
+          "body_html": "html ....."
+        },
+        "type": "product-widget"
+      },
+      "featured-collection": {
+        "type": "featured-collection",
+        "settings": {
+          "item_per_row": 4,
+          "heading": "Featured Collection",
+          "collection": null,
+          "buttonLabel": "View more",
+          "isTextLink": false,
+          "align": "center",
+          "show_sale_banners": true
+        }
+      },
+      "product-review": {
+        "type": "product-review",
+        "settings": {
+          "body_html": "html ....."
+        }
+      }
+    }
+  },
+  "product": {
+    "product_page": {
+      "settings": {
+        "blocks": [
+          {
+            "content": "<ul>\n<li><strong>100% Secure payment</strong> with SSL Encryption.</li>\n<li>If you're not <strong>100% satisfied</strong>, let us know and we'll make it right.</li>\n</ul>",
+            "element_type": "additional-tab",
+            "heading": "Return & Warranty",
+            "collapse_tab": false
+          },
+          {
+            "element_type": "product-desc",
+            "heading": "Description",
+            "collapse_tab": false
+          },
+          {
+            "content": "<ul>\n<li>Orders ship within <strong>5 to 10 business days</strong>.</li>\n<li><strong>Tip:</strong> Buying 2 products or more at the same time will save you quite a lot on shipping fees.</li>\n</ul>",
+            "element_type": "additional-tab",
+            "heading": "Shipping Policies",
+            "collapse_tab": false
+          }
+        ],
+        "show_item_stock": true,
+        "display_on": "all",
+        "enable_color_swatches": true,
+        "enable_group_swatches": true,
+        "enable_product_gallery_popup": true,
+        "enable_trust_badge": true,
+        "product_review_type": "single",
+        "show_breadcrumb_links": false,
+        "show_collections": false,
+        "show_price_savings": false,
+        "show_sku": false,
+        "show_social_media_icons": true,
+        "show_sticky_button": true,
+        "show_tags": false,
+        "show_types": false,
+        "show_vendor": false,
+        "template_product": "description_bottom",
+        "trust_badge": "https://minio.lattehub.com/lattehub/icons_2021-06-09/0x540%4015997136702ee5c61c20.png"
+      },
+      "type": "product_page",
+      "visible": true
+    }
+  },
+  "settings": {
+    "thankpage": {
+      "steps": {
+        "settings": {
+          "isShowPage": true,
+          "blocks": [
+            {
+              "name": "Order Placed",
+              "isEdit": false,
+              "root": true,
+              "unit": "days",
+              "time": null
+            },
+            {
+              "name": "Order Processing",
+              "isEdit": true,
+              "unit": "days",
+              "time": 1
+            },
+            {
+              "name": "Packaging & Quality Control",
+              "isEdit": true,
+              "unit": "days",
+              "time": 1
+            },
+            {
+              "name": "Shipped",
+              "isEdit": false,
+              "unit": "days",
+              "time": null
+            }
+          ]
+        },
+        "type": "step"
+      },
+      "delivery_policies": {
+        "settings": {
+          "isShowPage": true,
+          "blocks": [
+            {
+              "name": "Production time",
+              "content": "Your order will be produced within 7-10 days after your order is placed. Please allow us to make your own items with all our best, so we take great pride in delivering the highest quality products for our customers. So much do thank you for your patience."
+            },
+            {
+              "name": "Shipping time",
+              "content": "Please wait 10-20 business days for your items to be shipped and delivered after their production. Besides, you will receive a tracking number 7-10 days after you place your order. If your tracking number does not show data, please allow up to 48 hours for the information to appear."
+            }
+          ]
+        }
+      }
+    },
+    "product": {
+      "show_item_stock": true,
+      "enable_image_zoom": false,
+      "tabs-detail": [
+        {
+          "heading": "Description",
+          "id": "description",
+          "type": "custom",
+          "display": "description",
+          "content": ""
+        },
+        {
+          "heading": "Customer Reviews",
+          "id": "customer-reviews",
+          "type": "custom",
+          "display": "component",
+          "content": "ProductReturnRefund"
+        },
+        {
+          "heading": "Frequently Asked Questions",
+          "id": "faq",
+          "type": "custom",
+          "display": "html",
+          "content": "<p>We always focus on customers' safety and convenience during researching and producing products. A 32-oz glass bottle is heavy and easy to be broken. That's why we chose Tritan co-polyester plastic that is 100% BPA and toxin-free to ensure that water is clear of harmful chemicals, plastic taste, or weird odors.</p>"
+        },
+        {
+          "heading": "Return & Refund",
+          "id": "rar",
+          "type": "custom",
+          "display": "html",
+          "content": "<h3>Is 64Hydro Water Bottle BPA-Free?</h3>"
+        }
+      ],
+      "show_qty": {
+        "show_qty_box": true,
+        "show_qty_one_line": false,
+        "show_qty_same_line_button": true
+      },
+      "options_setting": {
+        "hidden_one_value": false,
+        "click_select_variant": true
+      },
+      "position_tab_detail": "below",
+      "trust_badge": {
+        "show_trust_badge_image": true,
+        "src": {
+          "label": "Trust badge",
+          "driver": "image-select",
+          "default": "https://minio.lattehub.com/lattehub/icons_2021-06-09/0x540%4015997136702ee5c61c20.png",
+          "value": "https://minio.lattehub.com/lattehub/icons_2021-06-09/0x540%4015997136702ee5c61c20.png"
+        }
+      },
+      "layout": {
+        "show_price_saving": false,
+        "special_layout_on_mobile": true,
+        "sale_type": "percent",
+        "variant_style": "button",
+        "show_title_on_top_mobile": false
+      },
+      "setting_shipping": {
+        "show_shipping": true,
+        "title": "Shipping",
+        "shipping_info": {
+          "content": "<p><strong>Free shipping</strong> on Order over $80</p>",
+          "display": "html",
+          "type": "custom"
+        }
+      },
+      "tags": {
+        "show_tags": false
+      },
+      "show_label_variant": true,
+      "show_description_variant": false,
+      "show_collection": true
+    },
+    "cart": {
+      "trust_badge": {
+        "src": {
+          "label": "Trust badge",
+          "driver": "image-select",
+          "default": "https://minio.lattehub.com/lattehub/icons_2021-06-09/0x540%4015997136702ee5c61c20.png",
+          "value": ""
+        }
+      }
+    }
+  },
+  "type": "data-page"
+}
