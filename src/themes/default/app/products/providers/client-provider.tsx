@@ -11,6 +11,7 @@ type Props = {
 
 export default function ClientProvider({ children, product }: Props) {
   const setProduct = productStore((state) => state.setProduct);
+
   useEffect(() => {
     setProduct(product);
   }, [product, setProduct]);

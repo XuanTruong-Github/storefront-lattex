@@ -1,6 +1,4 @@
-export type State = {
-  loading: boolean;
-};
+export type State = {};
 export type Mutation = {
-  setLoading: (bool: boolean) => void;
+  getProductWidgets: (query: any) => any;
 };

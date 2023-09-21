@@ -1,8 +1,10 @@
 import { notFound } from 'next/navigation';
 import ProductDetail from './components/product-detail';
 import Reviews from './components/reviews';
-import productService from '@/core/modules/product/service';
+import Widgets from './components/widgets';
 import ClientProvider from './providers/client-provider';
+
+import productService from '@/core/modules/product/service';
 
 type Props = {
   params: { slug: string };
@@ -18,6 +20,7 @@ async function getProduct(slug: string) {
     return null;
   }
 }
+
 export default async function Page({ params }: Props) {
   const slug = params.slug;
   const product = await getProduct(slug);
@@ -27,6 +30,7 @@ export default async function Page({ params }: Props) {
       <ClientProvider product={product}>
         <ProductDetail product={product} className='-mx-4 mb-4 sm:mx-0' />
         <Reviews productID={product.id} className='mb-4' />
+        <Widgets sku={product.sku} />
       </ClientProvider>
     </article>
   );
