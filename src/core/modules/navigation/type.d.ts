@@ -3,6 +3,6 @@ export type State = {
   footerMenu: any;
 };
 export type Action = {
-  getHeaderMenu: (id: string) => void;
-  getFooterMenu: (id: string) => void;
+  getHeaderMenu: (id: string | null) => void;
+  getFooterMenu: (id: string | null) => void;
 };

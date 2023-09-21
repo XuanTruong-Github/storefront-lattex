@@ -13,7 +13,6 @@ import { cn } from '@/core/lib/utils';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import pagesService from '@/core/modules/pages/service';
-import styles from '../styles/styles.module.scss';
 
 type Props = {
   pageData: any;
@@ -71,7 +70,6 @@ export default function ContactUs({ pageData }: Props) {
             </Label>
             <Input
               id='orderNumber'
-              className={styles.contactInput}
               {...register('order_number')}
               placeholder='Ex: #2099'
               required
@@ -84,7 +82,6 @@ export default function ContactUs({ pageData }: Props) {
             <Input
               id='email'
               type='email'
-              className={styles.contactInput}
               {...register('mail')}
               placeholder='Enter your email'
               required
@@ -97,7 +94,6 @@ export default function ContactUs({ pageData }: Props) {
             <Textarea
               id='message'
               {...register('message')}
-              className='hover:border-b-info focus:border-b-info focus-visible:border-b-info rounded-none border-b border-l-0 border-r-0 border-t-0 px-0'
               placeholder='Start to typing here'
               rows={6}
               required
@@ -118,7 +114,17 @@ export default function ContactUs({ pageData }: Props) {
         </form>
         <div
           dangerouslySetInnerHTML={{ __html: pageData.bodyHtml }}
-          className={cn('order-0 lg:order-1', styles.pageBody)}
+          className={cn(
+            'order-0 lg:order-1',
+            '[&>p]:mb-4 [&>p]:text-base',
+            '[&>a]:text-base [&>a]:font-bold [&>a]:text-[#3abff8]',
+            '[&>h1]:mb-4 [&>h1]:font-medium',
+            '[&>h2]:mb-4 [&>h2]:font-medium',
+            '[&>h3]:mb-4 [&>h3]:font-medium',
+            '[&>h4]:mb-4 [&>h4]:font-medium',
+            '[&>h5]:mb-4 [&>h5]:font-medium',
+            '[&>h6]:mb-4 [&>h6]:font-medium'
+          )}
         ></div>
       </div>
     </article>

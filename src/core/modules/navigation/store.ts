@@ -6,7 +6,8 @@ const store = create<State & Action>()((set) => {
   return {
     headerMenu: defaultMenu.header,
     footerMenu: defaultMenu.footer,
-    async getHeaderMenu(id: string) {
+    async getHeaderMenu(id: string | null) {
+      if (!id) return null;
       try {
         const data = await service.loadMenu(id);
         if (data) {
@@ -17,7 +18,8 @@ const store = create<State & Action>()((set) => {
         return null;
       }
     },
-    async getFooterMenu(id: string) {
+    async getFooterMenu(id: string | null) {
+      if (!id) return null;
       try {
         const data = await service.loadMenu(id);
         if (data) {

@@ -4,160 +4,138 @@
     "collections": {},
     "fixed": {
       "footer": {
-        "name": "footer",
-        "label": "Footer",
-        "type": "footer",
-        "block": [
-          {
-            "order": "1",
-            "label": "Infor",
-            "component": "footer",
-            "config": [
-              {
-                "label": "Address",
-                "driver": "input-area",
-                "default": "2803 Philadelphia Pike, Suite B #252,Claymont, DE 19703.",
-                "value": "2803 Philadelphia Pike, Suite B #252,Claymont, DE 19703. "
-              },
-              {
-                "label": "Email",
-                "driver": "input-area",
-                "default": "@gmail.com",
-                "value": "@gmail.com"
-              },
-              {
-                "label": "Copyright",
-                "driver": "input-area",
-                "default": "© 2021 64Hydro | All Rights Reserved.",
-                "value": "© 2021 64Hydro | All Rights Reserved."
-              },
-              {
-                "label": "Logo Footer",
-                "driver": "image-select",
-                "default": "https://www.kuits.com/core/uploads/300x200.png",
-                "value": "https://www.kuits.com/core/uploads/300x200.png"
-              },
-              {
-                "label": "Sub copyright ",
-                "driver": "input-area",
-                "default": "© 2021 64Hydro.",
-                "value": "© 2021 64Hydro."
-              }
-            ]
-          },
-          {
-            "order": "2",
-            "label": "Menu",
-            "component": "menu",
-            "config": [
-              {
-                "label": "Menu1",
-                "driver": "select",
-                "default": null,
-                "value": null
-              },
-              {
-                "label": "Menu12",
-                "driver": "select",
-                "default": null,
-                "value": null
-              }
-            ]
-          },
-          {
-            "order": "3",
-            "label": "Payment icon",
-            "component": "icon",
-            "config": [
-              {
-                "label": "Icon 1",
-                "driver": "select",
-                "default": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922019838f80646e54.png",
-                "value": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922019838f80646e54.png"
-              },
-              {
-                "label": "Icon 1",
-                "driver": "select",
-                "default": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922020076c1bb52999.png",
-                "value": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922020076c1bb52999.png"
-              },
-              {
-                "label": "Icon 1",
-                "driver": "select",
-                "default": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922019918b655acee4.png",
-                "value": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922019918b655acee4.png"
-              },
-              {
-                "label": "Icon 1",
-                "driver": "select",
-                "default": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922020002a13189909.png",
-                "value": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922020002a13189909.png"
-              }
-            ]
-          }
-        ]
+        "settings": {
+          "infoWithIcon": [
+            {
+              "icon": null,
+              "title": "High-quality Goods",
+              "subTitle": "Enjoy top quality items for less"
+            }
+          ],
+          "iconPayments": [
+            {
+              "value": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922019838f80646e54.png"
+            },
+            {
+              "value": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922020076c1bb52999.png"
+            },
+            {
+              "value": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922019918b655acee4.png"
+            },
+            {
+              "value": "https://minio.lattehub.com/lattehub/icons_2021-06-09/15922020002a13189909.png"
+            }
+          ],
+          "copyright": "Copyright © 2021 hersimply.com All Rights Reserved.",
+          "show_payment_method_icons": true,
+          "show_social_media_icons": false,
+          "show_powered_by": true,
+          "footer_menu": null,
+          "logo": null,
+          "info": "<p><strong>Address</strong>: address@gmail.com</p>"
+        },
+        "type": "footer"
       },
       "header": {
-        "name": "header",
-        "label": "Header",
-        "block": [
-          {
-            "order": "1",
-            "label": "Topbar",
-            "component": "top-bar",
-            "config": [
-              {
-                "label": "Show TopBar",
-                "driver": "select-input",
-                "options": [true, false],
-                "default": true,
-                "value": true
-              },
-              {
-                "label": "Title",
-                "driver": "input-area",
-                "default": "dec 1/1 flash sale - buy 2 + items to get 10% off",
-                "value": "dec 1/1 flash sale - buy 2 + items to get 10% off"
-              }
-            ]
-          },
-          {
-            "order": "1",
-            "label": "Logo",
-            "component": "logo",
-            "config": [
-              {
-                "label": "Logo Desktop",
-                "driver": "image-select",
-                "default": "https://www.kuits.com/core/uploads/300x200.png",
-                "value": "https://www.kuits.com/core/uploads/300x200.png"
-              },
-              {
-                "label": "Logo Mobile",
-                "driver": "image-select",
-                "default": "https://www.kuits.com/core/uploads/300x200.png",
-                "value": "https://www.kuits.com/core/uploads/300x200.png"
-              }
-            ]
-          },
-          {
-            "order": "3",
-            "label": "Menu Header",
-            "component": "mega-menu",
-            "config": [
-              {
-                "label": "Mega-menu",
-                "driver": "select",
-                "default": null,
-                "value": null
-              }
-            ]
+        "settings": {
+          "cart_icon": "bag",
+          "enable_search": true,
+          "fixed_header": false,
+          "main": "main-menu",
+          "main_menu_top_padding": 0,
+          "show_cart": true,
+          "show_announcement_bar": true,
+          "show_social_media_icons": true,
+          "show_top_bar": true,
+          "logo_mobile": null,
+          "logo_desktop": null,
+          "main_menu": null,
+          "width": 205,
+          "image_topbar": "https://imgaz1.chiccdn.com/os/202107/20210719022353_234.gif",
+          "image_topbar_moblie": "https://imgaz1.chiccdn.com/os/202108/20210802034837_374.jpg",
+          "topbar_url": {
+            "name": "home"
           }
-        ],
+        },
         "type": "header"
       }
     },
     "homepage": {
+      "flash_deals": {
+        "settings": {
+          "content": {
+            "blocks": [
+              {
+                "type": "count-down",
+                "url": {
+                  "name": "category",
+                  "slug": null
+                },
+                "image": "https://cdn.btdmp.com/dist/themes/3/3/images/shoes.4b48f7d2.svg",
+                "time": {
+                  "day": 5,
+                  "hour": 24,
+                  "min": 5,
+                  "getTime": 1632981660060
+                }
+              },
+              {
+                "type": "collection",
+                "url": {
+                  "name": "category",
+                  "slug": null
+                },
+                "productId": "id product in collection"
+              },
+              {
+                "type": "collection",
+                "url": {
+                  "name": "category",
+                  "slug": null
+                },
+                "productId": "id product in collection"
+              },
+              {
+                "type": "collection",
+                "url": {
+                  "name": "category",
+                  "slug": null
+                },
+                "productId": "id product in collection"
+              }
+            ]
+          },
+          "detail": {
+            "blocks": [
+              {
+                "title": "Collection title",
+                "url": {
+                  "name": "category",
+                  "slug": null
+                },
+                "image": "https://cdn.btdmp.com/dist/themes/3/3/images/shoes.4b48f7d2.svg"
+              },
+              {
+                "title": "Collection title",
+                "url": {
+                  "name": "category",
+                  "slug": null
+                },
+                "image": "https://cdn.btdmp.com/dist/themes/3/3/images/shoes.4b48f7d2.svg"
+              },
+              {
+                "title": "Collection title",
+                "url": {
+                  "name": "category",
+                  "slug": null
+                },
+                "image": "https://cdn.btdmp.com/dist/themes/3/3/images/shoes.4b48f7d2.svg"
+              }
+            ]
+          }
+        },
+        "type": "flash_deal"
+      },
       "head-image": {
         "settings": {
           "order": "1",
@@ -185,12 +163,12 @@
                 "background": {
                   "desktop": "#000000",
                   "mobile": "#F29E0D"
-                },
-                "position": "center"
+                }
               },
               "urlButton": {
                 "name": "home"
-              }
+              },
+              "position": "center"
             }
           ],
           "content": {
@@ -238,6 +216,9 @@
                 "position": "center"
               }
             ]
+          },
+          "urlButton": {
+            "name": "home"
           }
         },
         "change_slides_every": 6,
@@ -248,89 +229,44 @@
         "type": "head-image",
         "visible": true
       },
-      "feature-content": {
-        "type": "feature-content",
+      "style-collection": {
         "settings": {
-          "blocks": [
+          "block": [
             {
-              "image": "https://img.btdmp.com/files/10110793/2020/09/10/180x180@1599711359f32d671ca3.png",
-              "heading": "REMEMBER TO DRINKs",
-              "content": "Always remember to drink water with hourly markers on the bottle!"
+              "image": "https://imgaz1.chiccdn.com/os/202107/20210718221048_376.jpg.webp",
+              "url": {
+                "name": "home"
+              }
             },
             {
-              "image": "https://img.btdmp.com/files/10110793/2020/09/10/180x180@1599711359f32d671ca3.png",
-              "heading": "REMEMBER TO DRINK",
-              "content": "Always remember to drink water with hourly markers on the bottle!"
+              "image": "https://imgaz1.chiccdn.com/os/202107/20210718221156_827.jpg.webp",
+              "url": {
+                "name": "home"
+              }
             },
             {
-              "image": "https://img.btdmp.com/files/10110793/2020/09/10/180x180@1599711359f32d671ca3.png",
-              "heading": "REMEMBER TO DRINK",
-              "content": "Always remember to drink water with hourly markers on the bottle!"
+              "image": "https://imgaz1.chiccdn.com/os/202107/20210718221233_229.jpg.webp",
+              "url": {
+                "name": "home"
+              }
+            },
+            {
+              "image": "https://imgaz1.chiccdn.com/os/202107/20210718221233_229.jpg.webp",
+              "url": {
+                "name": "home"
+              }
+            },
+            {
+              "image": "https://imgaz1.chiccdn.com/os/202107/20210718221356_618.jpg.webp",
+              "url": {
+                "name": "home"
+              }
             }
           ],
-          "choose_layout": "image_with_text_above",
-          "images_per_row": 3,
-          "promotions_animation": "fade_in",
-          "text_alignment": "left"
-        }
-      },
-      "image_with_text": {
-        "settings": {
-          "blocks": [
-            {
-              "image": "https://img.btdmp.com/files/10110793/2020/09/10/0x720@1599727788a159ee8f37.jpeg",
-              "heading": "Water Tracker Bottle with Inspired Designs",
-              "show_button": false,
-              "content": "Stay hydrated and elegant with 64Hydro's awesome reusable water bottles. We are inspired by contemporary art and always find the best way to combine styles for unique designs. Whether you prefer steel or plastic, a stunning look or a funny quote, you're sure to find water bottles for your healthy life!",
-              "button_label": "VIEW COLLECTION",
-              "url_button": {
-                "name": "home"
-              },
-              "position": "left"
-            },
-            {
-              "image": "https://img.btdmp.com/files/10110793/2020/09/10/0x720@1599727788a159ee8f37.jpeg",
-              "heading": "Water Tracker Bottle with Inspired Designs",
-              "show_button": false,
-              "content": "Stay hydrated and elegant with 64Hydro's awesome reusable water bottles. We are inspired by contemporary art and always find the best way to combine styles for unique designs. Whether you prefer steel or plastic, a stunning look or a funny quote, you're sure to find water bottles for your healthy life!",
-              "button_label": "VIEW COLLECTION",
-              "url_button": {
-                "name": "home"
-              },
-              "position": "right"
-            }
-          ],
-          "choose_layout": "image_with_text_above",
-          "images_per_row": 3,
-          "promotions_animation": "fade_in",
-          "text_alignment": "left"
+          "heading": "2021 Summer Style"
         },
-        "type": "image_with_text",
+        "type": "style-collection",
         "visible": true
-      },
-      "product-widget": {
-        "settings": {
-          "body_html": "html ....."
-        },
-        "type": "product-widget"
-      },
-      "featured-collection": {
-        "type": "featured-collection",
-        "settings": {
-          "item_per_row": 4,
-          "heading": "Featured Collection",
-          "collection": null,
-          "buttonLabel": "View more",
-          "isTextLink": false,
-          "align": "center",
-          "show_sale_banners": true
-        }
-      },
-      "product-review": {
-        "type": "product-review",
-        "settings": {
-          "body_html": "html ....."
-        }
       }
     }
   },
@@ -373,13 +309,28 @@
         "show_types": false,
         "show_vendor": false,
         "template_product": "description_bottom",
-        "trust_badge": "https://minio.lattehub.com/lattehub/icons_2021-06-09/0x540%4015997136702ee5c61c20.png"
+        "trust_badge": "https://img.shopbasecdn.com/themes/2/assets/editor/default-trust_badge-roller.png"
       },
       "type": "product_page",
       "visible": true
     }
   },
   "settings": {
+    "popup": {
+      "welcome": {
+        "isShow": true,
+        "title": "Welcome",
+        "content": "",
+        "button": "Shop now",
+        "code": ""
+      },
+      "subscribe": {
+        "isShow": false,
+        "title": "<p style=\"text-align: center;\"><span style=\"font-size: 24px;\">Join us</span></p>",
+        "content": "Subscribe to get exclusive 15% OFF NOW! And you can also receive novelties trends and promotions via email",
+        "button": "SUBSCRIBE"
+      }
+    },
     "thankpage": {
       "steps": {
         "settings": {
@@ -427,7 +378,8 @@
               "content": "Please wait 10-20 business days for your items to be shipped and delivered after their production. Besides, you will receive a tracking number 7-10 days after you place your order. If your tracking number does not show data, please allow up to 48 hours for the information to appear."
             }
           ]
-        }
+        },
+        "type": "delivery_policies"
       }
     },
     "product": {
@@ -490,7 +442,8 @@
         "show_title_on_top_mobile": false
       },
       "setting_shipping": {
-        "show_shipping": true,
+        "show_policy": false,
+        "show_shipping": false,
         "title": "Shipping",
         "shipping_info": {
           "content": "<p><strong>Free shipping</strong> on Order over $80</p>",
@@ -501,9 +454,26 @@
       "tags": {
         "show_tags": false
       },
-      "show_label_variant": true,
       "show_description_variant": false,
+      "show_label_variant": true,
       "show_collection": true
+    },
+    "color": {
+      "color_announcement_bar_background": "#285f8a",
+      "color_title_product": "#285f8a",
+      "color_price": "#285f8a",
+      "color_compare_at_price": "#a62b0d",
+      "color_sale_price": "#a62b0d",
+      "color_top_bar_background": "#f4f4f4",
+      "color_cart_button": "#3FBC1A",
+      "color_cart_button_label": "#ffffff"
+    },
+    "typography": {
+      "font_size_product": 18,
+      "font_size_price": 36,
+      "font_size_compare_at_price": 24,
+      "font_size_sale_tag": 19,
+      "font_size_cart_button_text": 30
     },
     "cart": {
       "trust_badge": {

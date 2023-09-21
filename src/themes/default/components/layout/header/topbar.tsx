@@ -3,12 +3,13 @@ import configThemeStore from '@/themes/default/modules/config-theme/store';
 
 export default function TopBar() {
   const { isShow, content } = configThemeStore((state) => {
-    const settings = state.settings?.pages?.fixed?.header?.block[0];
+    const settings = state.settings?.pages?.fixed?.header?.settings;
     return {
-      isShow: settings?.config[0]?.value || false,
-      content: settings?.config[1]?.value || '',
+      isShow: settings?.show_announcement_bar || false,
+      content: 'Top bar message',
     };
   });
+
   if (isShow && content)
     return (
       <section className='top-bar hidden md:block'>
@@ -17,4 +18,5 @@ export default function TopBar() {
         </div>
       </section>
     );
+  else return <></>;
 }

@@ -27,16 +27,17 @@ export default function BootstrapProvider({ children }: Props) {
         async onSuccess(data: any) {
           if (data?.theme[0]) {
             const themeSettings = data?.theme[0];
-            const menu = {
-              header:
-                themeSettings.pages?.fixed?.header?.block[2]?.config[0]?.value,
-              footer:
-                themeSettings.pages?.fixed?.footer?.block[1]?.config[0]?.value,
-            };
-            await Promise.all([
-              getFooterMenu(menu.footer),
-              getHeaderMenu(menu.header),
-            ]);
+            if (themeSettings?.pages?.fixed) {
+              const settings = themeSettings?.pages?.fixed;
+              const menu = {
+                header: settings?.header?.settings?.main_menu,
+                footer: settings?.footer?.settings?.footer_menu,
+              };
+              await Promise.all([
+                getFooterMenu(menu.footer),
+                getHeaderMenu(menu.header),
+              ]);
+            }
           }
         },
         staleTime: 60 * 10000,
