@@ -8,13 +8,6 @@ module.exports = {
     './src/**/*.{ts,tsx}',
   ],
   theme: {
-    container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px',
-      },
-    },
     extend: {
       colors: {
         border: 'hsl(var(--border))',
@@ -50,6 +43,9 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        info: 'hsl(var(--info))',
+        warning: 'hsl(var(--warning))',
+        success: 'hsl(var(--success))',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -69,6 +65,13 @@ module.exports = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1rem',
+          sm: '0rem',
+        },
       },
     },
   },

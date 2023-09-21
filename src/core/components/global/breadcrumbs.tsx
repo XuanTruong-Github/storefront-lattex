@@ -16,7 +16,7 @@ export default function Breadcrumbs({ data, className }: Props) {
     >
       <Link
         href='/'
-        className='hover:text-info inline-flex items-center gap-x-1'
+        className='hover:text-primary inline-flex items-center gap-x-1'
       >
         <i className='far fa-home'></i>
         Home
@@ -26,7 +26,7 @@ export default function Breadcrumbs({ data, className }: Props) {
           <i className='fas fa-chevron-right text-gray-400'></i>
           <Link
             href={item.url}
-            className={cn('hover:text-info line-clamp-1', {
+            className={cn('hover:text-primary line-clamp-1', {
               'text-primary': item.active,
             })}
           >
