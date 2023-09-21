@@ -18,13 +18,13 @@ async function getReviews(productID: string) {
 }
 export default async function Reviews({ productID, className }: Props) {
   const data: any = await getReviews(productID);
-  if (!data) return;
+  if (!data || !data?.reviews?.length) return;
   return (
     <section className={cn(className)}>
       <h3 className='mb-4 text-lg'>Customers Reviews {`(${data?.total})`}</h3>
       <div className='mb-4 grid grid-cols-2 rounded-xl bg-gray-100 p-3'>
         <div className='flex flex-col items-center justify-center'>
-          <label className='text-warning mb-1 text-xl font-bold sm:text-3xl'>
+          <label className='mb-1 text-xl font-bold text-warning sm:text-3xl'>
             {data.rating}
           </label>
           <Rate value={5} className='text-sm sm:text-base' />
@@ -39,7 +39,7 @@ export default async function Reviews({ productID, className }: Props) {
                 <label>{item._id}:</label>
                 <Progress
                   value={item.count}
-                  className='[&>div]:bg-warning h-3 rounded-sm border bg-white'
+                  className='h-3 rounded-sm border bg-white [&>div]:bg-warning'
                   max={100}
                 />
                 <span>{item.count}%</span>

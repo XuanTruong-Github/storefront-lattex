@@ -81,7 +81,7 @@ export default function ReviewsList({
   return (
     <Fragment>
       {isLoading && <ReviewsLoading />}
-      {!isLoading && data?.reviews?.length && (
+      {!isLoading && data?.reviews?.length > 0 && (
         <Fragment>
           <div
             className={cn(
