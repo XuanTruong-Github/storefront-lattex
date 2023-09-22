@@ -12,8 +12,9 @@ type Props = {
 
 export default function Logo({ className }: Props) {
   const [logoSrc, storeName] = configThemeStore((state) => {
-    const src = state.settings?.pages?.fixed?.footer?.settings?.logo;
-    const storeName = state.manifest?.name || 'Storefront';
+    const src =
+      state.settings?.pages?.fixed?.footer?.block[0]?.config[3]?.value;
+    const storeName = state.manifest?.name || 'Store';
     const logo = helpers.parseImageUrl(src, { width: 200, height: 58 });
     return [logo, storeName];
   });

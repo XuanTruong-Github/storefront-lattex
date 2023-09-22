@@ -1,15 +1,13 @@
-import config from 'config';
-import type { Metadata } from 'next';
-import DefaultTheme from '@default/app/pages/not-found';
-
-export const metadata: Metadata = {
-  title: 'Page not found',
-};
-
+import Link from 'next/link';
+import { Button } from '@/core/components/ui/button';
 export default function NotFound() {
-  const theme = config.theme;
-  switch (theme) {
-    default:
-      return <DefaultTheme />;
-  }
+  return (
+    <section className='flex h-[80vh] flex-col items-center justify-center'>
+      <h1 className='mb-2'>404</h1>
+      <p className='mb-4'>The page you requested was not found.</p>
+      <Button variant='outline' asChild>
+        <Link href='/'>Continue Shopping</Link>
+      </Button>
+    </section>
+  );
 }

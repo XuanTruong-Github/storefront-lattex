@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import configThemeDefault from '@/configs/config-theme.json';
+import configThemeDefault from '@/configs/config-theme-default.json';
 import service from './service';
 type State = {
   settings: any;

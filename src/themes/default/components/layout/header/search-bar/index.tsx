@@ -75,9 +75,9 @@ export default function SearchBar({ isOpen = false, setOpen }: Props) {
             className='relative mb-2 mt-10 md:mt-0'
             onSubmit={onSearchSubmit}
           >
-            <i className='fal fa-search absolute left-4 top-1/2 z-10 -translate-y-1/2 text-gray-500'></i>
+            <i className='fal fa-search absolute left-4 top-1/2 z-10 -translate-y-1/2 text-secondary-foreground'></i>
             <Input
-              className='rounded-3xl px-10'
+              className='rounded-3xl px-10 bg-secondary text-secondary-foreground'
               placeholder='What are you searching for?'
               value={keyword}
               onChange={(e: ChangeEvent<HTMLInputElement>) =>

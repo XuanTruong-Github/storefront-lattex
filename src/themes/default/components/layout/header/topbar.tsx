@@ -3,10 +3,10 @@ import configThemeStore from '@/themes/default/modules/config-theme/store';
 
 export default function TopBar() {
   const { isShow, content } = configThemeStore((state) => {
-    const settings = state.settings?.pages?.fixed?.header?.settings;
+    const settings = state.settings?.pages?.fixed?.header?.block[0];
     return {
-      isShow: settings?.show_announcement_bar || false,
-      content: 'Top bar message',
+      isShow: settings?.config[0]?.value || false,
+      content: settings?.config[1]?.value || '',
     };
   });
 

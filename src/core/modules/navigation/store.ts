@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import defaultMenu from '@default/configs/default-menu.json';
+import defaultMenu from '@/configs/default-menu.json';
 import service from './service';
 import type { State, Action } from './type';
 const store = create<State & Action>()((set) => {

@@ -28,10 +28,13 @@ export default function BootstrapProvider({ children }: Props) {
           if (data?.theme[0]) {
             const themeSettings = data?.theme[0];
             if (themeSettings?.pages?.fixed) {
-              const settings = themeSettings?.pages?.fixed;
               const menu = {
-                header: settings?.header?.settings?.main_menu,
-                footer: settings?.footer?.settings?.footer_menu,
+                header:
+                  themeSettings.pages?.fixed?.header?.block[2]?.config[0]
+                    ?.value,
+                footer:
+                  themeSettings.pages?.fixed?.footer?.block[1]?.config[0]
+                    ?.value,
               };
               await Promise.all([
                 getFooterMenu(menu.footer),

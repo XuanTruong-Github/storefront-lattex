@@ -12,9 +12,9 @@ type Props = {
 export default function Logo({ className }: Props) {
   const { isMobile, isDesktop } = useResponsive();
   const { logo, storeName } = configThemeStore((state) => {
-    const settings = state.settings?.pages?.fixed?.header?.settings;
-    const desktopSrc = settings.logo_desktop;
-    const mobileSrc = settings.logo_mobile;
+    const settings = state.settings?.pages?.fixed?.header
+    const desktopSrc = settings?.block[1]?.config[0]?.value;
+    const mobileSrc = settings?.block[1]?.config[0]?.value;
     return {
       logo: {
         desktop: helpers.parseImageUrl(desktopSrc, { width: 200, height: 56 }),

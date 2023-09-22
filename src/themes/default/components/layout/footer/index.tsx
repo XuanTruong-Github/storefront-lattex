@@ -14,20 +14,24 @@ type Props = {
 
 export default function Footer({ className }: Props) {
   const settings = configThemeStore((state) => {
-    const configs = state.settings?.pages?.fixed?.footer?.settings;
+    const configs = state.settings?.pages?.fixed?.footer;
     return {
       info: {
         address: {
-          label: 'Address',
-          value: '',
+          label: configs?.block[0]?.config[0]?.label || 'Address',
+          value:
+            configs?.block[0]?.config[0]?.value
+              ?.split('\n')
+              ?.filter((item: string) => item?.length) || [],
         },
         email: {
-          label: 'Email:',
-          value: '',
+          label: configs?.block[0]?.config[1]?.label || 'Email:',
+          value: configs?.block[0]?.config[1]?.value || '',
         },
-        copyRight: configs?.copyright || '',
+        copyRight: configs?.block[0]?.config[2]?.value?.split('\n') || [],
       },
-      payments: [],
+      payments:
+        configs?.block[2]?.config?.map((item: any) => item?.value) || [],
     };
   });
   const menu = navigationStore((state) => state.footerMenu.items);
@@ -53,7 +57,13 @@ export default function Footer({ className }: Props) {
             <label className='mr-1 font-medium'>
               {settings.info.address.label}:
             </label>
-            <ul className='max-w-full'></ul>
+            <ul className='max-w-full'>
+              {settings.info.address.value.map(
+                (item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                )
+              )}
+            </ul>
           </div>
           <div className='mb-2 flex items-center gap-x-1'>
             <label className='font-medium'>{settings.info.email.label}:</label>
@@ -86,8 +96,23 @@ export default function Footer({ className }: Props) {
         ))}
       </section>
       <section className='container flex flex-col items-center justify-center gap-3 border-t pt-6 sm:flex-row sm:justify-between'>
-        <ul className='sm:order-0 order-1 text-xs'></ul>
-        <ul className='order-0 flex items-center gap-2 sm:order-1'></ul>
+        <ul className='sm:order-0 order-1 text-xs'>
+          {settings.info.copyRight.map((item: string, index: number) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+        <ul className='order-0 flex items-center gap-2 sm:order-1'>
+          {settings.payments.map((item: string, index: number) => (
+            <li key={index} className='relative h-5 w-8'>
+              <Image
+                src={helpers.parseImageUrl(item, { width: 30, height: 20 })}
+                alt=''
+                sizes='(min-width: 320px) 30px'
+                fill
+              />
+            </li>
+          ))}
+        </ul>
       </section>
       <BackToTop />
     </footer>

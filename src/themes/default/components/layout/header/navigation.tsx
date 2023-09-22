@@ -43,9 +43,9 @@ export function Navigation(props: Props) {
                     onShowSubMenu(item);
                     setMenuActive(item);
                   }}
-                  className={
-                    menuActive?.handle === item.handle ? activeStyle : ''
-                  }
+                  className={cn(
+                    menuActive?.handle === item.handle && activeStyle
+                  )}
                 >
                   {item.link || item.handle === 'collections' ? (
                     <Link
@@ -144,13 +144,13 @@ export function SubNavigation(props: {
         onMouseEnter={() => setShowMenu(true)}
         onMouseLeave={onCloseMenu}
       >
-        <ul className='container grid w-full grid-cols-5 gap-1 py-4'>
+        <ul className='container grid w-full grid-cols-6 gap-1 py-4'>
           {menuActive?.handle !== 'collections' &&
             menuActive?.children.map((item: any, key: number) => (
               <li key={key}>
                 <Link
                   href={item.link}
-                  className='line-clamp-1 rounded-lg px-3 py-2 text-sm capitalize leading-7 hover:bg-secondary hover:text-primary'
+                  className='line-clamp-1 rounded-lg px-3 py-2 text-sm capitalize leading-7 hover:bg-secondary'
                   onClick={() => setShowMenu(false)}
                 >
                   {item.name}
@@ -162,7 +162,7 @@ export function SubNavigation(props: {
               <li key={key}>
                 <Link
                   href={`${item.link}?page=1&limit=20`}
-                  className='line-clamp-1 rounded-lg px-3 py-2 text-sm capitalize leading-7 hover:bg-secondary hover:text-primary'
+                  className='line-clamp-1 rounded-lg px-3 py-2 text-sm capitalize leading-7 hover:bg-secondary'
                   onClick={() => setShowMenu(false)}
                 >
                   {item.name}
