@@ -117,8 +117,8 @@ export default function ReviewsList({
           </div>
           {pagination.length > 1 && (
             <Pagination
-              className='ml-auto md:mx-auto'
-              totalVisible={5}
+              className='ml-auto'
+              totalVisible={3}
               page={pagination.page}
               length={pagination.length}
               onChange={onChangePage}

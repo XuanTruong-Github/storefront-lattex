@@ -46,6 +46,7 @@ module.exports = {
         info: 'hsl(var(--info))',
         warning: 'hsl(var(--warning))',
         success: 'hsl(var(--success))',
+        rating: 'var(--rating)'
       },
       borderRadius: {
         lg: 'var(--radius)',

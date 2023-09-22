@@ -3,7 +3,6 @@ import ProductDetail from './components/product-detail';
 import Reviews from './components/reviews';
 import Widgets from './components/widgets';
 import ClientProvider from './providers/client-provider';
-
 import productService from '@/core/modules/product/service';
 
 type Props = {

@@ -12,7 +12,7 @@ export default function Rate({ value, total = 0, className }: Props) {
       {[...Array(5)].map((_, index: number) => {
         const icon =
           index < value
-            ? 'fas fa-star text-warning'
+            ? 'fas fa-star text-rating'
             : 'fal fa-star text-gray-500';
         return <i key={index} className={icon}></i>;
       })}

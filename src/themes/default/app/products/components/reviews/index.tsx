@@ -22,7 +22,7 @@ export default async function Reviews({ productID, className }: Props) {
   return (
     <section className={cn(className)}>
       <h3 className='mb-4 text-lg'>Customers Reviews {`(${data?.total})`}</h3>
-      <div className='mb-4 grid grid-cols-2 rounded-xl bg-gray-100 p-3'>
+      <div className='mb-4 grid grid-cols-2 rounded-xl bg-gray-50 p-4 md:p-6'>
         <div className='flex flex-col items-center justify-center'>
           <label className='mb-1 text-xl font-bold text-warning sm:text-3xl'>
             {data.rating}

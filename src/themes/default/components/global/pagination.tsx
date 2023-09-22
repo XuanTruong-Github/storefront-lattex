@@ -1,7 +1,5 @@
 'use client';
-import { useState } from 'react';
 import { Button } from '@/core/components/ui/button';
-import { Input } from '@/core/components/ui/input';
 import ReactPaginate from 'react-paginate';
 import { cn } from '@/core/lib/utils';
 import useResponsive from '@/core/hooks/useResponsive';
@@ -20,14 +18,14 @@ export default function Pagination(props: PaginationProps) {
     className,
     page = 1,
     length = 1,
-    totalVisible = length,
+    totalVisible = 4,
     onChange,
   } = props;
   // States
   const { isMobile } = useResponsive();
   const pageStyle =
-    'w-10 aspect-square grid place-items-center font-medium text-sm rounded-full bg-secondary text-secondary-foreground hover:text-accent-foreground hover:text-primary-foreground hover:!bg-primary';
-  const pageActive = '!bg-primary !text-primary-foreground';
+    'w-9 rounded-md aspect-square grid place-items-center font-medium text-sm bg-secondary text-secondary-foreground hover:text-accent-foreground hover:text-primary-foreground hover:!bg-primary/80';
+  const pageActive = '!bg-primary/80 !text-primary-foreground';
   // Methods
   function onPageChange({ selected }: { selected: number }) {
     if (Number(selected) + 1 !== page) {

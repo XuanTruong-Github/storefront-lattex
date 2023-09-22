@@ -3,7 +3,6 @@ import ReactQueryProvider from '@/core/lib/react-query/provider';
 import BootstrapProvider from '@default/providers/bootstrap';
 import Links from '@default/components/layout/head/links';
 import Styles from '@default/components/layout/head/styles';
-import '@default/assets/styles/styles.scss';
 
 const font = Inter({
   weight: ['400', '500', '700', '900'],

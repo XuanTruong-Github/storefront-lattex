@@ -19,7 +19,6 @@ export default function Quantity({ className }: Props) {
     <div
       className={cn(
         'quantity flex min-h-[48px] items-center overflow-hidden rounded-lg border',
-        'input-number-no-buttons',
         className
       )}
     >
@@ -34,7 +33,7 @@ export default function Quantity({ className }: Props) {
       </Button>
       <Input
         type='number'
-        className='h-full min-h-[48px] w-10 border-none px-0 py-0 text-center font-medium'
+        className='h-full min-h-[48px] w-10 border-none px-0 py-0 text-center font-medium input-no-buttons'
         value={qty}
         min={1}
         max={100}
