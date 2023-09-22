@@ -8,7 +8,6 @@ const useStore = (key: any, initialData: any) => {
     initialData,
   });
   const setData = (value: any) => queryClient.setQueriesData(key, value);
-
   return [data, setData];
 };
 export default useStore;
