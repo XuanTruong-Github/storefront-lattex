@@ -4,7 +4,7 @@ import ProductCard from '@default/components/product/product-card';
 import {
   NextArrow,
   PrevArrow,
-} from '@default/components/global/arrow-carousel';
+} from '@/core/components/global/arrow-carousel';
 import useResponsive from '@/core/hooks/useResponsive';
 type Props = {
   products: any[];

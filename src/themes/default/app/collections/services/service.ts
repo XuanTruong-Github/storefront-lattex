@@ -16,7 +16,7 @@ async function getProducts(collection: Collection) {
         return {
           id: product?._id,
           name: product?._source?.name,
-          image: helpers.parseImageUrl(product._source.image, {
+          image: helpers.parseImageUrl(product._source.small_image, {
             width: 320,
             height: 320,
           }),

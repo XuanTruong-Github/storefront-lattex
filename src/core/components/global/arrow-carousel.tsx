@@ -10,7 +10,7 @@ type Props = {
 export function PrevArrow({ onClick, customClass }: CustomArrowProps & Props) {
   return (
     <Button
-      variant='secondary'
+      variant='gray'
       className={cn(
         'grid place-items-center',
         'absolute -left-8 top-1/2 z-10 -translate-y-1/2',
@@ -28,11 +28,11 @@ export function PrevArrow({ onClick, customClass }: CustomArrowProps & Props) {
 export function NextArrow({ onClick, customClass }: CustomArrowProps & Props) {
   return (
     <Button
-      variant='secondary'
+      variant='gray'
       className={cn(
         'grid place-items-center',
         'absolute -right-8 top-1/2 z-10 -translate-y-1/2',
-        'delay-100 duration-300 ease-in-out hover:transition md:hover:scale-125',
+        'duration-500 ease-in-out hover:transition md:hover:scale-125',
         customClass
       )}
       size='icon'

@@ -5,7 +5,7 @@ import Slider from 'react-slick';
 import {
   NextArrow,
   PrevArrow,
-} from '@default/components/global/arrow-carousel';
+} from '@/core/components/global/arrow-carousel';
 import { Button } from '@/core/components/ui/button';
 import { AspectRatio } from '@/core/components/ui/aspect-ratio';
 

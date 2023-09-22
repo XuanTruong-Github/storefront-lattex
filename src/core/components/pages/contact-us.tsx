@@ -102,13 +102,14 @@ export default function ContactUs({ pageData }: Props) {
           <div className='sm:flex sm:justify-end'>
             <Button
               type='submit'
+              variant='black'
               className='h-12 w-full sm:w-[unset] sm:px-8'
               disabled={isLoading}
             >
               {isLoading && (
                 <i className='fas fa-spinner-third mr-2 animate-spin'></i>
               )}
-              Submit
+              Send
             </Button>
           </div>
         </form>

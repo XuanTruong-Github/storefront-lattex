@@ -76,10 +76,19 @@ const service = {
       },
       min_score: 0.02,
     });
-    const _source_exclude =
-      'attribute_set_id,configurable_options,description,sgn,*.sgn,msrp_display_actual_price_type,*.msrp_display_actual_price_type,required_options,media_gallery,stock.use_config_min_qty,stock.use_config_notify_stock_qty,stock.stock_id,stock.use_config_backorders,stock.use_config_enable_qty_inc,stock.enable_qty_increments,stock.use_config_manage_stock,stock.use_config_min_sale_qty,stock.notify_stock_qty,stock.use_config_max_sale_qty,stock.use_config_max_sale_qty,stock.qty_increments,stock.stock_status_changed_auto,stock.show_default_notification_message,stock.use_config_qty_increments,stock.is_decimal_divided';
-    const _source_include =
-      'googleProductId,activity,configurable_children.attributes,configurable_children.id,configurable_children.final_price,configurable_children.color,configurable_children.original_price,configurable_children.original_price_incl_tax,configurable_children.price,configurable_children.price_incl_tax,configurable_children.size,configurable_children.sku,configurable_children.special_price,configurable_children.special_price_incl_tax,configurable_children.tier_prices,final_price,id,image,name,new,original_price_incl_tax,original_price,price,price_incl_tax,product_links,sale,special_price,special_to_date,special_from_date,special_price_incl_tax,status,tax_class_id,tier_prices,type_id,url_path,url_key,*image,*sku,*small_image';
+    const _source_include = [
+      'id',
+      'image',
+      'name',
+      'price',
+      'final_price',
+      'original_price',
+      'special_price',
+      'type_id',
+      '*image',
+      '*sku',
+      '*small_image',
+    ].join(',');
     const url = '/api/vue/catalog/vue_storefront_catalog/product/_search';
     return api.get(url, {
       params: {
@@ -87,7 +96,6 @@ const service = {
         size,
         request,
         _source_include,
-        _source_exclude,
       },
     });
   },
@@ -125,10 +133,19 @@ const service = {
         },
       },
     });
-    const _source_exclude =
-      'attribute_set_id,configurable_options,description,sgn,*.sgn,msrp_display_actual_price_type,*.msrp_display_actual_price_type,required_options,media_gallery,stock.use_config_min_qty,stock.use_config_notify_stock_qty,stock.stock_id,stock.use_config_backorders,stock.use_config_enable_qty_inc,stock.enable_qty_increments,stock.use_config_manage_stock,stock.use_config_min_sale_qty,stock.notify_stock_qty,stock.use_config_max_sale_qty,stock.use_config_max_sale_qty,stock.qty_increments,stock.stock_status_changed_auto,stock.show_default_notification_message,stock.use_config_qty_increments,stock.is_decimal_divided';
-    const _source_include =
-      'googleProductId,activity,configurable_children.attributes,configurable_children.id,configurable_children.final_price,configurable_children.color,configurable_children.original_price,configurable_children.original_price_incl_tax,configurable_children.price,configurable_children.price_incl_tax,configurable_children.size,configurable_children.sku,configurable_children.special_price,configurable_children.special_price_incl_tax,configurable_children.tier_prices,final_price,id,image,name,new,original_price_incl_tax,original_price,price,price_incl_tax,product_links,sale,special_price,special_to_date,special_from_date,special_price_incl_tax,status,tax_class_id,tier_prices,type_id,url_path,url_key,*image,*sku,*small_image';
+    const _source_include = [
+      'id',
+      'image',
+      'name',
+      'price',
+      'final_price',
+      'original_price',
+      'special_price',
+      'type_id',
+      '*image',
+      '*sku',
+      '*small_image',
+    ].join(',');
     const url = `/api/vue/catalog/vue_storefront_catalog/product/_search`;
     return api.get(url, {
       params: {
@@ -136,7 +153,6 @@ const service = {
         size,
         request,
         _source_include,
-        _source_exclude,
         sort,
       },
     });
@@ -152,10 +168,36 @@ const service = {
       },
     });
 
-    const _source_exclude =
-      'attribute_set_id,created_at,has_options,msrp_display_actual_price_type,*.msrp_display_actual_price_type,options_container,required_options,small_image,stock.enable_qty_increments,stock.is_decimal_divided,stock.manage_stock,stock.notify_stock_qty,stock.qty_increments,stock.show_default_notification_message,stock.stock_id,stock.stock_status_changed_auto,stock.use_config_qty_increments,stock.use_config_min_qty,stock.use_config_notify_stock_qty,stock.use_config_backorders,stock.use_config_enable_qty_inc,stock.use_config_manage_stock,stock.use_config_min_sale_qty,stock.use_config_max_sale_qty,sgn,*.sgn,updated_at';
-    const _source_include =
-      'googleProductId,activity,configurable_children.attributes,configurable_children.id,configurable_children.final_price,configurable_children.color,configurable_children.original_price,configurable_children.original_price_incl_tax,configurable_children.price,configurable_children.price_incl_tax,configurable_children.size,configurable_children.sku,configurable_children.special_price,configurable_children.special_price_incl_tax,configurable_children.tier_prices,final_price,id,image,name,new,original_price_incl_tax,original_price,price,price_incl_tax,product_links,sale,special_price,special_to_date,special_from_date,special_price_incl_tax,status,tax_class_id,tier_prices,type_id,url_path,url_key,*image,*sku,*small_image';
+    const _source_exclude = [
+      'attribute_set_id',
+      'created_at',
+      'has_options',
+      'msrp_display_actual_price_type',
+      '*.msrp_display_actual_price_type',
+      'options_container',
+      'required_options',
+      'small_image',
+      'stock.enable_qty_increments',
+      'stock.is_decimal_divided',
+      'stock.manage_stock',
+      'stock.notify_stock_qty',
+      'stock.qty_increments',
+      'stock.show_default_notification_message',
+      'stock.stock_id',
+      'stock.stock_status_changed_auto',
+      'stock.use_config_qty_increments',
+      'stock.use_config_min_qty',
+      'stock.use_config_notify_stock_qty',
+      'stock.use_config_backorders',
+      'stock.use_config_enable_qty_inc',
+      'stock.use_config_manage_stock',
+      'stock.use_config_min_sale_qty',
+      'stock.use_config_max_sale_qty',
+      'sgn',
+      '*.sgn',
+      'updated_at',
+      'books',
+    ].join(',');
     const url = '/api/vue/catalog/vue_storefront_catalog/product/_search';
     return api.get(url, {
       params: {
@@ -163,7 +205,6 @@ const service = {
         size,
         request,
         _source_exclude,
-        _source_include,
       },
     });
   },

@@ -37,7 +37,7 @@ export default function SearchBar({ isOpen = false, setOpen }: Props) {
             return {
               id: product?._id,
               name: product?._source?.name,
-              image: helpers.parseImageUrl(product._source.image, {
+              image: helpers.parseImageUrl(product._source.small_image, {
                 width: 80,
                 height: 80,
               }),
