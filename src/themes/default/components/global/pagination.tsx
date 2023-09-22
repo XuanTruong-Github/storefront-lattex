@@ -1,5 +1,5 @@
 'use client';
-import { Button } from '@/core/components/ui/button';
+import { Button } from 'ui/button';
 import ReactPaginate from 'react-paginate';
 import { cn } from '@/core/lib/utils';
 import useResponsive from '@/core/hooks/useResponsive';

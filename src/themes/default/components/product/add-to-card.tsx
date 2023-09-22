@@ -1,5 +1,5 @@
 'use client';
-import { Button } from '@/core/components/ui/button';
+import { Button } from 'ui/button';
 import { cn } from '@/core/lib/utils';
 import type { Product } from '@/core/modules/product/type';
 import productStore from '@/core/modules/product/store';

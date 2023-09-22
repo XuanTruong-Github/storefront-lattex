@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button } from '@/core/components/ui/button';
+import { Button } from 'ui/button';
 export default function NotFound() {
   return (
     <section className='flex h-[80vh] flex-col items-center justify-center'>

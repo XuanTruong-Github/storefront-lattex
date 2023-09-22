@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
-import { Input } from '@/core/components/ui/input';
-import { Sheet, SheetContent } from '@/core/components/ui/sheet';
+import { Input } from 'ui/input';
+import { Sheet, SheetContent } from 'ui/sheet';
 import SearchLoading from './search-loading';
 import SearchList from './search-list';
 import { useState, Fragment, type ChangeEvent, type FormEvent } from 'react';
@@ -10,7 +10,7 @@ import { ProductCardType } from '@default/components/product/product-card';
 import { useQuery } from '@tanstack/react-query';
 import productService from '@/core/modules/product/service';
 import helpers from '@/core/utils/helpers';
-import { Button } from '@/core/components/ui/button';
+import { Button } from 'ui/button';
 
 type Props = {
   isOpen: boolean;

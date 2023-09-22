@@ -1,51 +1,76 @@
+'use client';
 import Image from 'next/image';
-import { Fragment } from 'react';
-
+import { Fragment, useState } from 'react';
+import Discount from './discount';
+import { Button } from 'ui/button';
+import useResponsive from '@/core/hooks/useResponsive';
 export default function OrderSummary() {
+  const [showFullSummary, setShowFullSummary] = useState(false);
+  const { isMobile, isDesktop } = useResponsive();
+  const toogle = () => {
+    setShowFullSummary(!showFullSummary);
+  };
   return (
     <Fragment>
-      <h4 className='mb-4 font-medium'>Order summary</h4>
-      <ul className='mb-4'>
-        <li className='flex items-start gap-3 border-b py-6'>
-          <Image
-            src='https://cdn.shopify.com/s/files/1/0070/7032/files/image5_4578a9e6-2eff-4a5a-8d8c-9292252ec848.jpg?v=1620247043'
-            alt='product'
-            width={80}
-            height={80}
-            className='h-auto w-auto rounded-lg object-contain'
-          />
-          <div className='flex-1 text-sm text-gray-600'>
-            <h3 className='text-sm font-medium text-foreground'>
-              Micro Backpack
-            </h3>
-            <p>Moss</p>
-            <p>5L</p>
+      <div className='flex items-center justify-between mb-2'>
+        <h4>Order summary</h4>
+        {isMobile && (
+          <Button
+            variant={'link'}
+            className='h-fit p-0 !no-underline lg:hidden'
+            onClick={toogle}
+          >
+            {showFullSummary ? 'Hide' : 'Show'} full summary
+          </Button>
+        )}
+      </div>
+      {(showFullSummary || isDesktop) && (
+        <Fragment>
+          <ul className='mb-4'>
+            <li className='flex items-start gap-3 border-b py-6'>
+              <Image
+                src='https://cdn.shopify.com/s/files/1/0070/7032/files/image5_4578a9e6-2eff-4a5a-8d8c-9292252ec848.jpg?v=1620247043'
+                alt='product'
+                width={80}
+                height={80}
+                className='h-auto w-auto rounded-lg object-contain'
+              />
+              <div className='flex-1 text-sm text-gray-600'>
+                <h3 className='text-sm font-medium text-foreground'>
+                  Micro Backpack
+                </h3>
+                <p>Moss</p>
+                <p>5L</p>
+              </div>
+              <p className='font-medium'>$180.00</p>
+            </li>
+          </ul>
+          <Discount className='mb-6' />
+          <div className='mb-2 flex items-center justify-between text-sm'>
+            <label htmlFor='subtotal' className='font-normal'>
+              Subtotal
+            </label>
+            <p id='subtotal' className='font-medium'>
+              $320.00
+            </p>
           </div>
-          <p className='font-medium'>$180.00</p>
-        </li>
-      </ul>
-      <div className='mb-2 flex items-center justify-between text-sm'>
-        <label htmlFor='subtotal' className='font-normal'>
-          Subtotal
-        </label>
-        <p id='subtotal' className='font-medium'>
-          $320.00
-        </p>
-      </div>
-      <div className='mb-2 flex items-center justify-between text-sm'>
-        <label htmlFor='subtotal' className='font-normal'>
-          Shipping
-        </label>
-        <p id='subtotal' className='font-medium'>
-          $10.00
-        </p>
-      </div>
-      <hr className='my-4' />
+          <div className='mb-2 flex items-center justify-between text-sm'>
+            <label htmlFor='subtotal' className='font-normal'>
+              Shipping
+            </label>
+            <p id='subtotal' className='font-medium'>
+              $10.00
+            </p>
+          </div>
+        </Fragment>
+      )}
+
+      <hr className='my-6 md:mb-8' />
       <div className='flex items-center justify-between'>
-        <label htmlFor='subtotal' className='text-sm font-normal'>
+        <label htmlFor='total' className='font-medium'>
           Total
         </label>
-        <p id='subtotal' className='font-medium'>
+        <p id='total' className='text-xl font-bold'>
           $10.00
         </p>
       </div>

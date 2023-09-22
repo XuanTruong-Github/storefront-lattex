@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { Fragment, useState } from 'react';
 import Slider from 'react-slick';
-import { Dialog, DialogContent } from '@/core/components/ui/dialog';
+import { Dialog, DialogContent } from 'ui/dialog';
 import { cn } from '@/core/lib/utils';
 type Props = {
   images: string[];

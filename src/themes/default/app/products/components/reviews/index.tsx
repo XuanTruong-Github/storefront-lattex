@@ -2,7 +2,7 @@ import Rate from '@/core/components/global/rate';
 import ReviewsList from './reviews-list';
 import { cn } from '@/core/lib/utils';
 import productService from '@/core/modules/product/service';
-import { Progress } from '@/core/components/ui/progress';
+import { Progress } from 'ui/progress';
 type Props = {
   productID: string;
   className?: string;

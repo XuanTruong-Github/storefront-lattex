@@ -1,4 +1,4 @@
-import { Skeleton } from '@/core/components/ui/skeleton';
+import { Skeleton } from 'ui/skeleton';
 export default function Loading() {
   return (
     <section className='container py-8'>

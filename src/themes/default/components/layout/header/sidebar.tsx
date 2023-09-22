@@ -5,8 +5,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/core/components/ui/accordion';
-import { Sheet, SheetContent } from '@/core/components/ui/sheet';
+} from 'ui/accordion';
+import { Sheet, SheetContent } from 'ui/sheet';
 import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import navigationStore from '@/core/modules/navigation/store';

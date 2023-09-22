@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button } from '@/core/components/ui/button';
+import { Button } from 'ui/button';
 export default function NotFound() {
   return (
     <main className='grid h-full place-items-center'>

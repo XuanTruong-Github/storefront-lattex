@@ -6,8 +6,8 @@ import {
   NextArrow,
   PrevArrow,
 } from '@/core/components/global/arrow-carousel';
-import { Button } from '@/core/components/ui/button';
-import { AspectRatio } from '@/core/components/ui/aspect-ratio';
+import { Button } from 'ui/button';
+import { AspectRatio } from 'ui/aspect-ratio';
 
 import useResponsive from '@/core/hooks/useResponsive';
 import configThemeStore from '@/themes/default/modules/config-theme/store';

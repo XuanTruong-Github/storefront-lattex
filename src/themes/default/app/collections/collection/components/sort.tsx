@@ -1,12 +1,12 @@
 'use client';
-import { Label } from '@/core/components/ui/label';
+import { Label } from 'ui/label';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/core/components/ui/select';
+} from 'ui/select';
 import { useRouter } from 'next/navigation';
 import queryString from 'query-string';
 

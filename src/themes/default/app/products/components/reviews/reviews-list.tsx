@@ -1,6 +1,6 @@
 'use client';
 import Rate from '@/core/components/global/rate';
-import { Skeleton } from '@/core/components/ui/skeleton';
+import { Skeleton } from 'ui/skeleton';
 import ReviewGallery from './gallery';
 import Pagination from '@/themes/default/components/global/pagination';
 import { Fragment, useState } from 'react';

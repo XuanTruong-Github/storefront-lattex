@@ -1,4 +1,4 @@
-import { Button } from '@/core/components/ui/button';
+import { Button } from 'ui/button';
 type Props = {
   className?: string;
 };

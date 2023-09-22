@@ -1,6 +1,6 @@
 'use client';
 import type { CustomArrowProps } from 'react-slick';
-import { Button } from '@/core/components/ui/button';
+import { Button } from 'ui/button';
 import { cn } from '@/core/lib/utils';
 
 type Props = {

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { AspectRatio } from '@/core/components/ui/aspect-ratio';
-import { ScrollArea } from '@/core/components/ui/scroll-area';
+import { AspectRatio } from 'ui/aspect-ratio';
+import { ScrollArea } from 'ui/scroll-area';
 import { Fragment, type ReactNode } from 'react';
 import { ProductCardType } from '@default/components/product/product-card';
 import helpers from '@/core/utils/helpers';

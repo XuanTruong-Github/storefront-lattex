@@ -1,8 +1,8 @@
 'use client';
 import { Fragment, useState } from 'react';
 import Logo from '@default/components/global/logo';
-import { Button } from '@/core/components/ui/button';
-import { Badge } from '@/core/components/ui/badge';
+import { Button } from 'ui/button';
+import { Badge } from 'ui/badge';
 import TopBar from './topbar';
 import Sidebar from './sidebar';
 import SearchBar from './search-bar';

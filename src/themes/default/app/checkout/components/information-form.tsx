@@ -1,6 +1,12 @@
 'use client';
-import { Input } from '@/core/components/ui/input';
-import { Label } from '@/core/components/ui/label';
+import { Input } from 'ui/input';
+import { Label } from 'ui/label';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from 'ui/tooltip';
 import {
   Select,
   SelectContent,
@@ -8,53 +14,77 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/core/components/ui/select';
+} from 'ui/select';
+import { useState } from 'react';
 export default function InformationForm() {
+  const [tooltipPhoneNumber, setTooltipPhoneNumber] = useState(false);
   return (
-    <form action={'#'}>
-      <h4 className='mb-4 font-medium'>Contact information</h4>
+    <form onSubmit={(e) => e.preventDefault()}>
+      <h4 className='mb-2'>Contact information</h4>
       <div className='mb-4'>
-        <Label htmlFor='email' className='mb-2 inline-block font-normal'>
+        <Label htmlFor='email' className='mb-2 inline-block font-medium'>
           Email address
         </Label>
-        <Input name='email' type='email' placeholder='Email' className='mb-4' />
+        <Input name='email' type='email' placeholder='Email' className='h-12' />
+        <p className='mt-1 text-xs text-destructive'>
+          <i className='fal fa-exclamation-circle'></i> Please enter your email
+        </p>
       </div>
-      <h4 className='mb-4 font-medium'>Shipping address</h4>
-      <div className='mb-4 grid grid-cols-2 gap-4'>
-        <div>
-          <Label htmlFor='firstName' className='mb-2 inline-block font-normal'>
+      <h4 className='mb-3'>Shipping address</h4>
+      <div className='mb-4 grid grid-cols-2 gap-3'>
+        <div className='col-span-2 sm:col-span-1'>
+          <Label htmlFor='firstName' className='mb-2 inline-block font-medium'>
             {'First name (optional)'}
           </Label>
-          <Input name='firstName' placeholder='First name' />
+          <Input name='firstName' placeholder='First name' className='h-12' />
+          <p className='mt-1 text-xs text-destructive'>
+            <i className='fal fa-exclamation-circle'></i> Please enter your
+            first name
+          </p>
         </div>
-        <div>
-          <Label htmlFor='lastName' className='mb-2 inline-block font-normal'>
+        <div className='col-span-2 sm:col-span-1'>
+          <Label htmlFor='lastName' className='mb-2 inline-block font-medium'>
             Last name
           </Label>
-          <Input name='lastName' placeholder='Last name' />
+          <Input name='lastName' placeholder='Last name' className='h-12' />
+          <p className='mt-1 text-xs text-destructive'>
+            <i className='fal fa-exclamation-circle'></i> Please enter your last
+            name
+          </p>
         </div>
         <div className='col-span-2'>
-          <Label htmlFor='address' className='mb-2 inline-block font-normal'>
+          <Label htmlFor='address' className='mb-2 inline-block font-medium'>
             Address
           </Label>
-          <Input name='address' placeholder='Address' />
+          <Input name='address' placeholder='Address' className='h-12' />
+          <p className='mt-1 text-xs text-destructive'>
+            <i className='fal fa-exclamation-circle'></i> Please enter your
+            address
+          </p>
         </div>
         <div className='col-span-2'>
-          <Label htmlFor='address2' className='mb-2 inline-block font-normal'>
+          <Label htmlFor='address2' className='mb-2 inline-block font-medium'>
             Apartment, suite, etc.
           </Label>
-          <Input name='address2' placeholder='Apartment, suite, etc.' />
+          <Input
+            name='address2'
+            placeholder='Apartment, suite, etc.'
+            className='h-12'
+          />
         </div>
         <div>
-          <Label htmlFor='city' className='mb-2 inline-block font-normal'>
+          <Label htmlFor='city' className='mb-2 inline-block font-medium'>
             City
           </Label>
-          <Input name='city' placeholder='City' />
+          <Input name='city' placeholder='City' className='h-12' />
+          <p className='mt-1 text-xs text-destructive'>
+            <i className='fal fa-exclamation-circle'></i> Please enter your city
+          </p>
         </div>
         <div>
-          <Label className='mb-2 inline-block font-normal'>Country</Label>
+          <Label className='mb-2 inline-block font-medium'>Country</Label>
           <Select>
-            <SelectTrigger>
+            <SelectTrigger className='h-12'>
               <SelectValue placeholder='Country' />
             </SelectTrigger>
             <SelectContent>
@@ -64,12 +94,12 @@ export default function InformationForm() {
             </SelectContent>
           </Select>
         </div>
-        <div>
-          <Label className='mb-2 inline-block font-normal'>
+        <div className='col-span-2 sm:col-span-1'>
+          <Label className='mb-2 inline-block font-medium'>
             State / Province
           </Label>
           <Select>
-            <SelectTrigger>
+            <SelectTrigger className='h-12'>
               <SelectValue placeholder='State / Province' />
             </SelectTrigger>
             <SelectContent>
@@ -79,17 +109,45 @@ export default function InformationForm() {
             </SelectContent>
           </Select>
         </div>
-        <div>
-          <Label htmlFor='zip' className='mb-2 inline-block font-normal'>
+        <div className='col-span-2 sm:col-span-1'>
+          <Label htmlFor='zip' className='mb-2 inline-block font-medium'>
             Zip code
           </Label>
-          <Input name='zip' placeholder='Zip code' />
+          <Input name='zip' placeholder='Zip code' className='h-12' />
+          <p className='mt-1 text-xs text-destructive'>
+            <i className='fal fa-exclamation-circle'></i> Please enter a valid
+            Zip/Postal code.
+          </p>
         </div>
-        <div className='col-span-2'>
-          <Label htmlFor='phone' className='mb-2 inline-block font-normal'>
+        <div className='relative col-span-2'>
+          <Label htmlFor='phone' className='mb-2 inline-block font-medium'>
             Phone
           </Label>
-          <Input name='phone' placeholder='Phone number' />
+          <Input
+            name='phone'
+            placeholder='Phone number'
+            className='h-12 pr-10'
+          />
+          <TooltipProvider>
+            <Tooltip
+              open={tooltipPhoneNumber}
+              onOpenChange={setTooltipPhoneNumber}
+            >
+              <TooltipTrigger
+                asChild
+                onClick={() => setTooltipPhoneNumber(!tooltipPhoneNumber)}
+              >
+                <i className='fal fa-question-circle fa-lg absolute right-3 top-[55%] -translate-y-1/2 text-gray-400 cursor-pointer'></i>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>In case we need to contact you about your order</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <p className='mt-1 text-xs text-destructive'>
+            <i className='fal fa-exclamation-circle'></i> Please enter your
+            phone number
+          </p>
         </div>
       </div>
     </form>

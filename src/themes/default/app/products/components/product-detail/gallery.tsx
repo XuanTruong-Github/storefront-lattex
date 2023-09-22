@@ -1,7 +1,7 @@
 'use client';
 import Slider from 'react-slick';
 import Image from 'next/image';
-import { AspectRatio } from '@/core/components/ui/aspect-ratio';
+import { AspectRatio } from 'ui/aspect-ratio';
 import { useMemo, useState } from 'react';
 import type { Product } from '@/core/modules/product/type';
 import helpers from '@/core/utils/helpers';

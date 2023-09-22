@@ -1,11 +1,11 @@
 'use client';
 import Link from 'next/link';
 import ProductListCarousel from './product-list-carousel';
-import { Button } from '@/core/components/ui/button';
+import { Button } from 'ui/button';
 import type { Collection } from '@/core/modules/collection/type';
 import { useQuery } from '@tanstack/react-query';
 import { getCollections } from '../services/service';
-import { Skeleton } from '@/core/components/ui/skeleton';
+import { Skeleton } from 'ui/skeleton';
 import { Fragment } from 'react';
 
 type Props = {

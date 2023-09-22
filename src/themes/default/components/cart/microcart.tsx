@@ -6,8 +6,8 @@ import {
   SheetHeader,
   SheetTitle,
   SheetDescription,
-} from '@/core/components/ui/sheet';
-import { Button } from '@/core/components/ui/button';
+} from 'ui/sheet';
+import { Button } from 'ui/button';
 import Link from 'next/link';
 
 type Props = {

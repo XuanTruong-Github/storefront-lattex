@@ -21,6 +21,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "config": ["./src/configs/config.json"],
+      "ui/*": ["./src/core/components/ui/*"],
       "@default/*": ["./src/themes/default/*"],
       "@fashion/*": ["./src/themes/fashion/*"]
     }

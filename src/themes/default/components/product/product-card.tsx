@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { AspectRatio } from '@/core/components/ui/aspect-ratio';
+import { AspectRatio } from 'ui/aspect-ratio';
 import helpers from '@/core/utils/helpers';
 import { cn } from '@/core/lib/utils';
 

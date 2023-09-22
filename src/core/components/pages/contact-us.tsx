@@ -1,14 +1,14 @@
 'use client';
 import { useRef } from 'react';
-import { Label } from '@/core/components/ui/label';
-import { Input } from '@/core/components/ui/input';
-import { Textarea } from '@/core/components/ui/textarea';
-import { Button } from '@/core/components/ui/button';
+import { Label } from 'ui/label';
+import { Input } from 'ui/input';
+import { Textarea } from 'ui/textarea';
+import { Button } from 'ui/button';
 import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from '@/core/components/ui/alert';
+} from 'ui/alert';
 import { cn } from '@/core/lib/utils';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
