@@ -7,10 +7,10 @@ class Helpers {
     });
   }
   parseImageUrl(
-    pathOrigin: string,
+    pathOrigin: string | null,
     resize: { width: number; height: number }
   ): string {
-    if (!pathOrigin) return '';
+    if (!pathOrigin) return '/images/no-image.jpg';
     const baseURL = config.images.baseUrl;
     let path = pathOrigin;
     if (path.includes('https://minio.vnstore.xyz/hiweb-development')) {

@@ -33,7 +33,8 @@ export default function ReviewGallery({ images }: Props) {
               alt='Review'
               width={320}
               height={320}
-              className='w-full object-contain'
+              className='w-full object-contain cursor-pointer'
+              title='View'
               onClick={() => onSelectImage(image)}
             />
           ))}

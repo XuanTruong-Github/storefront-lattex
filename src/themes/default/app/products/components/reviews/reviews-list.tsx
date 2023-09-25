@@ -50,7 +50,10 @@ export default function ReviewsList({
     length: 1,
   });
   const onChangePage = (page: number) => {
-    if (page <= pagination.length) setPagination((prev) => ({ ...prev, page }));
+    if (page <= pagination.length) {
+      setPagination((prev) => ({ ...prev, page }));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
   const { data, isLoading }: any = useQuery({
     queryKey: ['reviews', pagination.page],

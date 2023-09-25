@@ -3,7 +3,7 @@ import config from 'config';
 const collectionService = {
   getCollections(
     params: { limit: number; page: number } = {
-      limit: 20,
+      limit: 50,
       page: 1,
     }
   ) {
