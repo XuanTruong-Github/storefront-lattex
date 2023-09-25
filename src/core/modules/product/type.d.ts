@@ -67,6 +67,8 @@ export type Product = {
   tier_prices?: any[];
   links?: any;
   parentId?: number | string;
+  firstVariant?: any;
+  original_final_price: number;
 };
 
 export type ProductLink = {

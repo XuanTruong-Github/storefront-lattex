@@ -4,8 +4,6 @@ import Breadcrumbs, {
 import ProductList from './components/product-list';
 import ProductListPagination from './components/product-list-pagination';
 import productService from '@/core/modules/product/service';
-import helpers from '@/core/utils/helpers';
-import type { ProductCardType } from '@default/components/product/product-card';
 type Props = {
   searchParams: { q: string; page?: number; limit?: number };
 };
@@ -35,20 +33,7 @@ export default async function Page({ searchParams }: Props) {
         pagination.limit
       );
       if (data && data?.hits?.hits.length) {
-        const products: ProductCardType[] = data.hits.hits.map(
-          (product: any) => {
-            return {
-              id: product?._id,
-              name: product?._source?.name,
-              image: helpers.parseImageUrl(product._source.image, {
-                width: 200,
-                height: 200,
-              }),
-              slug: product?._source?.sku,
-              price: product?._source?.final_price,
-            };
-          }
-        );
+        const products = data.hits.hits.map(({ _source }: any) => _source);
         if (
           pagination.length !=
           Math.ceil(data.hits.total.value / pagination.limit)

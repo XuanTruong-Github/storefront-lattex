@@ -1,10 +1,8 @@
 import { Fragment, type ReactNode } from 'react';
-import ProductCard, {
-  ProductCardType,
-} from '@default/components/product/product-card';
-import ProductListPagination from './product-list-pagination';
+import ProductCard from '@default/components/product/product-card';
+import type { Product } from '@/core/modules/product/type';
 type Props = {
-  products: Array<ProductCardType>;
+  products: Product[];
   keyword: string;
   children: ReactNode;
 };

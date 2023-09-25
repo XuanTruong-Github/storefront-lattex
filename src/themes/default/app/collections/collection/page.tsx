@@ -3,9 +3,7 @@ import { Fragment } from 'react';
 import Breadcrumbs, {
   type BreadcrumbItem,
 } from '@/core/components/global/breadcrumbs';
-import ProductCard, {
-  type ProductCardType,
-} from '@default/components/product/product-card';
+import ProductCard from '@default/components/product/product-card';
 import ProductListPagination from './components/pagination';
 import productService from '@/core/modules/product/service';
 import helpers from '@/core/utils/helpers';
@@ -52,20 +50,7 @@ export default async function Page(props: Props) {
         searchParams.sort
       );
       if (data && data?.hits?.hits.length) {
-        const products: ProductCardType[] = data.hits.hits.map(
-          (product: any) => {
-            return {
-              id: product?._id,
-              name: product?._source?.name,
-              image: helpers.parseImageUrl(product._source.image, {
-                width: 320,
-                height: 320,
-              }),
-              slug: product?._source?.sku,
-              price: product?._source?.final_price,
-            };
-          }
-        );
+        const products = data.hits.hits.map(({ _source }: any) => _source);
         if (
           pagination.length !=
           Math.ceil(data.hits.total.value / pagination.limit)

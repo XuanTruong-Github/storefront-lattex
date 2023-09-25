@@ -84,10 +84,12 @@ const service = {
       'final_price',
       'original_price',
       'special_price',
+      'original_final_price',
       'type_id',
+      'slug',
       '*image',
-      '*sku',
       '*small_image',
+      'firstVariant',
     ].join(',');
     const url = '/api/vue/catalog/vue_storefront_catalog/product/_search';
     return api.get(url, {
@@ -141,10 +143,12 @@ const service = {
       'final_price',
       'original_price',
       'special_price',
+      'original_final_price',
       'type_id',
+      'slug',
       '*image',
-      '*sku',
       '*small_image',
+      'firstVariant',
     ].join(',');
     const url = `/api/vue/catalog/vue_storefront_catalog/product/_search`;
     return api.get(url, {

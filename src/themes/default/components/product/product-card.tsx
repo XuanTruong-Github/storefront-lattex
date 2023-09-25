@@ -3,20 +3,34 @@ import Image from 'next/image';
 import { AspectRatio } from 'ui/aspect-ratio';
 import helpers from '@/core/utils/helpers';
 import { cn } from '@/core/lib/utils';
-
-export type ProductCardType = {
-  id: string;
-  image: string;
-  name: string;
-  price: number;
-  slug: string;
-};
+import type { Product } from '@/core/modules/product/type';
 type Props = {
-  product: ProductCardType;
+  product: Product;
   className?: string;
 };
 
 export default function ProductCard({ product, className }: Props) {
+  const specialPrice = () => {
+    if (product.hasOwnProperty('firstVariant')) {
+      return helpers.formatMoney(
+        product.firstVariant?.original_final_price ||
+          product.firstVariant?.price
+      );
+    } else
+      return helpers.formatMoney(
+        product?.original_final_price || product?.price
+      );
+  };
+  const originalPrice = () => {
+    if (
+      product.firstVariant?.original_price &&
+      product.firstVariant.original_price > product.firstVariant.price &&
+      product.firstVariant.original_price >
+        product.firstVariant.original_final_price
+    ) {
+      return helpers.formatMoney(product.firstVariant.original_price);
+    } else return null;
+  };
   return (
     <Link
       href={'/products/' + product.slug}
@@ -28,10 +42,13 @@ export default function ProductCard({ product, className }: Props) {
         className='mb-2 overflow-hidden rounded-lg group-hover:opacity-80'
       >
         <Image
-          src={product.image}
+          src={helpers.parseImageUrl(product.image, {
+            width: 320,
+            height: 320,
+          })}
           alt={product.name}
           className='duration-500 group-hover:scale-105'
-          sizes='(min-width: 300px) 100%'
+          sizes='(min-width: 320px) 100%'
           fill
         />
       </AspectRatio>
@@ -39,12 +56,12 @@ export default function ProductCard({ product, className }: Props) {
         {product.name}
       </h3>
       <div className='flex items-center gap-x-2'>
-        <strong className='text-destructive'>
-          {helpers.formatMoney(product.price)}
-        </strong>
-        <span className='text-sm text-gray-400 line-through'>
-          {helpers.formatMoney(product.price)}
-        </span>
+        <strong className='text-destructive'>{specialPrice()}</strong>
+        {originalPrice() && (
+          <span className='text-sm text-gray-400 line-through'>
+            {originalPrice()}
+          </span>
+        )}
       </div>
     </Link>
   );
