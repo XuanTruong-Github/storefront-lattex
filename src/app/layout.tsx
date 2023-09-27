@@ -1,15 +1,22 @@
+import { Inter } from 'next/font/google';
 import { Metadata } from 'next';
+import Links from '@/core/components/head/links';
+import Styles from '@/core/components/head/styles';
 import config from 'config';
-import DefaultTheme from '@default/layouts/root';
 import generalService from '@/core/modules/general/service';
 import '@/core/styles/globals.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
+import ReactQueryProvider from '@/core/lib/react-query/provider';
+import BootstrapProvider from '@default/providers/bootstrap';
 type Props = {
   children: React.ReactNode;
 };
-
+const font = Inter({
+  weight: ['400', '500', '700', '900'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 export async function generateMetadata(): Promise<Metadata> {
   try {
     const data: any = await generalService.getPreference();
@@ -23,10 +30,24 @@ export async function generateMetadata(): Promise<Metadata> {
     };
   }
 }
-export default function RootLayout(props: Props) {
-  const theme = config.theme;
-  switch (theme) {
-    default:
-      return <DefaultTheme {...props} />;
-  }
+export default function RootLayout({ children }: Props) {
+  return (
+    <html lang='en'>
+      <head>
+        <link
+          rel='stylesheet'
+          href='https://pro.fontawesome.com/releases/v5.10.0/css/all.css'
+          crossOrigin='anonymous'
+          integrity='sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p'
+        />
+        <Links />
+        <Styles />
+      </head>
+      <body className={font.className}>
+        <ReactQueryProvider>
+          <BootstrapProvider>{children}</BootstrapProvider>
+        </ReactQueryProvider>
+      </body>
+    </html>
+  );
 }

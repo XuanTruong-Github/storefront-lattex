@@ -5,7 +5,7 @@ import { Fragment, type ReactNode } from 'react';
 type Props = {
   children: ReactNode;
 };
-export default function Layout({ children }: Props) {
+export default function DefaultLayout({ children }: Props) {
   return (
     <Fragment>
       <Header />

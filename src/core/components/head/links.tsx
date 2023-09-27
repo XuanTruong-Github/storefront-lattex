@@ -1,7 +1,6 @@
 'use client';
 import { Fragment } from 'react';
 import generalStore from '@/core/modules/general/store';
-import htmlParse from 'html-react-parser';
 import helpers from '@/core/utils/helpers';
 
 export default function Links() {
