@@ -6,7 +6,7 @@ import SearchLoading from './search-loading';
 import SearchList from './search-list';
 import { useState, Fragment, type ChangeEvent, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import { ProductCardType } from '@default/components/product/product-card';
+import type { Product } from '@/core/modules/product/type';
 import { useQuery } from '@tanstack/react-query';
 import productService from '@/core/modules/product/service';
 import helpers from '@/core/utils/helpers';
@@ -32,19 +32,8 @@ export default function SearchBar({ isOpen = false, setOpen }: Props) {
     try {
       const data: any = await productService.searchProduct(keyword, 1, 20);
       if (data && data?.hits?.hits.length) {
-        const products: ProductCardType[] = data.hits.hits.map(
-          (product: any) => {
-            return {
-              id: product?._id,
-              name: product?._source?.name,
-              image: helpers.parseImageUrl(product._source.small_image, {
-                width: 80,
-                height: 80,
-              }),
-              slug: product?._source?.sku,
-              price: product?._source?.final_price,
-            };
-          }
+        const products: Product[] = data.hits.hits.map(
+          (product: Product) => product
         );
         return products;
       } else return [];
@@ -77,7 +66,7 @@ export default function SearchBar({ isOpen = false, setOpen }: Props) {
           >
             <i className='fal fa-search absolute left-4 top-1/2 z-10 -translate-y-1/2 text-secondary-foreground'></i>
             <Input
-              className='rounded-3xl px-10 bg-secondary text-secondary-foreground'
+              className='rounded-3xl bg-secondary px-10 text-secondary-foreground'
               placeholder='What are you searching for?'
               value={keyword}
               onChange={(e: ChangeEvent<HTMLInputElement>) =>

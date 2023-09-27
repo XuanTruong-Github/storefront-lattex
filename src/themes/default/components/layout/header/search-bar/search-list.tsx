@@ -3,12 +3,12 @@ import Image from 'next/image';
 import { AspectRatio } from 'ui/aspect-ratio';
 import { ScrollArea } from 'ui/scroll-area';
 import { Fragment, type ReactNode } from 'react';
-import { ProductCardType } from '@default/components/product/product-card';
 import helpers from '@/core/utils/helpers';
+import type { Product } from '@/core/modules/product/type';
 
 type Props = {
   keyword: string;
-  data: ProductCardType[];
+  data: Product[];
   onCloseSearchBar: any;
   children: ReactNode;
 };
@@ -32,10 +32,10 @@ export default function SearchList({
       </label>
       <ScrollArea className='mb-5 h-[calc(100%-168px)] sm:h-[400px]'>
         <ul id='search' className='grid grid-cols-1'>
-          {data?.map((product: ProductCardType, key: number) => (
+          {data?.map((product: Product, key: number) => (
             <li key={key}>
               <Link
-                href={product.slug}
+                href={product.sku}
                 className='group grid grid-cols-4 gap-x-3 border-b py-4 sm:grid-cols-6 md:gap-x-4'
                 onClick={() => onCloseSearchBar(false)}
               >
