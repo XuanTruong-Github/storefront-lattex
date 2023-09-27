@@ -15,16 +15,20 @@ export default function Logo({ className }: Props) {
     const src =
       state.settings?.pages?.fixed?.footer?.block[0]?.config[3]?.value;
     const storeName = state.manifest?.name || 'Store';
-    const logo = helpers.parseImageUrl(src, { width: 200, height: 58 });
+    const logo = src
+      ? helpers.parseImageUrl(src, { width: 200, height: 58 })
+      : src;
     return [logo, storeName];
   });
-  const [validLogo, setValidLogo] = useState(true);
+
+  const [notFoundImage, setNotFoundImage] = useState(true);
   const onError = () => {
-    setValidLogo(false);
+    setNotFoundImage(false);
   };
+
   return (
-    <Link href='/' className={cn('logo', className)}>
-      {validLogo && logoSrc ? (
+    <Link href='/' className={cn('logo inline-block', className)}>
+      {logoSrc && notFoundImage ? (
         <Image
           src={logoSrc}
           alt={storeName}
