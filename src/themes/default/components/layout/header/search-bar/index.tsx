@@ -1,16 +1,12 @@
 'use client';
-import Link from 'next/link';
 import { Input } from 'ui/input';
 import { Sheet, SheetContent } from 'ui/sheet';
-import SearchLoading from './search-loading';
 import SearchList from './search-list';
-import { useState, Fragment, type ChangeEvent, type FormEvent } from 'react';
+import { useState, type ChangeEvent, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import type { Product } from '@/core/modules/product/type';
 import { useQuery } from '@tanstack/react-query';
 import productService from '@/core/modules/product/service';
-import helpers from '@/core/utils/helpers';
-import { Button } from 'ui/button';
+import type { Product } from '@/core/modules/product/type';
 
 type Props = {
   isOpen: boolean;
@@ -23,35 +19,33 @@ export default function SearchBar({ isOpen = false, setOpen }: Props) {
   const [keyword, setKeyword] = useState('');
 
   // Methods
-  function onOpenSearchBar(open: boolean) {
+  const onOpenSearchBar = (open: boolean) => {
     if (!open) setKeyword('');
     setOpen(open);
-  }
-
-  async function onSearch() {
-    try {
-      const data: any = await productService.searchProduct(keyword, 1, 20);
-      if (data && data?.hits?.hits.length) {
-        const products: Product[] = data.hits.hits.map(
-          (product: Product) => product
-        );
-        return products;
-      } else return [];
-    } catch (error) {
-      return [];
-    }
-  }
-  function onSearchSubmit(event: FormEvent<HTMLFormElement>) {
+  };
+  const onSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     router.push(`/search?q=${keyword}&page=1&limit=20`);
     setOpen(false);
     setKeyword('');
-  }
+  };
 
   // Hooks
-  const { data, isLoading, isFetching }: any = useQuery({
+  const searchQuery = useQuery({
     queryKey: ['search', keyword],
-    queryFn: onSearch,
+    queryFn: async () => {
+      try {
+        const data: any = await productService.searchProduct(keyword, 1, 20);
+        if (data && data?.hits?.hits.length) {
+          const products: Product[] = data.hits.hits.map(
+            ({ _source }: { _source: Product }) => _source
+          );
+          return products;
+        } else return [];
+      } catch (error) {
+        return [];
+      }
+    },
     enabled: keyword.length > 0,
     staleTime: 10000,
   });
@@ -59,7 +53,7 @@ export default function SearchBar({ isOpen = false, setOpen }: Props) {
   return (
     <Sheet open={isOpen} onOpenChange={onOpenSearchBar}>
       <SheetContent side='top' className='h-full p-4 sm:h-fit sm:p-6'>
-        <div className='container h-full px-0 sm:max-w-[600px]'>
+        <section className='container h-full px-0 sm:max-w-[600px]'>
           <form
             className='relative mb-2 mt-10 md:mt-0'
             onSubmit={onSearchSubmit}
@@ -74,34 +68,12 @@ export default function SearchBar({ isOpen = false, setOpen }: Props) {
               }
             />
           </form>
-          {keyword.length > 0 && isLoading && isFetching && (
-            <Fragment>
-              <label htmlFor='search' className='text-center text-xs'>
-                Search results: {keyword}
-              </label>
-              <SearchLoading />
-            </Fragment>
-          )}
-          {keyword.length > 0 && !isLoading && !isFetching && (
-            <SearchList
-              data={data}
-              keyword={keyword}
-              onCloseSearchBar={onOpenSearchBar}
-            >
-              <Button
-                variant='outline'
-                className='rounded-3xl'
-                asChild
-                onClick={() => onOpenSearchBar(false)}
-              >
-                <Link href={`/search?q=${keyword}&page=1&limit=20`}>
-                  See all results{' '}
-                  <i className='fal fa-arrow-right fa-xs ml-2'></i>
-                </Link>
-              </Button>
-            </SearchList>
-          )}
-        </div>
+          <SearchList
+            keyword={keyword}
+            searchQuery={searchQuery}
+            onCloseSearchBar={onOpenSearchBar}
+          />
+        </section>
       </SheetContent>
     </Sheet>
   );

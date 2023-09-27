@@ -1,73 +1,80 @@
 import Link from 'next/link';
-import Image from 'next/image';
-import { AspectRatio } from 'ui/aspect-ratio';
 import { ScrollArea } from 'ui/scroll-area';
-import { Fragment, type ReactNode } from 'react';
-import helpers from '@/core/utils/helpers';
+import { Skeleton } from 'ui/skeleton';
+import { Button } from '@/core/components/ui/button';
+import { Fragment } from 'react';
+import ProductCard from './product-card';
 import type { Product } from '@/core/modules/product/type';
-
 type Props = {
   keyword: string;
-  data: Product[];
+  searchQuery: any;
   onCloseSearchBar: any;
-  children: ReactNode;
 };
-export default function SearchList({
-  data,
-  keyword,
-  onCloseSearchBar,
-  children,
-}: Props) {
-  if (!data?.length) {
-    return (
-      <p className='mt-12 text-center sm:mt-0'>
-        {`Your search "${keyword}" for did not yield any results.`}
-      </p>
-    );
-  }
+function Loading({ keyword }: { keyword: string }) {
   return (
     <Fragment>
-      <label htmlFor='search' className='text-center text-xs md:text-sm'>
+      <label htmlFor='search' className='text-center text-xs'>
         Search results: {keyword}
       </label>
-      <ScrollArea className='mb-5 h-[calc(100%-168px)] sm:h-[400px]'>
-        <ul id='search' className='grid grid-cols-1'>
-          {data?.map((product: Product, key: number) => (
-            <li key={key}>
-              <Link
-                href={product.sku}
-                className='group grid grid-cols-4 gap-x-3 border-b py-4 sm:grid-cols-6 md:gap-x-4'
-                onClick={() => onCloseSearchBar(false)}
-              >
-                <AspectRatio
-                  ratio={1}
-                  className='col-span-1 overflow-hidden rounded-lg border'
-                >
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    className='duration-500 group-hover:scale-110 group-hover:opacity-80'
-                    sizes='(min-width: 320px) 100%'
-                    priority
-                    fill
-                  />
-                </AspectRatio>
-                <div className='col-span-3 sm:col-span-5'>
-                  <h3 className='line-clamp-2 text-sm font-normal'>
-                    {product.name}
-                  </h3>
-                  <div className='flex items-center gap-x-1'>
-                    <strong className='text-destructive'>
-                      {helpers.formatMoney(product.price)}
-                    </strong>
-                  </div>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </ScrollArea>
-      {children}
+      <ul>
+        {[...Array(4)].map((_, key: number) => (
+          <li key={key} className='flex items-start gap-x-3 border-b py-6'>
+            <Skeleton className='aspect-square h-16 w-16 rounded-lg md:h-20 md:w-20' />
+            <div className='flex-1'>
+              <Skeleton className='mb-2 h-4 w-32' />
+              <Skeleton className='h-4 w-16' />
+            </div>
+          </li>
+        ))}
+      </ul>
     </Fragment>
   );
+}
+
+export default function SearchList({
+  searchQuery,
+  keyword,
+  onCloseSearchBar,
+}: Props) {
+  const { data, isFetching } = searchQuery;
+  if (isFetching) return <Loading keyword={keyword} />;
+  else if (keyword.length) {
+    if (!data?.length) {
+      return (
+        <p className='mt-12 text-center sm:mt-6'>
+          {`Your search "${keyword}" for did not yield any results.`}
+        </p>
+      );
+    }
+    return (
+      <Fragment>
+        <label htmlFor='search' className='text-center text-xs md:text-sm'>
+          Search results: {keyword}
+        </label>
+        <ScrollArea className='mb-5 h-[calc(100%-168px)] sm:h-[400px]'>
+          <ul id='search' className='grid grid-cols-1'>
+            {data?.map((product: Product, key: number) => (
+              <li key={key}>
+                <ProductCard
+                  product={product}
+                  closeSearchBar={onCloseSearchBar}
+                />
+              </li>
+            ))}
+          </ul>
+        </ScrollArea>
+        <Button
+          variant='outline'
+          className='rounded-3xl'
+          asChild
+          onClick={() => onCloseSearchBar(false)}
+        >
+          <Link href={`/search?q=${keyword}&page=1&limit=20`}>
+            See all results
+            <i className='fal fa-arrow-right fa-xs ml-2'></i>
+          </Link>
+        </Button>
+      </Fragment>
+    );
+  }
 }
