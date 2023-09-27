@@ -1,6 +1,5 @@
 'use client';
 import Rate from '@/core/components/global/rate';
-import { Skeleton } from 'ui/skeleton';
 import ReviewGallery from './gallery';
 import Pagination from '@/themes/default/components/global/pagination';
 import { Fragment, useState } from 'react';
@@ -24,21 +23,7 @@ type Props = {
   className?: string;
 };
 
-function ReviewsLoading() {
-  return (
-    <ul className='columns-2 sm:columns-3 md:columns-4 lg:columns-5'>
-      {[...Array(8)].map((_, key: number) => (
-        <li key={key} className='mb-4'>
-          <Skeleton className='mb-2 aspect-square w-full' />
-          <Skeleton className='mb-2 h-3 w-1/2' />
-          <Skeleton className='mb-1 h-2 w-full' />
-          <Skeleton className='mb-1 h-2 w-full' />
-          <Skeleton className='h-2 w-1/2' />
-        </li>
-      ))}
-    </ul>
-  );
-}
+function ReviewsLoading() {}
 export default function ReviewsList({
   productID,
   initialData,
