@@ -41,6 +41,7 @@
     "eslint-config-next": "latest",
     "html-react-parser": "^4.2.2",
     "lucide-react": "^0.279.0",
+    "moment": "^2.29.4",
     "next": "latest",
     "postcss": "8.4.30",
     "query-string": "^8.1.0",
