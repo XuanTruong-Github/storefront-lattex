@@ -7,6 +7,7 @@ import AddToCard from '@default/components/product/add-to-card';
 import BuyNow from '@default/components/product/buy-now';
 import Quantity from '@/themes/default/components/product/quantity';
 import Paypal from '@default/app/products/components/product-detail/paypal';
+import Varriants from './variants';
 import { cn } from '@/core/lib/utils';
 import type { Product } from '@/core/modules/product/type';
 
@@ -30,6 +31,7 @@ export default function ProductDetail({ product, className }: Props) {
         </h1>
         <Rate value={5} className='mb-4 text-sm' total={24} />
         <Price product={product} className='mb-4' />
+        <Varriants product={product}/>
         <SaleCountDown className='mb-4' />
         <Freeship className='mb-4' />
         <Quantity className='mb-4 w-fit' />
