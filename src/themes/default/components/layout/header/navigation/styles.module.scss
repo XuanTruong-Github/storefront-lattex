@@ -1,0 +1,29 @@
+.megaMenu {
+  display: flex;
+  height: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  li a,
+  li span {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 56px;
+    position: relative;
+    transition: 0.5s;
+    padding-left: 12px;
+    padding-right: 12px;
+    &::after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 3px;
+      top: 97%;
+      left: 0;
+      transition: transform 0.5s;
+      transform: scaleX(0);
+    }
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+}

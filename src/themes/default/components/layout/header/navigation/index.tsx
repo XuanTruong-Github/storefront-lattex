@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import navigationStore from '@/core/modules/navigation/store';
 import collectionService from '@/core/modules/collection/service';
 import { cn } from '@/core/lib/utils';
-
+import styles from "./styles.module.scss"
 export type MenuItem = {
   handle: string;
   name: string;
@@ -22,7 +22,7 @@ export function Navigation(props: Props) {
   const { className, menuActive, setMenuActive, setShowMenu } = props;
   // States
   const menu = navigationStore((state) => state.headerMenu.items);
-  const activeStyle = 'text-primary [&>a>i]:rotate-180 [&>a>i]:rotate-180';
+  const activeStyle = '[&>a>i]:rotate-180 [&>a>i]:rotate-180';
   // Methods
   function onShowSubMenu(item: MenuItem) {
     setMenuActive(item);
@@ -33,7 +33,7 @@ export function Navigation(props: Props) {
   return (
     <nav className={className}>
       <section className='container'>
-        <ul className='flex h-full flex-wrap items-center gap-x-6'>
+        <ul className={styles.megaMenu}>
           {menu?.map((item: any, key: number) => {
             if (item?.children.length > 0 || item.handle === 'collections') {
               return (
@@ -50,13 +50,13 @@ export function Navigation(props: Props) {
                   {item.link || item.handle === 'collections' ? (
                     <Link
                       href={item.link}
-                      className='group inline-block text-sm leading-[56px]'
+                      className='group after:bg-primary'
                     >
                       {item.name}
                       <i className='far fa-angle-down ml-1 duration-300 group-hover:rotate-180'></i>
                     </Link>
                   ) : (
-                    <span className='group inline-block text-sm leading-[56px]'>
+                    <span className='group after:bg-primary'>
                       {item.name}
                       <i className='far fa-angle-down ml-1 duration-300 group-hover:rotate-180'></i>
                     </span>
@@ -78,7 +78,7 @@ export function Navigation(props: Props) {
               >
                 <Link
                   href={item.link}
-                  className='inline-block text-sm leading-[56px] hover:text-primary'
+                  className="after:bg-primary"
                 >
                   {item.name}
                 </Link>
