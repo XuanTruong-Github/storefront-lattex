@@ -1,10 +1,7 @@
 import { notFound } from 'next/navigation';
 import ProductDetail from './components/product-detail';
-import Reviews from './components/reviews';
-import Widgets from './components/widgets';
-import ClientProvider from './providers/client-provider';
+import ProductContent from './components/content';
 import productService from '@/core/modules/product/service';
-
 type Props = {
   params: { slug: string };
 };
@@ -26,11 +23,8 @@ export default async function Page({ params }: Props) {
   if (!product) notFound();
   return (
     <article id='product-page' className='container md:py-8 lg:py-10'>
-      <ClientProvider product={product}>
-        <ProductDetail product={product} className='-mx-4 mb-4 sm:mx-0' />
-        <Reviews productID={product.id} className='mb-4' />
-        <Widgets sku={product.sku} />
-      </ClientProvider>
+      <ProductDetail product={product} className='-mx-4 mb-4 sm:mx-0' />
+      <ProductContent product={product} />
     </article>
   );
 }

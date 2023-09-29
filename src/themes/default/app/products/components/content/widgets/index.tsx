@@ -24,9 +24,5 @@ export default function Widgets({ sku, className }: Props) {
     },
     enabled: !!sku,
   });
-  return (
-    <div className={cn(className)}>
-      <h1>Widtget</h1>
-    </div>
-  );
+  return <div className={cn(className)}></div>;
 }
