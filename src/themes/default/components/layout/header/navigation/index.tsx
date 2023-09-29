@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import navigationStore from '@/core/modules/navigation/store';
 import collectionService from '@/core/modules/collection/service';
 import { cn } from '@/core/lib/utils';
-import styles from "./styles.module.scss"
+import styles from './styles.module.scss';
 export type MenuItem = {
   handle: string;
   name: string;
@@ -22,7 +22,7 @@ export function Navigation(props: Props) {
   const { className, menuActive, setMenuActive, setShowMenu } = props;
   // States
   const menu = navigationStore((state) => state.headerMenu.items);
-  const activeStyle = '[&>a>i]:rotate-180 [&>a>i]:rotate-180';
+
   // Methods
   function onShowSubMenu(item: MenuItem) {
     setMenuActive(item);
@@ -44,14 +44,11 @@ export function Navigation(props: Props) {
                     setMenuActive(item);
                   }}
                   className={cn(
-                    menuActive?.handle === item.handle && activeStyle
+                    menuActive?.handle === item.handle && styles.active
                   )}
                 >
                   {item.link || item.handle === 'collections' ? (
-                    <Link
-                      href={item.link}
-                      className='group after:bg-primary'
-                    >
+                    <Link href={item.link} className='group after:bg-primary'>
                       {item.name}
                       <i className='far fa-angle-down ml-1 duration-300 group-hover:rotate-180'></i>
                     </Link>
@@ -76,10 +73,7 @@ export function Navigation(props: Props) {
                   setMenuActive(null);
                 }}
               >
-                <Link
-                  href={item.link}
-                  className="after:bg-primary"
-                >
+                <Link href={item.link} className='after:bg-primary'>
                   {item.name}
                 </Link>
               </li>
@@ -144,7 +138,7 @@ export function SubNavigation(props: {
         onMouseEnter={() => setShowMenu(true)}
         onMouseLeave={onCloseMenu}
       >
-        <ul className='container grid w-full grid-cols-6 gap-1 py-4'>
+        <ul className='container grid w-full grid-cols-4 gap-1 py-4 lg:grid-cols-5'>
           {menuActive?.handle !== 'collections' &&
             menuActive?.children.map((item: any, key: number) => (
               <li key={key}>

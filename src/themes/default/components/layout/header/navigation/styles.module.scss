@@ -21,9 +21,21 @@
       left: 0;
       transition: transform 0.5s;
       transform: scaleX(0);
+      z-index: 1;
     }
     &:hover::after {
       transform: scaleX(1);
+    }
+  }
+}
+.active {
+  a {
+    &::after {
+      background-color: hsl(var(--primary)) !important;
+      transform: scaleX(1) !important;
+    }
+    i {
+      transform: rotate(180deg);
     }
   }
 }
