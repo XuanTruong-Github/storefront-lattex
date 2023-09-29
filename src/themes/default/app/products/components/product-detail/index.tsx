@@ -31,7 +31,7 @@ export default function ProductDetail({ product, className }: Props) {
         </h1>
         <Rate value={5} className='mb-4 text-sm' total={24} />
         <Price product={product} className='mb-4' />
-        <Varriants product={product}/>
+        <Varriants product={product} className='mb-4' />
         <SaleCountDown className='mb-4' />
         <Freeship className='mb-4' />
         <Quantity className='mb-4 w-fit' />
