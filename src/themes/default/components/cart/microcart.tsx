@@ -53,7 +53,7 @@ export default function MicroCart({ isOpen = false, setOpen }: Props) {
                   GO TO CART
                 </Link>
               </Button>
-              <Button variant='destructive' asChild className='h-12 w-full'>
+              <Button variant='black' asChild className='h-12 w-full'>
                 <Link href='/checkout' className='uppercase'>
                   <i className='fad fa-credit-card mr-2'></i> Check out
                 </Link>
