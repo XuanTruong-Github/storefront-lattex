@@ -7,14 +7,15 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from 'ui/tooltip';
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from 'ui/select';
+// import {
+//   Select,
+//   SelectContent,
+//   SelectGroup,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from 'ui/select';
+import Select from 'react-select';
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -45,7 +46,13 @@ export default function InformationForm() {
     queryFn: async () => {
       try {
         const data: any = await checkoutService.getCountries();
-        return data;
+        if (!data) return [];
+        const result = data.map((item: any) => ({
+          ...item,
+          label: item.name,
+          value: item.code,
+        }));
+        return result;
       } catch (error) {
         console.log(
           '🚀 ~ file: information-form.tsx:29 ~ queryFn: ~ error:',
@@ -54,6 +61,7 @@ export default function InformationForm() {
         return null;
       }
     },
+    initialData: [],
   });
   const onSubmit: SubmitHandler<User> = (data) => {
     console.log(data);
@@ -140,7 +148,18 @@ export default function InformationForm() {
         </div>
         <div>
           <Label className='mb-2 inline-block font-medium'>Country</Label>
-          <Select>
+          <Select
+            placeholder='Country'
+            options={countries.data}
+            styles={{
+              control: (styles) => ({
+                ...styles,
+                height: 48,
+                borderColor: 'hsl(20,5.9%,90%)',
+              }),
+            }}
+          />
+          {/* <Select>
             <SelectTrigger className='h-12'>
               <SelectValue placeholder='Country' />
             </SelectTrigger>
@@ -154,13 +173,13 @@ export default function InformationForm() {
                   ))}
               </SelectGroup>
             </SelectContent>
-          </Select>
+          </Select> */}
         </div>
         <div className='col-span-2 sm:col-span-1'>
           <Label className='mb-2 inline-block font-medium'>
             State / Province
           </Label>
-          <Select>
+          {/* <Select>
             <SelectTrigger className='h-12'>
               <SelectValue placeholder='State / Province' />
             </SelectTrigger>
@@ -169,7 +188,7 @@ export default function InformationForm() {
                 <SelectItem value='vn'>Vietnamese</SelectItem>
               </SelectGroup>
             </SelectContent>
-          </Select>
+          </Select> */}
         </div>
         <div className='col-span-2 sm:col-span-1'>
           <Label htmlFor='zip' className='mb-2 inline-block font-medium'>
