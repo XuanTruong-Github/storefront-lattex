@@ -16,8 +16,25 @@ import {
   SelectValue,
 } from 'ui/select';
 import { useState } from 'react';
+import checkoutService from '@/core/modules/checkout/service';
+import { useQuery } from '@tanstack/react-query';
 export default function InformationForm() {
   const [tooltipPhoneNumber, setTooltipPhoneNumber] = useState(false);
+  const countries = useQuery({
+    queryKey: ['countries'],
+    queryFn: async () => {
+      try {
+        const data: any = await checkoutService.getCountries();
+        return data;
+      } catch (error) {
+        console.log(
+          '🚀 ~ file: information-form.tsx:29 ~ queryFn: ~ error:',
+          error
+        );
+        return null;
+      }
+    },
+  });
   return (
     <form onSubmit={(e) => e.preventDefault()}>
       <h4 className='mb-2'>Contact information</h4>
@@ -88,8 +105,13 @@ export default function InformationForm() {
               <SelectValue placeholder='Country' />
             </SelectTrigger>
             <SelectContent>
-              <SelectGroup>
-                <SelectItem value='vn'>Viet Nam</SelectItem>
+              <SelectGroup className='max-h-52 overflow-y-auto'>
+                {!countries.isLoading &&
+                  countries.data?.map((country: any, key: number) => (
+                    <SelectItem key={key} value={country.code}>
+                      {country.name}
+                    </SelectItem>
+                  ))}
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -137,7 +159,7 @@ export default function InformationForm() {
                 asChild
                 onClick={() => setTooltipPhoneNumber(!tooltipPhoneNumber)}
               >
-                <i className='fal fa-question-circle fa-lg absolute right-3 top-[55%] -translate-y-1/2 text-gray-400 cursor-pointer'></i>
+                <i className='fal fa-question-circle fa-lg absolute right-3 top-[55%] -translate-y-1/2 cursor-pointer text-gray-400'></i>
               </TooltipTrigger>
               <TooltipContent>
                 <p>In case we need to contact you about your order</p>
