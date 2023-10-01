@@ -16,9 +16,29 @@ import {
   SelectValue,
 } from 'ui/select';
 import { useState } from 'react';
-import checkoutService from '@/core/modules/checkout/service';
 import { useQuery } from '@tanstack/react-query';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import checkoutService from '@/core/modules/checkout/service';
+
+type User = {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  address: string;
+  address2: string;
+  city: string;
+  province: string;
+  zip: string;
+  phone: string;
+};
+
 export default function InformationForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<User>();
   const [tooltipPhoneNumber, setTooltipPhoneNumber] = useState(false);
   const countries = useQuery({
     queryKey: ['countries'],
@@ -35,14 +55,22 @@ export default function InformationForm() {
       }
     },
   });
+  const onSubmit: SubmitHandler<User> = (data) => {
+    console.log(data);
+  };
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <h4 className='mb-2'>Contact information</h4>
       <div className='mb-4'>
         <Label htmlFor='email' className='mb-2 inline-block font-medium'>
           Email address
         </Label>
-        <Input name='email' type='email' placeholder='Email' className='h-12' />
+        <Input
+          type='email'
+          placeholder='Email'
+          className='h-12'
+          {...register('email', { required: true })}
+        />
         <p className='mt-1 text-xs text-destructive'>
           <i className='fal fa-exclamation-circle'></i> Please enter your email
         </p>
@@ -63,7 +91,11 @@ export default function InformationForm() {
           <Label htmlFor='lastName' className='mb-2 inline-block font-medium'>
             Last name
           </Label>
-          <Input name='lastName' placeholder='Last name' className='h-12' />
+          <Input
+            placeholder='Last name'
+            className='h-12'
+            {...register('lastName', { required: true })}
+          />
           <p className='mt-1 text-xs text-destructive'>
             <i className='fal fa-exclamation-circle'></i> Please enter your last
             name
@@ -73,7 +105,11 @@ export default function InformationForm() {
           <Label htmlFor='address' className='mb-2 inline-block font-medium'>
             Address
           </Label>
-          <Input name='address' placeholder='Address' className='h-12' />
+          <Input
+            placeholder='Address'
+            className='h-12'
+            {...register('address', { required: true })}
+          />
           <p className='mt-1 text-xs text-destructive'>
             <i className='fal fa-exclamation-circle'></i> Please enter your
             address
@@ -93,7 +129,11 @@ export default function InformationForm() {
           <Label htmlFor='city' className='mb-2 inline-block font-medium'>
             City
           </Label>
-          <Input name='city' placeholder='City' className='h-12' />
+          <Input
+            placeholder='City'
+            className='h-12'
+            {...register('city', { required: true })}
+          />
           <p className='mt-1 text-xs text-destructive'>
             <i className='fal fa-exclamation-circle'></i> Please enter your city
           </p>
@@ -135,7 +175,11 @@ export default function InformationForm() {
           <Label htmlFor='zip' className='mb-2 inline-block font-medium'>
             Zip code
           </Label>
-          <Input name='zip' placeholder='Zip code' className='h-12' />
+          <Input
+            placeholder='Zip code'
+            className='h-12'
+            {...register('zip', { required: true })}
+          />
           <p className='mt-1 text-xs text-destructive'>
             <i className='fal fa-exclamation-circle'></i> Please enter a valid
             Zip/Postal code.
@@ -146,9 +190,9 @@ export default function InformationForm() {
             Phone
           </Label>
           <Input
-            name='phone'
             placeholder='Phone number'
             className='h-12 pr-10'
+            {...register('phone', { required: true })}
           />
           <TooltipProvider>
             <Tooltip
