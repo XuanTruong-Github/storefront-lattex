@@ -7,18 +7,10 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from 'ui/tooltip';
-// import {
-//   Select,
-//   SelectContent,
-//   SelectGroup,
-//   SelectItem,
-//   SelectTrigger,
-//   SelectValue,
-// } from 'ui/select';
 import Select from 'react-select';
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import checkoutService from '@/core/modules/checkout/service';
 
 type User = {
@@ -29,6 +21,7 @@ type User = {
   address: string;
   address2: string;
   city: string;
+  country: string;
   province: string;
   zip: string;
   phone: string;
@@ -150,30 +143,18 @@ export default function InformationForm() {
           <Label className='mb-2 inline-block font-medium'>Country</Label>
           <Select
             placeholder='Country'
+            {...register('country')}
             options={countries.data}
             styles={{
               control: (styles) => ({
                 ...styles,
                 height: 48,
-                borderColor: 'hsl(20,5.9%,90%)',
+                borderColor: 'hsl(20,5.9%,90%) !important',
+                boxShadow: 'none',
+                borderRadius: '4px',
               }),
             }}
           />
-          {/* <Select>
-            <SelectTrigger className='h-12'>
-              <SelectValue placeholder='Country' />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup className='max-h-52 overflow-y-auto'>
-                {!countries.isLoading &&
-                  countries.data?.map((country: any, key: number) => (
-                    <SelectItem key={key} value={country.code}>
-                      {country.name}
-                    </SelectItem>
-                  ))}
-              </SelectGroup>
-            </SelectContent>
-          </Select> */}
         </div>
         <div className='col-span-2 sm:col-span-1'>
           <Label className='mb-2 inline-block font-medium'>
