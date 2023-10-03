@@ -3,6 +3,7 @@
   height: 100%;
   flex-wrap: wrap;
   align-items: center;
+  column-gap: 24px;
   li a,
   li span {
     display: inline-block;
@@ -10,8 +11,7 @@
     line-height: 56px;
     position: relative;
     transition: 0.5s;
-    padding-left: 12px;
-    padding-right: 12px;
+
     &::after {
       position: absolute;
       content: '';
@@ -21,10 +21,12 @@
       left: 0;
       transition: transform 0.5s;
       transform: scaleX(0);
+      transform-origin: right;
       z-index: 1;
     }
     &:hover::after {
       transform: scaleX(1);
+      transform-origin: left;
     }
   }
 }

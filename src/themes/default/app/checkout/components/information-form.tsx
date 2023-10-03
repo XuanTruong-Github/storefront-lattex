@@ -7,7 +7,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from 'ui/tooltip';
-import Select from 'react-select';
+// import Select from 'react-select';
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
@@ -141,7 +141,7 @@ export default function InformationForm() {
         </div>
         <div>
           <Label className='mb-2 inline-block font-medium'>Country</Label>
-          <Select
+          {/* <Select
             placeholder='Country'
             {...register('country')}
             options={countries.data}
@@ -154,7 +154,7 @@ export default function InformationForm() {
                 borderRadius: '4px',
               }),
             }}
-          />
+          /> */}
         </div>
         <div className='col-span-2 sm:col-span-1'>
           <Label className='mb-2 inline-block font-medium'>

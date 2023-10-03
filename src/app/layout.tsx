@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google';
 import { Metadata } from 'next';
 import Links from '@/core/components/head/links';
-import Styles from '@/core/components/head/styles';
+import Styles from '@default/components/layout/head/styles';
 import config from 'config';
 import generalService from '@/core/modules/general/service';
 import '@/core/styles/globals.css';

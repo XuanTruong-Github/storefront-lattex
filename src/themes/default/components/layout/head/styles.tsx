@@ -7,24 +7,25 @@ export default function Styles() {
 
   const customColor = useMemo(() => {
     const colorsDefault = {
-      color_announcement_bar_background: '#000000',
-      color_title_product: '#000000',
+      color_announcement_bar_background: '#18181b',
+      color_announcement_bar_text: '#fafafa',
+      color_top_bar_background: '#09090b',
+      color_title_product: '#09090b',
       color_product_icon: '#eb5757',
       color_price: '#0d9ef2',
       color_sale_price: '#0d9ef2',
-      color_top_bar_background: '#000000',
-      color_cart_button: '#f29e0d',
-      color_cart_button_label: '#ffffff',
+      color_cart_button: '#18181b',
+      color_cart_button_label: '#fafafa',
       color_compare_at_price: '#bdbdbd',
-      footer_background: `#ffffff`,
-      color_announcement_bar_text: `#ffffff`,
-      color_footer_text: `#242424`,
+      footer_background: '#f5f5f4',
+      color_footer_text: '#09090b',
     };
     const colorsSetting =
       Object.assign(colorsDefault, settings?.settings?.colors) || colorsDefault;
     // console.log("colorsSetting: ", colorsSetting);
     let colors = `
         :root{
+          --primary: ${colorsSetting.color_cart_button};
         }
         .top-bar{
           background-color: ${colorsSetting.color_announcement_bar_background};

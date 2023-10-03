@@ -24,8 +24,8 @@ export default function Pagination(props: PaginationProps) {
   // States
   const { isMobile } = useResponsive();
   const pageStyle =
-    'w-9 rounded-md aspect-square grid place-items-center font-medium text-sm bg-secondary text-secondary-foreground hover:text-accent-foreground hover:text-primary-foreground hover:!bg-primary/80';
-  const pageActive = '!bg-primary/80 !text-primary-foreground';
+    'w-9 rounded-md aspect-square grid place-items-center font-medium text-sm bg-secondary text-secondary-foreground hover:text-accent-foreground hover:text-primary-foreground hover:!bg-primary';
+  const pageActive = '!bg-primary !text-primary-foreground';
   // Methods
   function onPageChange({ selected }: { selected: number }) {
     if (Number(selected) + 1 !== page) {
