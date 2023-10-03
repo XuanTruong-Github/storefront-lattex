@@ -144,7 +144,7 @@ export function SubNavigation(props: {
               <li key={key}>
                 <Link
                   href={item.link}
-                  className='line-clamp-1 rounded-lg px-3 py-2 text-sm capitalize leading-7 hover:bg-secondary hover:text-primary'
+                  className='line-clamp-1 rounded-lg px-3 py-2 text-sm font-medium capitalize leading-7 underline-offset-4 hover:underline'
                   onClick={() => setShowMenu(false)}
                 >
                   {item.name}
@@ -156,7 +156,7 @@ export function SubNavigation(props: {
               <li key={key}>
                 <Link
                   href={`${item.link}?page=1&limit=20`}
-                  className='line-clamp-1 rounded-lg px-3 py-2 text-sm capitalize leading-7 hover:bg-secondary hover:text-primary'
+                  className='line-clamp-1 rounded-lg px-3 py-2 text-sm font-medium capitalize leading-7 underline-offset-4 hover:underline'
                   onClick={() => setShowMenu(false)}
                 >
                   {item.name}

@@ -52,7 +52,7 @@ export default function ProductCard({ product, className }: Props) {
           fill
         />
       </AspectRatio>
-      <h3 className='mb-1 line-clamp-1 text-xs font-normal opacity-90 sm:text-sm'>
+      <h3 className='mb-1 line-clamp-1 text-xs font-normal opacity-90 group-hover:text-primary sm:text-sm'>
         {product.name}
       </h3>
       <div className='flex items-center gap-x-2'>
