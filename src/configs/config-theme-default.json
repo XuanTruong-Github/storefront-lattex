@@ -34,8 +34,8 @@
               {
                 "label": "Logo Footer",
                 "driver": "image-select",
-                "default": "https://www.kuits.com/core/uploads/300x200.png",
-                "value": "https://www.kuits.com/core/uploads/300x200.png"
+                "default": null,
+                "value": null
               },
               {
                 "label": "Sub copyright ",
@@ -129,14 +129,14 @@
               {
                 "label": "Logo Desktop",
                 "driver": "image-select",
-                "default": "https://www.kuits.com/core/uploads/300x200.png",
-                "value": "https://www.kuits.com/core/uploads/300x200.png"
+                "default": null,
+                "value": null
               },
               {
                 "label": "Logo Mobile",
                 "driver": "image-select",
-                "default": "https://www.kuits.com/core/uploads/300x200.png",
-                "value": "https://www.kuits.com/core/uploads/300x200.png"
+                "default": null,
+                "value": null
               }
             ]
           },
