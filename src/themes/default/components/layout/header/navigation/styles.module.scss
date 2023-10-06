@@ -10,7 +10,7 @@
     font-size: 14px;
     line-height: 56px;
     position: relative;
-    transition: 0.5s;
+    transition: 0.7s;
     font-weight: 500;
 
     &::after {
@@ -20,7 +20,7 @@
       height: 3px;
       top: 97%;
       left: 0;
-      transition: transform 0.5s;
+      transition: transform 0.7s;
       transform: scaleX(0);
       transform-origin: right;
       z-index: 1;

@@ -46,6 +46,7 @@ export function Gallery({ product, className }: Props) {
         className='mb-2'
         focusOnSelect
         infinite
+        fade
       >
         {images.map((image: string, key: number) => (
           <AspectRatio key={key} ratio={1}>

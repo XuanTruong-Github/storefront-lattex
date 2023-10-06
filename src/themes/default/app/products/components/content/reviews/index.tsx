@@ -50,7 +50,7 @@ export default function Reviews({ productId, className }: Props) {
     },
     enabled: !!productId,
   });
-  if (!isLoading)
+  if (!isLoading && data.reviews.length)
     return (
       <section className={cn(className)}>
         <h3 className='mb-4 text-lg'>Customers Reviews {`(${data?.total})`}</h3>
