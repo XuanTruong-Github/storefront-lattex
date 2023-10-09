@@ -2,7 +2,9 @@
   "theme": "default",
   "server": {},
   "api": {
-    "url": "https://nxxoehouse.lattehub.com"
+    "url": "https://us1family.lattehub.com",
+    "url1": "nxxoehouse.lattehub.com",
+    "ur2": "https://kutemerch.lattehub.com"
   },
   "images": {
     "baseUrl": "https://minio.lattehub.com"

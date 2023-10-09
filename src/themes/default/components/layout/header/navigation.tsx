@@ -142,7 +142,7 @@ export function SubNavigation(props: {
       )}
     >
       <div
-        className='h-fit min-h-[400px] w-full'
+        className='h-fit w-full'
         onMouseEnter={() => setShowMenu(true)}
         onMouseLeave={onCloseMenu}
       >
