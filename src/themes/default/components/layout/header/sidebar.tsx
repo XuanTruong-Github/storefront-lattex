@@ -62,7 +62,7 @@ export default function Sidebar({ isOpen = false, setOpen }: Props) {
                   key={key}
                   className='border-none'
                 >
-                  <AccordionTrigger className='text-base !no-underline'>
+                  <AccordionTrigger className='text-sm !no-underline'>
                     {item.name}
                   </AccordionTrigger>
                   <AccordionContent>
@@ -87,7 +87,7 @@ export default function Sidebar({ isOpen = false, setOpen }: Props) {
               >
                 <Link
                   href={item.link}
-                  className='block py-3 font-medium'
+                  className='block leading-[52px] font-medium text-sm'
                   onClick={() => setOpen(false)}
                 >
                   {item.name}

@@ -23,61 +23,57 @@ export default function Header() {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <Fragment>
-      <header className='sticky left-0 top-0 z-20 w-full border-b bg-white'>
+      <header className='sticky left-0 top-0 z-20 w-full bg-white shadow-sm'>
         <TopBar />
-        <div className='relative h-full w-full'>
-          <section className='container grid h-14 grid-cols-3 px-1 sm:px-0 md:flex md:items-center'>
-            <div className='flex h-full items-center py-1 md:min-w-[180px]'>
-              {isMobile && (
-                <Button
-                  variant='ghost'
-                  size='icon'
-                  className='rounded-full md:hidden'
-                  onClick={() => setOpenSidebar(true)}
-                >
-                  <i className='far fa-bars text-xl'></i>
-                </Button>
-              )}
-              {isDesktop && <Logo className='h-full w-full' />}
-            </div>
-            <div className='flex h-full items-center justify-center md:flex-1'>
-              {isMobile ? (
-                <Logo className='h-full w-full py-2' />
-              ) : (
-                <Navigation
-                  className='hidden md:flex'
-                  menuActive={menuActive}
-                  setMenuActive={setMenuActive}
-                  setShowMenu={setShowMenu}
-                />
-              )}
-            </div>
-            <div className='flex items-center justify-end md:w-fit'>
+        <section className='container grid h-14 grid-cols-3 px-1 sm:px-0 md:flex md:items-center'>
+          <div className='flex h-full items-center py-1 md:min-w-[180px]'>
+            {isMobile && (
               <Button
                 variant='ghost'
                 size='icon'
-                className='rounded-full'
-                onClick={() => setOpenSearch(true)}
+                className='rounded-full md:hidden'
+                onClick={() => setOpenSidebar(true)}
               >
-                <i className='fal fa-search fa-lg'></i>
+                <i className='far fa-bars text-xl'></i>
               </Button>
+            )}
+            {isDesktop && <Logo className='h-full w-full' />}
+          </div>
+          <div className='flex h-full items-center justify-center md:flex-1'>
+            {isMobile && <Logo className='h-full w-full py-2' />}
+          </div>
+          <div className='flex items-center justify-end md:w-fit'>
+            <Button
+              variant='ghost'
+              size='icon'
+              className='rounded-full'
+              onClick={() => setOpenSearch(true)}
+            >
+              <i className='fal fa-search fa-lg'></i>
+            </Button>
 
-              <Button
-                variant='ghost'
-                size='icon'
-                className='relative rounded-full'
-                onClick={() => setOpenCart(true)}
+            <Button
+              variant='ghost'
+              size='icon'
+              className='relative rounded-full'
+              onClick={() => setOpenCart(true)}
+            >
+              <i className='fal fa-shopping-bag fa-lg'></i>
+              <Badge
+                variant='destructive'
+                className='absolute right-0 top-0 px-1 py-0'
               >
-                <i className='fal fa-shopping-bag fa-lg'></i>
-                <Badge
-                  variant='destructive'
-                  className='absolute right-0 top-0 px-1 py-0'
-                >
-                  2
-                </Badge>
-              </Button>
-            </div>
-          </section>
+                2
+              </Badge>
+            </Button>
+          </div>
+        </section>
+        <nav className='relative hidden h-full w-full md:block'>
+          <Navigation
+            menuActive={menuActive}
+            setMenuActive={setMenuActive}
+            setShowMenu={setShowMenu}
+          />
           {isDesktop && (
             <SubNavigation
               menuActive={menuActive}
@@ -86,7 +82,7 @@ export default function Header() {
               setShowMenu={setShowMenu}
             />
           )}
-        </div>
+        </nav>
       </header>
       <Sidebar isOpen={isOpenSidebar} setOpen={setOpenSidebar} />
       <SearchBar isOpen={isOpenSearch} setOpen={setOpenSearch} />
