@@ -46,7 +46,7 @@ export function Navigation(props: Props) {
                   <Link
                     href={item.link}
                     className={cn(
-                      'group inline-block leading-[56px]',
+                      'group inline-block leading-[50px]',
                       menuActive?.handle === item.handle &&
                         'text-primary [&>i]:rotate-180'
                     )}
@@ -57,7 +57,7 @@ export function Navigation(props: Props) {
                 ) : (
                   <span
                     className={cn(
-                      'group inline-block leading-[56px]',
+                      'group inline-block leading-[50px]',
                       menuActive?.handle === item.handle &&
                         'text-primary [&>i]:rotate-180'
                     )}
@@ -82,7 +82,7 @@ export function Navigation(props: Props) {
               }}
               className='text-sm hover:text-primary'
             >
-              <Link href={item.link} className='inline-block leading-[56px]'>
+              <Link href={item.link} className='inline-block leading-[50px]'>
                 {item.name}
               </Link>
             </li>
@@ -146,7 +146,7 @@ export function SubNavigation(props: {
         onMouseEnter={() => setShowMenu(true)}
         onMouseLeave={onCloseMenu}
       >
-        <ul className='container grid w-full grid-cols-4 gap-1 py-2 lg:grid-cols-5 border-t'>
+        <ul className='container grid w-full grid-cols-4 gap-1 border-t py-2 lg:grid-cols-5'>
           {menuActive?.handle !== 'collections' &&
             menuActive?.children.map((item: any, key: number) => (
               <li key={key}>
