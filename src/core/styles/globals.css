@@ -73,6 +73,13 @@
     -webkit-appearance: none;
     margin: 0;
   }
+  .product-description p,
+  .product-description span {
+    @apply !text-base mb-1;
+  }
+  .product-description img {
+    @apply mx-auto mb-2;
+  }
 }
 @layer utilities {
   @variants responsive {

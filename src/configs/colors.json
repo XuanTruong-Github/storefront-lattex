@@ -1,0 +1,167 @@
+[
+  {
+    "label": "black",
+    "code": "#101010"
+  },
+  {
+    "label": "brown",
+    "code": "#33281f"
+  },
+  {
+    "label": "gray"
+  },
+  {
+    "label": "green",
+    "code": "#026541"
+  },
+  {
+    "label": "lavender"
+  },
+  {
+    "label": "multi"
+  },
+  {
+    "label": "orange",
+    "code": "#ff4c00"
+  },
+  {
+    "label": "purple",
+    "code": "#4B256E"
+  },
+  {
+    "label": "red",
+    "code": "#dd2121"
+  },
+  {
+    "label": "yellow"
+  },
+  {
+    "label": "begie",
+    "code": "#eeede8"
+  },
+  {
+    "label": "colorful",
+    "code": "url(https://minio.lattehub.com/img/20/20/resize/610e57f8d7768100099c00e5/2021/08/13/lattehub-image-6115ec57e9ff659c2b811362.jpg);"
+  },
+  {
+    "label": "violet"
+  },
+  {
+    "label": "grey"
+  },
+  {
+    "label": "pink"
+  },
+  {
+    "label": "charcoal heather",
+    "code": "#36454f"
+  },
+  {
+    "label": "heather gray",
+    "code": "#b6b6b6"
+  },
+  {
+    "label": "white",
+    "code": "#fafafa"
+  },
+  {
+    "label": "light gray",
+    "code": "#e0e1dd"
+  },
+  {
+    "label": "dark gray",
+    "code": "#5e504c"
+  },
+  {
+    "label": "light blue",
+    "code": "#9ec0d5"
+  },
+  {
+    "label": "blue",
+    "code": "#353d77"
+  },
+  {
+    "label": "dark blue",
+    "code": "#322e3f"
+  },
+  {
+    "label": "creme",
+    "code": "#e5d6c5"
+  },
+  {
+    "label": "gold",
+    "code": "#f89f2b"
+  },
+  {
+    "label": "dark red",
+    "code": "#5a1f32"
+  },
+  {
+    "label": "eggplaint",
+    "code": "#462445"
+  },
+  {
+    "label": "army",
+    "code": "#403c32"
+  },
+  {
+    "label": "dark chocolate",
+    "code": "#3C2516"
+  },
+  {
+    "label": "dark heather",
+    "code": "#676769"
+  },
+  {
+    "label": "ash",
+    "code": "#CCCCCC"
+  },
+  {
+    "label": "royal blue",
+    "code": "#2B63BA"
+  },
+  {
+    "label": "heliconia",
+    "code": "#ED2870"
+  },
+  {
+    "label": "kiwi",
+    "code": "#70D651"
+  },
+  {
+    "label": "turf green",
+    "code": "#448E4F"
+  },
+  {
+    "label": "forest green",
+    "code": "#134522"
+  },
+  {
+    "label": "daisy",
+    "code": "#FFE329"
+  },
+  {
+    "label": "light pink",
+    "code": "#FFD5D5"
+  },
+  {
+    "label": "sports grey",
+    "code": "#898A8B"
+  },
+  {
+    "label": "irish green",
+    "code": "#1F6522"
+  },
+  {
+    "label": "navy",
+    "code": "#0A1339"
+  },
+  {
+    "label": "charcoal",
+    "code": "#36454f"
+  },
+  {
+    "label": "maroon",
+    "code": "#5B2B42"
+  }
+]

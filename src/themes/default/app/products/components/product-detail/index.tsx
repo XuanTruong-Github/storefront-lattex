@@ -1,3 +1,4 @@
+'use client';
 import { Fragment } from 'react';
 import { Gallery } from './gallery';
 import Rate from '@/core/components/global/rate';
@@ -9,6 +10,7 @@ import BuyNow from '@default/components/product/buy-now';
 import Quantity from '@/themes/default/components/product/quantity';
 import Paypal from '@default/app/products/components/product-detail/paypal';
 import Varriants from './variants';
+import configThemeStore from '@default/modules/config-theme/store';
 import { cn } from '@/core/lib/utils';
 import type { Product } from '@/core/modules/product/type';
 import Tabs from './tabs';
@@ -18,12 +20,15 @@ type Props = {
   className?: string;
 };
 export default function ProductDetail({ product, className }: Props) {
+  const tabPosition = configThemeStore(
+    (state) => state.settings?.settings?.product?.position_tab_detail
+  );
   return (
     <Fragment>
       <section
         id='product-detail'
         className={cn(
-          'grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-5 xl:gap-6 mb-4',
+          'mb-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-5 xl:gap-6',
           className
         )}
       >
@@ -43,9 +48,14 @@ export default function ProductDetail({ product, className }: Props) {
             <BuyNow className='' />
           </div>
           <Paypal />
+          {tabPosition === 'right' && (
+            <Tabs product={product} className='mt-4' position={tabPosition} />
+          )}
         </div>
       </section>
-      <Tabs product={product} className='mt-4'/>
+      {tabPosition === 'below' && (
+        <Tabs product={product} className='mb-4' position={tabPosition} />
+      )}
     </Fragment>
   );
 }
