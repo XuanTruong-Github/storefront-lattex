@@ -52,43 +52,45 @@ export default function Reviews({ productId, className }: Props) {
   });
   if (!isLoading && data.reviews.length)
     return (
-      <section
-        className={cn(
-          'grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8 md:border-t md:pt-4 lg:gap-14 lg:py-10 xl:gap-20',
-          className
-        )}
-      >
-        <div className='md:col-span-1'>
-          <h3 className='mb-2 text-xl lg:text-2xl'>Customers Reviews </h3>
-          <Rate value={5} className='mb-2 text-base' />
-          <p className='mb-4 text-sm opacity-80'>
-            Based on {data?.total} reviews
-          </p>
-          <ul className='flex flex-col items-start justify-center'>
-            {data.quickReview.map(
-              (item: { _id: string; count: number }, key: number) => (
-                <li
-                  key={key}
-                  className='flex w-full items-center gap-x-3 whitespace-nowrap text-xs text-gray-500'
-                >
-                  <label>{item._id}:</label>
-                  <Progress
-                    value={item.count}
-                    className='h-4 border bg-white [&>div]:bg-warning'
-                    max={100}
-                  />
-                  <span>{item.count}%</span>
-                </li>
-              )
-            )}
-          </ul>
-        </div>
-        <div className='pt-2 md:col-span-2'>
-          <div className='mb-6'>
-            {data.reviews.map((review: ReviewType, key: number) => (
-              <ReviewPost key={key} review={review} className='mb-4' />
-            ))}
+      <section className={cn(className)}>
+        <h3 className='mb-2 text-xl lg:text-2xl'>Customers Reviews </h3>
+        <div className='grid grid-cols-2 border-b lg:grid-cols-3 xl:grid-cols-4'>
+          <div>
+            <label className='mb-1 inline-block text-3xl font-bold text-warning sm:text-4xl'>
+              {data.rating}
+            </label>
+            <Rate value={5} className='mb-2 text-base' />
+            <p className='mb-4 text-sm opacity-80'>
+              Based on {data?.total} reviews
+            </p>
           </div>
+          <div>
+            <ul className='flex flex-col items-start justify-center'>
+              {data.quickReview.map(
+                (item: { _id: string; count: number }, key: number) => (
+                  <li
+                    key={key}
+                    className='flex w-full items-center gap-x-3 whitespace-nowrap text-xs text-gray-500'
+                  >
+                    <label>{item._id}:</label>
+                    <Progress
+                      value={item.count}
+                      className='h-4 border bg-white [&>div]:bg-warning'
+                      max={100}
+                    />
+                    <span>{item.count}%</span>
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
+        </div>
+        <div className='my-6'>
+          {data.reviews.map((review: ReviewType, key: number) => (
+            <ReviewPost key={key} review={review} className='mb-4' />
+          ))}
+        </div>
+        {pagination.length > 1 && (
           <Pagination
             className='ml-auto'
             totalVisible={3}
@@ -96,7 +98,7 @@ export default function Reviews({ productId, className }: Props) {
             length={pagination.length}
             onChange={onChangePage}
           />
-        </div>
+        )}
       </section>
     );
 }

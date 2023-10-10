@@ -1,5 +1,6 @@
 'use client';
 import HeadImage from './components/head-image';
+import CollectionList from './components/collection-list';
 import configThemeStore from '@default/modules/config-theme/store';
 
 export default function Page() {
@@ -9,12 +10,14 @@ export default function Page() {
   return (
     <article id='home-page'>
       {Object.entries(settings)?.map((item) => {
-        const [type, value]: any = item;
-        switch (type) {
+        const [key, value]: any = item;
+        switch (value.type) {
           case 'head-image':
-            return <HeadImage key={type} settings={value.settings} />;
+            return <HeadImage key={key} settings={value.settings} />;
+          case 'collection_list':
+            return <CollectionList key={key} settings={value.settings} />;
           default:
-            return <div key={type}></div>;
+            return;
         }
       })}
     </article>
