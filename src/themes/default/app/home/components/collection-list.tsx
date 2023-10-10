@@ -8,11 +8,12 @@ type Props = {
   settings: any;
 };
 export default function CollectionList({ settings }: Props) {
-  const { item_per_row, blocks } = settings;
+  const { item_per_row, blocks, url } = settings;
   const preloadClasses = `md:grid-cols-${item_per_row}`;
   const imageURL = (url: string) =>
     helpers.parseImageUrl(url, { width: 320, height: 320 });
   console.log(settings);
+
   return (
     <section className='container py-8 lg:py-10'>
       <h2 className='mb-4 text-center text-xl md:text-2xl lg:text-3xl'>
@@ -22,13 +23,20 @@ export default function CollectionList({ settings }: Props) {
         className={cn('grid grid-cols-2 gap-4 md:grid-cols-4', preloadClasses)}
       >
         {blocks?.map((collection: any, key: number) => (
-          <Link href={''} key={key} className='group'>
+          <Link
+            href={'/collections/' + collection.url.params.slug}
+            key={key}
+            className='group'
+          >
             <AspectRatio
               ratio={1}
               className='mb-1 cursor-pointer group-hover:opacity-80'
             >
               <Image
-                src={imageURL(collection.image)}
+                src={
+                  imageURL(collection.image) ||
+                  'https://cdn.btdmp.com/dist/themes/3/3/images/watches.ac2e166e.svg'
+                }
                 alt={collection.title}
                 sizes='(min-width: 375px) 100%'
                 fill
