@@ -75,7 +75,7 @@
   }
   .product-description p,
   .product-description span {
-    @apply !text-base mb-1;
+    @apply mb-1 !text-base;
   }
   .product-description img {
     @apply mx-auto mb-2;
@@ -94,4 +94,8 @@
       scrollbar-width: none; /* Firefox */
     }
   }
+}
+.swiper-slide-thumb-active {
+  border: solid 1px var(--primary);
+  padding: 1px;
 }
