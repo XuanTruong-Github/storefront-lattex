@@ -53,6 +53,7 @@ export function Gallery({ product, className }: Props) {
                 src={image}
                 alt={product.name}
                 priority
+                className='swiper-lazy'
                 sizes='(min-width: 375px) 100%'
                 fill
               />
@@ -71,7 +72,7 @@ export function Gallery({ product, className }: Props) {
         >
           {images.map((image: string, key: number) => (
             <SwiperSlide key={key}>
-              <AspectRatio ratio={1} className={cn()}>
+              <AspectRatio ratio={1}>
                 <Image
                   src={image}
                   alt={product.name}

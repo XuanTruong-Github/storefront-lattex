@@ -23,7 +23,7 @@ export default async function Page({ params }: Props) {
   if (!product) notFound();
   return (
     <article id='product-page' className='container md:py-8 lg:py-10'>
-      <ProductDetail product={product} className='-mx-4 mb-4 sm:mx-0' />
+      <ProductDetail product={product} className='-mx-4 mb-4 md:mb-8 sm:mx-0' />
       <ProductContent product={product} />
     </article>
   );

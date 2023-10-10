@@ -52,26 +52,29 @@ export default function Reviews({ productId, className }: Props) {
   });
   if (!isLoading && data.reviews.length)
     return (
-      <section className={cn(className)}>
-        <h3 className='mb-4 text-lg'>Customers Reviews {`(${data?.total})`}</h3>
-        <div className='mb-4 grid grid-cols-2 rounded-xl bg-gray-50 p-4 md:p-6'>
-          <div className='flex flex-col items-center justify-center'>
-            <label className='mb-1 text-xl font-bold text-warning sm:text-3xl'>
-              {data.rating}
-            </label>
-            <Rate value={5} className='text-sm sm:text-base' />
-          </div>
-          <ul className='flex flex-col items-start justify-center md:w-5/6 lg:w-3/5'>
+      <section
+        className={cn(
+          'grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8 md:border-t md:pt-4 lg:gap-14 lg:py-10 xl:gap-20',
+          className
+        )}
+      >
+        <div className='md:col-span-1'>
+          <h3 className='mb-2 text-xl lg:text-2xl'>Customers Reviews </h3>
+          <Rate value={5} className='mb-2 text-base' />
+          <p className='mb-4 text-sm opacity-80'>
+            Based on {data?.total} reviews
+          </p>
+          <ul className='flex flex-col items-start justify-center'>
             {data.quickReview.map(
               (item: { _id: string; count: number }, key: number) => (
                 <li
                   key={key}
-                  className='flex w-full items-center gap-x-2 whitespace-nowrap text-xs text-gray-500'
+                  className='flex w-full items-center gap-x-3 whitespace-nowrap text-xs text-gray-500'
                 >
                   <label>{item._id}:</label>
                   <Progress
                     value={item.count}
-                    className='h-3 rounded-sm border bg-white [&>div]:bg-warning'
+                    className='h-4 border bg-white [&>div]:bg-warning'
                     max={100}
                   />
                   <span>{item.count}%</span>
@@ -80,13 +83,12 @@ export default function Reviews({ productId, className }: Props) {
             )}
           </ul>
         </div>
-
-        <div className='mb-6 columns-2 sm:columns-3 lg:columns-4'>
-          {data.reviews.map((review: ReviewType, key: number) => (
-            <ReviewPost key={key} review={review} className='mb-4' />
-          ))}
-        </div>
-        {pagination.length > 1 && (
+        <div className='pt-2 md:col-span-2'>
+          <div className='mb-6'>
+            {data.reviews.map((review: ReviewType, key: number) => (
+              <ReviewPost key={key} review={review} className='mb-4' />
+            ))}
+          </div>
           <Pagination
             className='ml-auto'
             totalVisible={3}
@@ -94,7 +96,7 @@ export default function Reviews({ productId, className }: Props) {
             length={pagination.length}
             onChange={onChangePage}
           />
-        )}
+        </div>
       </section>
     );
 }

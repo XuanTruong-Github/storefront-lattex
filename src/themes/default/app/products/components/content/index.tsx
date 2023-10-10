@@ -25,7 +25,7 @@ export default function ProductContent({ product }: Props) {
   if (isLoadMore)
     return (
       <Fragment>
-        <Reviews productId={product.id} />
+        <Reviews productId={product.id} className='mb-4' />
         <Widgets sku={product.sku}/>
       </Fragment>
     );

@@ -54,7 +54,7 @@ export default function ProductDetail({ product, className }: Props) {
         </div>
       </section>
       {tabPosition === 'below' && (
-        <Tabs product={product} className='mb-4' position={tabPosition} />
+        <Tabs product={product} className='mb-10' position={tabPosition} />
       )}
     </Fragment>
   );
