@@ -58,7 +58,7 @@ export default function ProductTabs({
               value={tab.id}
               key={key}
               className={cn(
-                'rounded-none border-b-2 leading-8',
+                'rounded-none border-b-2 leading-10',
                 'data-[state=active]:bg-transparent',
                 'data-[state=active]:shadow-none',
                 'data-[state=active]:border-b-primary',
@@ -90,9 +90,12 @@ export default function ProductTabs({
     return (
       <Accordion type='single' collapsible className={cn('w-full', className)}>
         {tabs.map((tab: TabType, key: number) => (
-          <AccordionItem value={tab.id} key={key}>
-            <AccordionTrigger className='py-6 text-sm hover:no-underline [&[data-state=open]]:text-primary'>
-              {' '}
+          <AccordionItem
+            value={tab.id}
+            key={key}
+            className={cn(key == tabs.length - 1 && 'border-none')}
+          >
+            <AccordionTrigger className='py-5 text-sm hover:no-underline [&[data-state=open]]:text-primary'>
               {tab.heading}
             </AccordionTrigger>
             <AccordionContent

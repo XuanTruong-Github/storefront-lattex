@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { Fragment, useState } from 'react';
-import Slider from 'react-slick';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Dialog, DialogContent } from 'ui/dialog';
 import { cn } from '@/core/lib/utils';
 type Props = {
@@ -17,28 +17,21 @@ export default function ReviewGallery({ images }: Props) {
   if (images.length)
     return (
       <Fragment>
-        <Slider
-          slidesToShow={images.length > 1 ? 2 : 1}
-          rows={1}
-          arrows={false}
-          dots={images.length > 1}
-          slidesToScroll={1}
-          speed={700}
-          swipe
-        >
+        <Swiper slidesPerView={images.length > 1 ? 2 : 1}>
           {images.map((image: string, key: number) => (
-            <Image
-              src={image}
-              key={key}
-              alt='Review'
-              width={320}
-              height={320}
-              className='w-full object-contain cursor-pointer'
-              title='View'
-              onClick={() => onSelectImage(image)}
-            />
+            <SwiperSlide key={key}>
+              <Image
+                src={image}
+                alt='Review'
+                width={320}
+                height={320}
+                className='w-full cursor-pointer object-contain'
+                title='View'
+                onClick={() => onSelectImage(image)}
+              />
+            </SwiperSlide>
           ))}
-        </Slider>
+        </Swiper>
         {!!imageSelected && (
           <Dialog open={showDialog} onOpenChange={setShowDialog}>
             <DialogContent

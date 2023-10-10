@@ -1,21 +1,21 @@
 'use client';
 import Image from 'next/image';
-import Link from 'next/link';
-import Slider from 'react-slick';
-import { NextArrow, PrevArrow } from '@/core/components/global/arrow-carousel';
-import { Button } from 'ui/button';
 import { AspectRatio } from 'ui/aspect-ratio';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Button } from '@/core/components/ui/button';
 
 import useResponsive from '@/core/hooks/useResponsive';
-import configThemeStore from '@/themes/default/modules/config-theme/store';
 import helpers from '@/core/utils/helpers';
 import { useMemo } from 'react';
+import { useRouter } from 'next/navigation';
+
 type Props = {
   settings: any;
 };
 export default function HeadImage({ settings }: Props) {
   // States
   const { isMobile, isDesktop } = useResponsive();
+  const router = useRouter();
   // Memo
   const mobileData = useMemo(() => settings?.content?.mobile, [settings]);
   const desktopData = useMemo(() => settings?.content?.desktop, [settings]);
@@ -24,23 +24,28 @@ export default function HeadImage({ settings }: Props) {
     if (settings?.params?.slug === 'all-lattehub-c') return '/collections';
     return '/collections/' + config?.params?.slug;
   };
-
+  const onClick = (slide: any, typeClick: 'slide' | 'button') => {
+    const url = checkRouter(slide.urlButton);
+    if (settings.show_content && typeClick === 'button') {
+      router.push(url);
+    }
+    if (!settings.show_content && typeClick === 'slide') {
+      router.push(url);
+    }
+    if (isMobile) {
+      router.push(url);
+    }
+  };
   return (
-    <Slider
-      slidesToShow={1}
-      slidesToScroll={1}
-      arrows={isDesktop}
-      infinite={true}
-      lazyLoad={'ondemand'}
-      draggable={true}
-      swipeToSlide={true}
-      nextArrow={<NextArrow customClass='right-4 xl:right-6' />}
-      prevArrow={<PrevArrow customClass='left-4 xl:left-6' />}
-    >
+    <Swiper>
       {isMobile &&
         mobileData?.map((slide: any, key: number) => (
-          <Link key={key} href='/' className='relative block w-full'>
-            <AspectRatio ratio={16 / 9} className='h-auto max-h-[900px] w-auto'>
+          <SwiperSlide key={key}>
+            <AspectRatio
+              ratio={16 / 9}
+              className='h-auto max-h-[900px] w-auto'
+              onClick={() => onClick(slide, 'slide')}
+            >
               <Image
                 src={helpers.parseImageUrl(slide.image, {
                   width: 2000,
@@ -51,12 +56,16 @@ export default function HeadImage({ settings }: Props) {
                 priority
               />
             </AspectRatio>
-          </Link>
+          </SwiperSlide>
         ))}
       {isDesktop &&
         desktopData?.map((slide: any, key: number) => (
-          <Link key={key} href='/' className='relative block w-full'>
-            <AspectRatio ratio={16 / 9} className='h-auto max-h-[900px] w-auto'>
+          <SwiperSlide key={key}>
+            <AspectRatio
+              ratio={16 / 9}
+              className='h-auto max-h-[900px] w-auto'
+              onClick={() => onClick(slide, 'slide')}
+            >
               <Image
                 src={helpers.parseImageUrl(slide.image, {
                   width: 2000,
@@ -65,10 +74,40 @@ export default function HeadImage({ settings }: Props) {
                 alt=''
                 fill
                 priority
+                className='z-10'
               />
+              {settings.show_content && (
+                <div className='absolute left-0 top-0 z-20 h-full w-full'>
+                  <div className='container flex h-full items-center'>
+                    <div className='w-full' style={{ textAlign: 'center' }}>
+                      <h1
+                        className='mb-3 font-medium lg:text-5xl xl:text-6xl'
+                        style={{ color: slide.heading.color }}
+                      >
+                        {slide.heading.content}
+                      </h1>
+                      <p
+                        className='mb-6 xl:text-lg'
+                        style={{ color: slide.subHeading.color }}
+                      >
+                        {slide.subHeading.content}
+                      </p>
+                      <Button
+                        style={{
+                          backgroundColor: slide.buttonLabel.background,
+                          color: slide.buttonLabel.color,
+                        }}
+                        onClick={() => onClick(slide, 'button')}
+                      >
+                        {slide.buttonLabel.title}
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              )}
             </AspectRatio>
-          </Link>
+          </SwiperSlide>
         ))}
-    </Slider>
+    </Swiper>
   );
 }
