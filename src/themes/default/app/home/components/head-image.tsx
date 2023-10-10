@@ -11,8 +11,9 @@ import { useRouter } from 'next/navigation';
 
 type Props = {
   settings: any;
+  className?: string;
 };
-export default function HeadImage({ settings }: Props) {
+export default function HeadImage({ settings, className }: Props) {
   // States
   const { isMobile, isDesktop } = useResponsive();
   const router = useRouter();
@@ -37,7 +38,7 @@ export default function HeadImage({ settings }: Props) {
     }
   };
   return (
-    <Swiper>
+    <Swiper className={className}>
       {isMobile &&
         mobileData?.map((slide: any, key: number) => (
           <SwiperSlide key={key}>

@@ -6,13 +6,13 @@ import helpers from '@/core/utils/helpers';
 
 type Props = {
   settings: any;
+  className?: string;
 };
 export default function CollectionList({ settings }: Props) {
-  const { item_per_row, blocks, url } = settings;
+  const { item_per_row, blocks } = settings;
   const preloadClasses = `md:grid-cols-${item_per_row}`;
   const imageURL = (url: string) =>
     helpers.parseImageUrl(url, { width: 320, height: 320 });
-  console.log(settings);
 
   return (
     <section className='container py-8 lg:py-10'>
