@@ -4,16 +4,14 @@ import Links from '@/core/components/head/links';
 import Styles from '@default/components/layout/head/styles';
 import config from 'config';
 import generalService from '@/core/modules/general/service';
+import ReactQueryProvider from '@/core/lib/react-query/provider';
+import BootstrapProvider from '@default/providers/bootstrap';
 import '@/core/styles/globals.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import ReactQueryProvider from '@/core/lib/react-query/provider';
-import BootstrapProvider from '@default/providers/bootstrap';
 type Props = {
   children: React.ReactNode;
 };

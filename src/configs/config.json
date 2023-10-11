@@ -3,8 +3,8 @@
   "server": {},
   "api": {
     "url1": "https://us1family.lattehub.com",
-    "url2": "https://nxxoehouse.lattehub.com",
-    "url": "https://kutemerch.lattehub.com"
+    "url": "https://nxxoehouse.lattehub.com",
+    "url2": "https://kutemerch.lattehub.com"
   },
   "images": {
     "baseUrl": "https://minio.lattehub.com"

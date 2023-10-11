@@ -11,13 +11,15 @@ type Props = {
 export default function CollectionList({ settings }: Props) {
   const { item_per_row, blocks } = settings;
   const preloadClasses = `md:grid-cols-${item_per_row}`;
+  const DEFAULT_IMAGE =
+    'https://cdn.btdmp.com/dist/themes/3/3/images/watches.ac2e166e.svg';
   const imageURL = (url: string) =>
     helpers.parseImageUrl(url, { width: 320, height: 320 });
 
   return (
     <section className='container py-8 lg:py-10'>
       <h2 className='mb-4 text-center text-xl md:text-2xl lg:text-3xl'>
-        <Link href={''}>{settings.heading}</Link>
+        {settings.heading}
       </h2>
       <div
         className={cn('grid grid-cols-2 gap-4 md:grid-cols-4', preloadClasses)}
@@ -34,8 +36,7 @@ export default function CollectionList({ settings }: Props) {
             >
               <Image
                 src={
-                  imageURL(collection.image) ||
-                  'https://cdn.btdmp.com/dist/themes/3/3/images/watches.ac2e166e.svg'
+                  collection.image ? imageURL(collection.image) : DEFAULT_IMAGE
                 }
                 alt={collection.title}
                 sizes='(min-width: 375px) 100%'

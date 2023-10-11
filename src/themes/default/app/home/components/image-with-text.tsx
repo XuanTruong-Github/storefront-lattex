@@ -18,12 +18,12 @@ export default function ImageWithText({ settings, className }: Props) {
         return (
           <div
             key={key}
-            className='mb-4 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8 lg:gap-10 xl:gap-12'
+            className='mb-4 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8 lg:gap-10 xl:gap-12 md:mb-8 lg:mb-10'
           >
             <AspectRatio
               ratio={16 / 9}
               className={cn(
-                'overflow-hidden rounded',
+                'overflow-hidden',
                 item.position === 'left' ? 'md:order-first' : 'md:order-last'
               )}
             >
@@ -48,7 +48,7 @@ export default function ImageWithText({ settings, className }: Props) {
               <p className='mb-3 text-sm md:mb-4 md:text-base'>
                 {item.content}
               </p>
-              <Button className='w-52' asChild>
+              <Button className='w-52 rounded-none' asChild>
                 <Link href={'/'}>{item.button_label}</Link>
               </Button>
             </div>

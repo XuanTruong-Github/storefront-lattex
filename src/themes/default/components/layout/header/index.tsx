@@ -25,7 +25,7 @@ export default function Header() {
     <Fragment>
       <header className='sticky left-0 top-0 z-20 w-full bg-white shadow-sm'>
         <TopBar />
-        <section className='container grid h-14 grid-cols-3 px-1 sm:px-0 md:flex md:items-center'>
+        <section className='container grid h-16 grid-cols-3 px-1 sm:px-0 md:flex md:items-center'>
           <div className='flex h-full items-center py-1 md:min-w-[180px]'>
             {isMobile && (
               <Button
