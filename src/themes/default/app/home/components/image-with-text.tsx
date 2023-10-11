@@ -9,7 +9,6 @@ type Props = {
   className?: string;
 };
 export default function ImageWithText({ settings, className }: Props) {
-  console.log(settings);
   const imageURL = (url: string) =>
     helpers.parseImageUrl(url, { width: 1000, height: 1000 });
   return (

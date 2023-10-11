@@ -12,13 +12,17 @@ type Props = {
 export default function Logo({ className }: Props) {
   const { isMobile, isDesktop } = useResponsive();
   const { logo, storeName } = configThemeStore((state) => {
-    const settings = state.settings?.pages?.fixed?.header
+    const settings = state.settings?.pages?.fixed?.header;
     const desktopSrc = settings?.block[1]?.config[0]?.value;
     const mobileSrc = settings?.block[1]?.config[0]?.value;
     return {
       logo: {
-        desktop: helpers.parseImageUrl(desktopSrc, { width: 200, height: 56 }),
-        mobile: helpers.parseImageUrl(mobileSrc, { width: 200, height: 56 }),
+        desktop: desktopSrc
+          ? helpers.parseImageUrl(desktopSrc, { width: 200, height: 56 })
+          : desktopSrc,
+        mobile: mobileSrc
+          ? helpers.parseImageUrl(mobileSrc, { width: 200, height: 56 })
+          : mobileSrc,
       },
       storeName: state.manifest?.name || 'Logo',
     };
@@ -29,7 +33,7 @@ export default function Logo({ className }: Props) {
     if (!logo.mobile || isNotFound) {
       return (
         <h1 className={cn('logo text-center', className)}>
-          <Link href='/' className='logo__label text-xl'>
+          <Link href='/' className='logo__label text-xl text-primary'>
             {storeName}
           </Link>
         </h1>
@@ -54,7 +58,7 @@ export default function Logo({ className }: Props) {
     if (!logo.desktop || isNotFound) {
       return (
         <h1 className={cn('logo w-fit', className)}>
-          <Link href='/' className='logo__label'>
+          <Link href='/' className='logo__label text-primary'>
             {storeName}
           </Link>
         </h1>
