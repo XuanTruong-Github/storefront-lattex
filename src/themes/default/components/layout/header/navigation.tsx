@@ -46,7 +46,7 @@ export function Navigation(props: Props) {
                   <Link
                     href={item.link}
                     className={cn(
-                      'group inline-block leading-[44px]',
+                      'group inline-block leading-[48px]',
                       menuActive?.handle === item.handle &&
                         'text-primary [&>i]:rotate-180'
                     )}
@@ -57,7 +57,7 @@ export function Navigation(props: Props) {
                 ) : (
                   <span
                     className={cn(
-                      'group inline-block leading-[44px]',
+                      'group inline-block leading-[48px]',
                       menuActive?.handle === item.handle &&
                         'text-primary [&>i]:rotate-180'
                     )}
@@ -82,7 +82,7 @@ export function Navigation(props: Props) {
               }}
               className='text-sm hover:text-primary'
             >
-              <Link href={item.link} className='inline-block leading-[44px]'>
+              <Link href={item.link} className='inline-block leading-[48px]'>
                 {item.name}
               </Link>
             </li>

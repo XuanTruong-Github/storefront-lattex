@@ -17,7 +17,7 @@ export default function ImageWithText({ settings, className }: Props) {
         return (
           <div
             key={key}
-            className='mb-4 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8 lg:gap-10 xl:gap-12 md:mb-8 lg:mb-10'
+            className='mb-4 grid grid-cols-1 gap-4 md:mb-8 md:grid-cols-2 md:gap-8 lg:mb-10 lg:gap-10 xl:mb-14 xl:gap-12'
           >
             <AspectRatio
               ratio={16 / 9}

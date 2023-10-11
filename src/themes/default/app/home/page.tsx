@@ -2,6 +2,8 @@
 import HeadImage from './components/head-image';
 import CollectionList from './components/collection-list';
 import ImageWithText from './components/image-with-text';
+import FeatureContent from './components/feature-content';
+import FeatureCollections from './components/feature-collections';
 import configThemeStore from '@default/modules/config-theme/store';
 
 export default function Page() {
@@ -28,6 +30,22 @@ export default function Page() {
           case 'image_with_text':
             return (
               <ImageWithText
+                key={key}
+                settings={value.settings}
+                className='mb-6'
+              />
+            );
+          case 'feature-content':
+            return (
+              <FeatureContent
+                key={key}
+                settings={value.settings}
+                className='mb-6'
+              />
+            );
+          case 'featured-collection':
+            return (
+              <FeatureCollections
                 key={key}
                 settings={value.settings}
                 className='mb-6'
