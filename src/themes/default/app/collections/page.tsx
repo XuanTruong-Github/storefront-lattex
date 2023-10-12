@@ -4,7 +4,6 @@ import Breadcrumbs, {
 import { AspectRatio } from 'ui/aspect-ratio';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Fragment } from 'react';
 import collectionService from '@/core/modules/collection/service';
 import helpers from '@/core/utils/helpers';
 import type { Collection } from '@/core/modules/collection/type';

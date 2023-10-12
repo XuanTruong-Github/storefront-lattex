@@ -27,7 +27,6 @@ export default function Logo({ className }: Props) {
       storeName: state.manifest?.name || 'Logo',
     };
   });
-  console.log(logo);
   const [isNotFound, setNotFound] = useState(false);
 
   if (

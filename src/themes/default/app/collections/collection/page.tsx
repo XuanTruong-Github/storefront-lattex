@@ -6,7 +6,6 @@ import Breadcrumbs, {
 import ProductCard from '@default/components/product/product-card';
 import ProductListPagination from './components/pagination';
 import productService from '@/core/modules/product/service';
-import helpers from '@/core/utils/helpers';
 import Sort from './components/sort';
 import type { Collection } from '@/core/modules/collection/type';
 // Others
