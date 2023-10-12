@@ -5,6 +5,10 @@ import { Button } from '@/core/components/ui/button';
 import ProductCard from '@default/components/product/product-card';
 import { Skeleton } from '@/core/components/ui/skeleton';
 import { Navigation } from 'swiper/modules';
+import {
+  PrevButton,
+  NextButton,
+} from '@/core/components/global/swiper-buttons';
 import { cn } from '@/core/lib/utils';
 import { useQuery } from '@tanstack/react-query';
 import useResponsive from '@/core/hooks/useResponsive';
@@ -50,13 +54,6 @@ export default function FeatureCollections({ className, settings }: Props) {
     },
     enabled: !!settings?.collection?.handle,
   });
-  const NextButton = () => {
-    return (
-      <svg width='24' height='24' viewBox='0 0 24 24'>
-        <path d='M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z' />
-      </svg>
-    );
-  };
   return (
     <section className={cn('container', className)}>
       {settings.align === 'left' && isDesktop && (
@@ -101,13 +98,22 @@ export default function FeatureCollections({ className, settings }: Props) {
           }}
           className='mb-4 sm:mb-8 md:mb-10'
           modules={[Navigation]}
-          navigation
         >
+          <PrevButton
+            btnType='outline'
+            className='!left-0 !hidden sm:!block'
+            btnClass='rounded-none text-foreground'
+          />
           {data?.map((product: any, key: number) => (
             <SwiperSlide key={key}>
               <ProductCard product={product} />
             </SwiperSlide>
           ))}
+          <NextButton
+            btnType='outline'
+            className='!right-0 !hidden sm:!block'
+            btnClass='rounded-none text-foreground'
+          />
         </Swiper>
       )}
       {(settings.align == 'center' || isMobile) && (
