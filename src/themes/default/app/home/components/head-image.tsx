@@ -44,7 +44,7 @@ export default function HeadImage({ settings, className }: Props) {
           <SwiperSlide key={key}>
             <AspectRatio
               ratio={16 / 9}
-              className='h-auto max-h-[900px] w-auto'
+              className='h-auto max-h-[900px] w-auto cursor-pointer'
               onClick={() => onClick(slide, 'slide')}
             >
               <Image
@@ -64,7 +64,7 @@ export default function HeadImage({ settings, className }: Props) {
           <SwiperSlide key={key}>
             <AspectRatio
               ratio={16 / 9}
-              className='h-auto max-h-[900px] w-auto'
+              className='h-auto max-h-[900px] w-auto cursor-pointer'
               onClick={() => onClick(slide, 'slide')}
             >
               <Image

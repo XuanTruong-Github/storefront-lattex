@@ -37,7 +37,7 @@ export default function Logo({ className }: Props) {
           onError={onError}
         />
       ) : (
-        <span className='logo-label text-2xl font-black text-primary'>{storeName}</span>
+        <span className='logo-label text-2xl font-black text-primary capitalize'>{storeName}</span>
       )}
     </Link>
   );

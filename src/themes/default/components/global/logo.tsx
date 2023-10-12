@@ -27,57 +27,54 @@ export default function Logo({ className }: Props) {
       storeName: state.manifest?.name || 'Logo',
     };
   });
+  console.log(logo);
   const [isNotFound, setNotFound] = useState(false);
 
-  if (isMobile) {
-    if (!logo.mobile || isNotFound) {
-      return (
-        <h1 className={cn('logo text-center', className)}>
-          <Link href='/' className='logo__label text-xl text-primary'>
-            {storeName}
-          </Link>
-        </h1>
-      );
-    } else if (logo.mobile && !isNotFound) {
-      return (
-        <h1 className={cn('logo block', className)}>
-          <Link href='/' className='logo__image relative block h-full w-full'>
-            <Image
-              src={logo.desktop}
-              alt={storeName}
-              className='object-contain'
-              priority
-              sizes='(min-width: 320px) 100%'
-              fill
-            />
-          </Link>
-        </h1>
-      );
-    }
-  } else if (isDesktop) {
-    if (!logo.desktop || isNotFound) {
-      return (
-        <h1 className={cn('logo w-fit', className)}>
-          <Link href='/' className='logo__label text-primary'>
-            {storeName}
-          </Link>
-        </h1>
-      );
-    } else if (logo.desktop && !isNotFound) {
-      return (
-        <h1 className={cn('logo block', className)}>
-          <Link href='/' className='logo__image relative block h-full w-full'>
-            <Image
-              src={logo.desktop}
-              alt={storeName}
-              className='object-contain'
-              sizes='(min-width: 320px) 100%'
-              priority
-              fill
-            />
-          </Link>
-        </h1>
-      );
-    }
+  if (
+    (isMobile && !logo.mobile) ||
+    (isDesktop && !logo.desktop) ||
+    isNotFound
+  ) {
+    return (
+      <h1 className={cn('w-fit', className)}>
+        <Link
+          href='/'
+          className='text-xl capitalize text-primary md:text-2xl lg:text-3xl'
+        >
+          {storeName}
+        </Link>
+      </h1>
+    );
+  }
+  if (isMobile && logo.mobile) {
+    return (
+      <h1 className={cn(className)}>
+        <Link href='/' className='relative block h-full w-full'>
+          <Image
+            src={logo.desktop}
+            alt={storeName}
+            className='object-contain'
+            priority
+            sizes='(min-width: 320px) 100%'
+            fill
+          />
+        </Link>
+      </h1>
+    );
+  } else if (isDesktop && logo.desktop) {
+    return (
+      <h1 className={cn(className)}>
+        <Link href='/' className='relative block h-full w-full'>
+          <Image
+            src={logo.desktop}
+            alt={storeName}
+            className='object-contain'
+            sizes='(min-width: 320px) 100%'
+            priority
+            fill
+          />
+        </Link>
+      </h1>
+    );
   }
 }

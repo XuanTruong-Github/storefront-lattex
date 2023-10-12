@@ -14,6 +14,7 @@ export default function AddToCard({ className }: Props) {
   async function onClick() {}
   return (
     <Button
+      variant={'outlinePrimary'}
       className={cn('btn-add-to-card h-14 gap-x-2 rounded-lg', className)}
       disabled={isLoading}
       onClick={onClick}

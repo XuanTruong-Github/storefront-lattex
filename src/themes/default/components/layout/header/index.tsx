@@ -25,7 +25,7 @@ export default function Header() {
     <Fragment>
       <header className='sticky left-0 top-0 z-20 w-full bg-white shadow-sm'>
         <TopBar />
-        <section className='container grid h-16 grid-cols-3 px-1 sm:px-0 md:flex md:items-center'>
+        <section className='container grid h-16 grid-cols-3 px-1 sm:px-0 md:flex md:items-center md:justify-between'>
           <div className='flex h-full items-center py-1 md:min-w-[180px]'>
             {isMobile && (
               <Button
@@ -37,11 +37,9 @@ export default function Header() {
                 <i className='far fa-bars text-xl'></i>
               </Button>
             )}
-            {isDesktop && <Logo className='h-full w-full' />}
+            {isDesktop && <Logo className='hidden md:flex md:items-center w-full h-full py-1' />}
           </div>
-          <div className='flex h-full items-center justify-center md:flex-1'>
-            {isMobile && <Logo className='h-full w-full py-2' />}
-          </div>
+          {isMobile && <Logo className='flex items-center justify-center w-full h-full py-1' />}
           <div className='flex items-center justify-end md:w-fit'>
             <Button
               variant='ghost'
