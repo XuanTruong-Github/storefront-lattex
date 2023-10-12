@@ -26,7 +26,7 @@ export default function BackToTop() {
         title='Scroll to top'
         onClick={onBackToTop}
       >
-        <i className='far fa-arrow-up'></i>
+        <i className='far fa-arrow-up '></i>
       </Button>
     );
   }

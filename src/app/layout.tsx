@@ -6,12 +6,8 @@ import config from 'config';
 import generalService from '@/core/modules/general/service';
 import ReactQueryProvider from '@/core/lib/react-query/provider';
 import BootstrapProvider from '@default/providers/bootstrap';
-import '@/core/styles/globals.css';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/free-mode';
-import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
+import '@/core/styles/css/tailwind.css';
+import "@/core/styles/main.scss";
 type Props = {
   children: React.ReactNode;
 };
