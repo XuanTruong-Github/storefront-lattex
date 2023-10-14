@@ -15,7 +15,11 @@ export default function Varriants({ product, className }: Props) {
   const isColorOption = ({ label }: { label: string }) =>
     label.toLowerCase() == 'color';
   const onSelect = (option: ProductOption, optionItem: OptionType) => {
-    console.log(option, optionItem);
+    console.log('Option: ', option);
+    console.log('Option Item: ', optionItem);
+    product?.configurable_children?.find((item) => {
+      return;
+    });
   };
   return (
     <div className={cn('grid grid-cols-1 gap-y-3', className)}>
