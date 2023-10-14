@@ -52,17 +52,19 @@ export default function ProductTabs({
   if (position === 'below' && isDesktop) {
     return (
       <Tabs defaultValue='description' className={className}>
-        <TabsList className='grid h-fit auto-cols-fr grid-flow-col bg-transparent'>
+        <TabsList className='h-fit bg-transparent border-b w-full py-0 justify-start'>
           {tabs.map((tab: TabType, key: number) => (
             <TabsTrigger
               value={tab.id}
               key={key}
               className={cn(
-                'rounded-none border-b-2 leading-10',
+                'rounded-none border-b-2 leading-10 px-4 py-2 mb-[-1px]',
+                'hover:text-primary border-b-transparent',
                 'data-[state=active]:bg-transparent',
                 'data-[state=active]:shadow-none',
                 'data-[state=active]:border-b-primary',
-                'data-[state=active]:text-primary'
+                'data-[state=active]:border-b-2',
+                'data-[state=active]:text-primary',
               )}
             >
               {tab.heading}
@@ -88,7 +90,7 @@ export default function ProductTabs({
   }
   if (position === 'right' || isMobile) {
     return (
-      <Accordion type='single' collapsible className={cn('w-full', className)}>
+      <Accordion type='single' defaultValue={ isMobile ? 'description' : ''} collapsible className={cn('w-full', className)}>
         {tabs.map((tab: TabType, key: number) => (
           <AccordionItem
             value={tab.id}

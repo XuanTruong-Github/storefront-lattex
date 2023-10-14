@@ -102,7 +102,7 @@ export default function FeatureCollections({ className, settings }: Props) {
           <PrevButton
             btnType='outline'
             className='!left-0 !hidden sm:!block'
-            btnClass='rounded-none text-foreground'
+            btnClass='text-foreground'
           />
           {data?.map((product: any, key: number) => (
             <SwiperSlide key={key}>
@@ -112,7 +112,7 @@ export default function FeatureCollections({ className, settings }: Props) {
           <NextButton
             btnType='outline'
             className='!right-0 !hidden sm:!block'
-            btnClass='rounded-none text-foreground'
+            btnClass='text-foreground'
           />
         </Swiper>
       )}
