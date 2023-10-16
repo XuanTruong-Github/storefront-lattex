@@ -48,6 +48,7 @@
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "^7.46.1",
+    "react-image-magnify": "^2.7.4",
     "react-paginate": "^8.2.0",
     "react-select": "^5.7.5",
     "sharp": "^0.32.6",

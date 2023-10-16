@@ -2,9 +2,9 @@
 import Image from 'next/image';
 import { AspectRatio } from 'ui/aspect-ratio';
 import { Pagination, FreeMode, Thumbs } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import helpers from '@/core/utils/helpers';
 import useResponsive from '@/core/hooks/useResponsive';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { useMemo, useState } from 'react';
 import { cn } from '@/core/lib/utils';
 import type { Product } from '@/core/modules/product/type';
