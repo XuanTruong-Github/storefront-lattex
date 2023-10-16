@@ -54,18 +54,16 @@ export default function Reviews({ productId, className }: Props) {
     return (
       <section className={cn(className)}>
         <h3 className='mb-2 text-xl lg:text-2xl'>Customers Reviews </h3>
-        <div className='grid grid-cols-2 border-b lg:grid-cols-3 xl:grid-cols-4'>
-          <div>
-            <label className='mb-1 inline-block text-3xl font-bold text-warning sm:text-4xl'>
-              {data.rating}
+        <div className='grid grid-cols-3 md:grid-cols-2 rounded-lg bg-secondary p-4'>
+          <div className='col-span-1 flex flex-col items-start justify-center md:items-center'>
+            <label className='mb-1 inline-block text-2xl lg:text-3xl font-bold text-warning'>
+              {data.rating} / 5.0
             </label>
-            <Rate value={5} className='mb-2 text-base' />
-            <p className='mb-4 text-sm opacity-80'>
-              Based on {data?.total} reviews
-            </p>
+            <Rate value={5} className='mb-2 text-sm lg:text-base' />
+            <p className='text-xs opacity-80'>Based on {data.total} reviews</p>
           </div>
-          <div>
-            <ul className='flex flex-col items-start justify-center'>
+          <div className='col-span-2 md:col-span-1'>
+            <ul className='flex h-full w-full flex-col items-center md:w-4/5 lg:w-2/3 mx-auto justify-center'>
               {data.quickReview.map(
                 (item: { _id: string; count: number }, key: number) => (
                   <li
