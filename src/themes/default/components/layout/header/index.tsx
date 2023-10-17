@@ -7,7 +7,7 @@ import TopBar from './topbar';
 import Sidebar from './sidebar';
 import SearchBar from './search-bar';
 import MicroCart from '@default/components/cart/microcart';
-import { Navigation, SubNavigation, type MenuItem } from './navigation';
+import { Navigation, SubNavigation, type MenuItem } from './navigation2';
 import cartStore from '@/core/modules/cart/store';
 import useResponsive from '@/core/hooks/useResponsive';
 

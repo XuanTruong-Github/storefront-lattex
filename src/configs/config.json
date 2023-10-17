@@ -2,8 +2,8 @@
   "theme": "default",
   "server": {},
   "api": {
-    "url": "https://us1family.lattehub.com",
-    "url1": "https://kutemerch.lattehub.com",
+    "url1": "https://us1family.lattehub.com",
+    "url": "https://kutemerch.lattehub.com",
     "url2": "https://anhshopnu.lattehub.com/"
   },
   "images": {
