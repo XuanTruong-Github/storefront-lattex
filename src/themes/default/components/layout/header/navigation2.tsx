@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import navigationStore from '@/core/modules/navigation/store';
 import collectionService from '@/core/modules/collection/service';
 import { cn } from '@/core/lib/utils';
+import { Fragment } from 'react';
 export type MenuItem = {
   handle: string;
   name: string;
@@ -34,19 +35,12 @@ export function Navigation(props: Props) {
         {menu?.map((item: any, key: number) => {
           if (item?.children?.length || item.handle === 'collections') {
             return (
-              <li
-                key={key}
-                onMouseEnter={() => {
-                  onShowSubMenu(item);
-                  setMenuActive(item);
-                }}
-                className='text-sm hover:text-primary'
-              >
+              <li key={key} className='group relative text-sm'>
                 {item.link || item.handle === 'collections' ? (
                   <Link
                     href={item.link}
                     className={cn(
-                      'group inline-block leading-[48px]',
+                      'inline-block leading-[48px] hover:text-primary',
                       menuActive?.handle === item.handle &&
                         'text-primary [&>i]:rotate-180'
                     )}
@@ -57,7 +51,7 @@ export function Navigation(props: Props) {
                 ) : (
                   <span
                     className={cn(
-                      'group inline-block leading-[48px]',
+                      'inline-block leading-[48px] hover:text-primary',
                       menuActive?.handle === item.handle &&
                         'text-primary [&>i]:rotate-180'
                     )}
@@ -66,6 +60,18 @@ export function Navigation(props: Props) {
                     <i className='far fa-angle-down ml-1 duration-300 group-hover:rotate-180'></i>
                   </span>
                 )}
+                <ul className='absolute left-0 top-full hidden min-w-full rounded-md bg-background shadow-md group-hover:block'>
+                  {item.children.map((subItem: any, subKey: number) => (
+                    <li key={subKey} className='border-b border-gray-100'>
+                      <Link
+                        href={subItem.link}
+                        className='inline-block w-full px-4 py-3 hover:text-primary'
+                      >
+                        {subItem.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </li>
             );
           }
@@ -147,30 +153,17 @@ export function SubNavigation(props: {
         onMouseLeave={onCloseMenu}
       >
         <ul className='container grid w-full grid-cols-4 gap-1 border-t py-2 lg:grid-cols-5'>
-          {menuActive?.handle !== 'collections' &&
-            menuActive?.children.map((item: any, key: number) => (
-              <li key={key}>
-                <Link
-                  href={item.link}
-                  className='line-clamp-1 rounded-lg text-sm font-medium capitalize leading-10 hover:text-primary'
-                  onClick={() => setShowMenu(false)}
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          {menuActive?.handle === 'collections' &&
-            collections.data?.map((item: any, key: number) => (
-              <li key={key}>
-                <Link
-                  href={`${item.link}?page=1&limit=20`}
-                  className='line-clamp-1 rounded-lg text-sm font-medium capitalize leading-10 hover:text-primary'
-                  onClick={() => setShowMenu(false)}
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
+          {collections.data?.map((item: any, key: number) => (
+            <li key={key}>
+              <Link
+                href={`${item.link}?page=1&limit=20`}
+                className='line-clamp-1 rounded-lg text-sm font-medium capitalize leading-10 hover:text-primary'
+                onClick={() => setShowMenu(false)}
+              >
+                {item.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
       <div className='fixed left-0 z-[19] h-full w-full cursor-pointer bg-black/40 backdrop-blur-md transition-all duration-300'></div>

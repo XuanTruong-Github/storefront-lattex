@@ -37,9 +37,13 @@ export default function Header() {
                 <i className='far fa-bars text-xl'></i>
               </Button>
             )}
-            {isDesktop && <Logo className='hidden md:flex md:items-center w-full h-full py-1' />}
+            {isDesktop && (
+              <Logo className='hidden h-full w-full py-1 md:flex md:items-center' />
+            )}
           </div>
-          {isMobile && <Logo className='flex items-center justify-center w-full h-full py-1' />}
+          {isMobile && (
+            <Logo className='flex h-full w-full items-center justify-center py-1' />
+          )}
           <div className='flex items-center justify-end md:w-fit'>
             <Button
               variant='ghost'
@@ -72,14 +76,14 @@ export default function Header() {
             setMenuActive={setMenuActive}
             setShowMenu={setShowMenu}
           />
-          {isDesktop && (
+          {/* {isDesktop && (
             <SubNavigation
               menuActive={menuActive}
               setMenuActive={setMenuActive}
               showMenu={showMenu}
               setShowMenu={setShowMenu}
             />
-          )}
+          )} */}
         </nav>
       </header>
       <Sidebar isOpen={isOpenSidebar} setOpen={setOpenSidebar} />
