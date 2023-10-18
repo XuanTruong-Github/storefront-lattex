@@ -10,6 +10,7 @@ import BuyNow from '@default/components/product/buy-now';
 import Quantity from '@/themes/default/components/product/quantity';
 import Paypal from '@default/app/products/components/product-detail/paypal';
 import Varriants from './variants';
+import LimitedStock from './limited-stock';
 import configThemeStore from '@default/modules/config-theme/store';
 import { cn } from '@/core/lib/utils';
 import type { Product } from '@/core/modules/product/type';
@@ -48,6 +49,7 @@ export default function ProductDetail({ product, className }: Props) {
             <BuyNow className='' />
           </div>
           <Paypal />
+          <LimitedStock className='mt-4' />
           {tabPosition === 'right' && (
             <Tabs product={product} className='mt-4' position={tabPosition} />
           )}
