@@ -27,7 +27,7 @@ export default async function Page({ searchParams }: Props) {
   // Methods
   async function searchProducts() {
     try {
-      const data: any = await productService.searchProduct(
+      const { data } = await productService.searchProduct(
         keyword,
         pagination.page,
         pagination.limit

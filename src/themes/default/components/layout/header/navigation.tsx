@@ -117,7 +117,7 @@ export function SubNavigation(props: {
     queryKey: ['collections-navigation', hasCollectionsMenu],
     queryFn: async () => {
       try {
-        const data: any = await collectionService.getCollections();
+        const { data } = await collectionService.getCollections();
         if (!data) return [];
         if (data?.collections.length) {
           const result = data.collections.map((collection: any) => ({

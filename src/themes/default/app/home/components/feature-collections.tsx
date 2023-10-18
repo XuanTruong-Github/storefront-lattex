@@ -34,7 +34,7 @@ export default function FeatureCollections({ className, settings }: Props) {
     queryKey: ['feature-collection', settings?.collection?.handle],
     queryFn: async () => {
       try {
-        const data: any = await productService.getProductsByCollection(
+        const { data } = await productService.getProductsByCollection(
           settings?.collection,
           1,
           10

@@ -7,7 +7,7 @@ import TopBar from './topbar';
 import Sidebar from './sidebar';
 import SearchBar from './search-bar';
 import MicroCart from '@default/components/cart/microcart';
-import { Navigation, SubNavigation, type MenuItem } from './navigation2';
+import Navigation from './navigation2';
 import cartStore from '@/core/modules/cart/store';
 import useResponsive from '@/core/hooks/useResponsive';
 
@@ -19,8 +19,6 @@ export default function Header() {
     state.isOpenMicroCart,
     state.setOpenMicroCart,
   ]);
-  const [menuActive, setMenuActive] = useState<MenuItem | null>(null);
-  const [showMenu, setShowMenu] = useState(false);
   return (
     <Fragment>
       <header className='sticky left-0 top-0 z-20 w-full bg-white shadow-sm'>
@@ -70,21 +68,7 @@ export default function Header() {
             </Button>
           </div>
         </section>
-        <nav className='relative hidden h-full w-full md:block'>
-          <Navigation
-            menuActive={menuActive}
-            setMenuActive={setMenuActive}
-            setShowMenu={setShowMenu}
-          />
-          {/* {isDesktop && (
-            <SubNavigation
-              menuActive={menuActive}
-              setMenuActive={setMenuActive}
-              showMenu={showMenu}
-              setShowMenu={setShowMenu}
-            />
-          )} */}
-        </nav>
+          <Navigation />
       </header>
       <Sidebar isOpen={isOpenSidebar} setOpen={setOpenSidebar} />
       <SearchBar isOpen={isOpenSearch} setOpen={setOpenSearch} />

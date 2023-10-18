@@ -38,7 +38,7 @@ export default function InformationForm() {
     queryKey: ['countries'],
     queryFn: async () => {
       try {
-        const data: any = await checkoutService.getCountries();
+        const { data } = await checkoutService.getCountries();
         if (!data) return [];
         const result = data.map((item: any) => ({
           ...item,

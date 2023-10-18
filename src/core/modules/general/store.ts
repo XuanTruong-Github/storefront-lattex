@@ -7,7 +7,7 @@ const store = create<State & Action>()((set) => ({
   preference: null,
   async loadGeneral() {
     try {
-      const data = await service.getGeneral();
+      const { data } = await service.getGeneral();
       if (data) {
         set(() => ({ general: data }));
         return data;
@@ -19,7 +19,7 @@ const store = create<State & Action>()((set) => ({
   },
   async loadPreference() {
     try {
-      const data: any = await service.getPreference();
+      const { data } = await service.getPreference();
       if (data) {
         set(() => ({ preference: data }));
         return data;

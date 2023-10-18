@@ -35,7 +35,7 @@ export default function SearchBar({ isOpen = false, setOpen }: Props) {
     queryKey: ['search', keyword],
     queryFn: async () => {
       try {
-        const data: any = await productService.searchProduct(keyword, 1, 20);
+        const { data } = await productService.searchProduct(keyword, 1, 20);
         if (data && data?.hits?.hits.length) {
           const products: Product[] = data.hits.hits.map(
             ({ _source }: { _source: Product }) => _source

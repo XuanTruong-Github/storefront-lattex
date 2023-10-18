@@ -9,7 +9,7 @@ const store = create<State & Action>()((set) => {
     async getHeaderMenu(id: string | null) {
       if (!id) return null;
       try {
-        const data = await service.loadMenu(id);
+        const { data } = await service.loadMenu(id);
         if (data) {
           set(() => ({ headerMenu: data }));
         }
@@ -21,7 +21,7 @@ const store = create<State & Action>()((set) => {
     async getFooterMenu(id: string | null) {
       if (!id) return null;
       try {
-        const data = await service.loadMenu(id);
+        const { data } = await service.loadMenu(id);
         if (data) {
           set(() => ({ footerMenu: data }));
         }

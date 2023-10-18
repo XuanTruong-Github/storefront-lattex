@@ -28,7 +28,7 @@ export default function Sidebar({ isOpen = false, setOpen }: Props) {
     queryKey: ['collections-navigation', hasCollectionsMenu],
     queryFn: async () => {
       try {
-        const data: any = await collectionService.getCollections();
+        const { data } = await collectionService.getCollections();
         if (data?.collections?.length) {
           return data.collections.map((collection: any) => ({
             handle: collection.handle,

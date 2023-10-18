@@ -5,7 +5,7 @@ import type { State, Mutation } from './type';
 const store = create<State & Mutation>()(() => ({
   async getProductWidgets(query: any) {
     try {
-      const data = await service.getWidgets(query);
+      const { data } = await service.getWidgets(query);
       return data;
     } catch (error) {
       return Promise.reject(error);

@@ -7,7 +7,7 @@ type Props = {
 };
 async function getProduct(slug: string) {
   try {
-    const data: any = await productService.getProduct(slug);
+    const { data } = await productService.getProduct(slug);
     if (!data) return null;
     const source = data.hits.hits[0]._source;
     return source;

@@ -10,7 +10,9 @@ type Props = {
 
 async function getCollection(slug: string) {
   try {
-    const { collection }: any = await collectionService.getCollection(slug);
+    const {
+      data: { collection },
+    } = await collectionService.getCollection(slug);
     return collection || null;
   } catch (error) {
     console.log('🚀 ~ file: page.tsx:16 ~ getCollection ~ error:', error);

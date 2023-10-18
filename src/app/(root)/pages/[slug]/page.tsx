@@ -9,9 +9,9 @@ type Props = {
 };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const page: any = await pagesService.getPage(params.slug);
+    const { data } = await pagesService.getPage(params.slug);
     return {
-      title: page?.searchEngineTitle || 'Page Not Found',
+      title: data?.searchEngineTitle || 'Page Not Found',
     };
   } catch (error) {
     return {
@@ -22,15 +22,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Page({ params }: Props) {
   try {
-    const page: any = await pagesService.getPage(params.slug);
-    if (!page) notFound();
-    switch (page.handle) {
+    const { data } = await pagesService.getPage(params.slug);
+    if (!data) notFound();
+    switch (data.handle) {
       case 'contact-us':
-        return <ContactUsPage pageData={page} />;
+        return <ContactUsPage pageData={data} />;
       case 'order-tracking-page':
-        return <OrderTrackingPage pageData={page} />;
+        return <OrderTrackingPage pageData={data} />;
       default:
-        return <DynamicPage pageData={page} />;
+        return <DynamicPage pageData={data} />;
     }
   } catch (error) {
     console.log('🚀 ~ file: page.tsx:17 ~ Page ~ error:', error);

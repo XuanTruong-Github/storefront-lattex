@@ -19,7 +19,7 @@ const store = create<State & Action>()((set) => ({
   legalBusiness: null,
   async loadConfigTheme() {
     try {
-      const data: any = await service.getConfigTheme();
+      const { data } = await service.getConfigTheme();
       if (data) {
         set(() => ({
           manifest: data.manifest,

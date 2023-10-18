@@ -42,7 +42,7 @@ export default async function Page(props: Props) {
   // Methods
   async function getProducts() {
     try {
-      const data: any = await productService.getProductsByCollection(
+      const { data } = await productService.getProductsByCollection(
         collection,
         pagination.page,
         pagination.limit,

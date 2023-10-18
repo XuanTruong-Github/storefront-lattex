@@ -7,7 +7,7 @@ import generalService from '@/core/modules/general/service';
 import ReactQueryProvider from '@/core/lib/react-query/provider';
 import BootstrapProvider from '@default/providers/bootstrap';
 import '@/core/styles/css/tailwind.css';
-import "@/core/styles/main.scss";
+import '@/core/styles/main.scss';
 type Props = {
   children: React.ReactNode;
 };
@@ -18,7 +18,7 @@ const font = Inter({
 });
 export async function generateMetadata(): Promise<Metadata> {
   try {
-    const data: any = await generalService.getPreference();
+    const { data } = await generalService.getPreference();
     return {
       title: data.homePageTitle || config.api.url.replace('https://', ''),
       description: data.homePageDescription || '',

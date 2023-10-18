@@ -19,21 +19,12 @@ class API {
       paramsSerializer: (params) => queryString.stringify(params),
     });
     this.instance.interceptors.response.use(
-      this.handleSuccess,
+      response => response,
       this.handleError
     );
   }
-  handleSuccess(response: AxiosResponse) {
-    if (response && response.status === 404) {
-      return Promise.reject(['404 not found']);
-    } else {
-      if (response && (response.status === 200 || response.status === 201)) {
-        return Promise.resolve(response.data);
-      } else return Promise.reject(response);
-    }
-  }
   handleError(error: AxiosError) {
-    return Promise.reject(error?.response?.data);
+    return Promise.reject(error?.response);
   }
 }
 const api = new API().instance;

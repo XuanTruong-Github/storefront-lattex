@@ -10,7 +10,9 @@ import type { Collection } from '@/core/modules/collection/type';
 
 export async function getCollections(): Promise<Collection[]> {
   try {
-    const { collections }: any = await collectionService.getCollections();
+    const {
+      data: { collections },
+    } = await collectionService.getCollections();
     return collections || [];
   } catch (error) {
     console.log(error);
