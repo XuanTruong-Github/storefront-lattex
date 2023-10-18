@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import navigationStore from '@/core/modules/navigation/store';
 import collectionService from '@/core/modules/collection/service';
 import { cn } from '@/core/lib/utils';
+import { useState } from 'react';
 export type MenuItem = {
   handle: string;
   name: string;
@@ -11,110 +12,30 @@ export type MenuItem = {
   children: { handle: string; name: string; link: string }[];
 };
 type Props = {
-  menuActive: MenuItem | null;
-  setMenuActive: any;
-  setShowMenu: any;
+  className?: string;
 };
-export function Navigation(props: Props) {
-  // Props
-  const { menuActive, setMenuActive, setShowMenu } = props;
-  // States
-  const menu = navigationStore((state) => state.headerMenu.items);
 
-  // Methods
-  function onShowSubMenu(item: MenuItem) {
-    setMenuActive(item);
-    if (item.children?.length || item.handle === 'collections') {
-      setShowMenu(true);
-    }
-  }
-  return (
-    <section className='container h-fit'>
-      <ul className='flex h-full flex-wrap items-center gap-x-6'>
-        {menu?.map((item: any, key: number) => {
-          if (item?.children?.length || item.handle === 'collections') {
-            return (
-              <li
-                key={key}
-                onMouseEnter={() => {
-                  onShowSubMenu(item);
-                  setMenuActive(item);
-                }}
-                className='text-sm hover:text-primary'
-              >
-                {item.link || item.handle === 'collections' ? (
-                  <Link
-                    href={item.link}
-                    className={cn(
-                      'group inline-block leading-[48px]',
-                      menuActive?.handle === item.handle &&
-                        'text-primary [&>i]:rotate-180'
-                    )}
-                  >
-                    {item.name}
-                    <i className='far fa-angle-down ml-1 duration-300 group-hover:rotate-180'></i>
-                  </Link>
-                ) : (
-                  <span
-                    className={cn(
-                      'group inline-block leading-[48px]',
-                      menuActive?.handle === item.handle &&
-                        'text-primary [&>i]:rotate-180'
-                    )}
-                  >
-                    {item.name}
-                    <i className='far fa-angle-down ml-1 duration-300 group-hover:rotate-180'></i>
-                  </span>
-                )}
-              </li>
-            );
-          }
-          return (
-            <li
-              key={key}
-              onMouseEnter={() => {
-                setMenuActive(item);
-                setShowMenu(false);
-              }}
-              onMouseLeave={() => {
-                setShowMenu(false);
-                setMenuActive(null);
-              }}
-              className='text-sm hover:text-primary'
-            >
-              <Link href={item.link} className='inline-block leading-[48px]'>
-                {item.name}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </section>
-  );
-}
-export function SubNavigation(props: {
-  menuActive: MenuItem | null;
-  setMenuActive: any;
-  showMenu: boolean;
-  setShowMenu: any;
+function CollectionsMenu({
+  isShow,
+  setClose,
+  setActive,
+}: {
+  isShow: boolean;
+  setClose: (value: boolean) => void;
+  setActive: (value: any) => void;
 }) {
-  // Props
-  const { menuActive, setShowMenu, setMenuActive, showMenu } = props;
-  // Methods
-  const onCloseMenu = () => {
-    setShowMenu(false);
-    setMenuActive(null);
-  };
-  // Computed
-  const hasCollectionsMenu = navigationStore(
-    (state) =>
-      state.headerMenu.items.find(
-        (item: any) => item.handle === 'collections'
-      ) != undefined
+  const collectionMenuItem = navigationStore((state) =>
+    state.headerMenu.items.find((item: any) => item.handle === 'collections')
   );
-  // Hooks
+  const onMouseEnter = () => {
+    setActive(collectionMenuItem);
+  };
+  const onMouseLeave = () => {
+    setClose(false);
+    setActive(null);
+  };
   const collections = useQuery({
-    queryKey: ['collections-navigation', hasCollectionsMenu],
+    queryKey: ['collections-navigation'],
     queryFn: async () => {
       try {
         const { data } = await collectionService.getCollections();
@@ -131,49 +52,134 @@ export function SubNavigation(props: {
         return Promise.reject(error);
       }
     },
-    enabled: hasCollectionsMenu,
   });
-
-  return (
-    <section
-      className={cn(
-        'absolute left-0 top-full h-fit w-full origin-top-left bg-white transition-all duration-500 ease-in-out',
-        !showMenu && 'hidden'
-      )}
-    >
-      <div
-        className='h-fit w-full'
-        onMouseEnter={() => setShowMenu(true)}
-        onMouseLeave={onCloseMenu}
-      >
-        <ul className='container grid w-full grid-cols-4 gap-1 border-t py-2 lg:grid-cols-5'>
-          {menuActive?.handle !== 'collections' &&
-            menuActive?.children.map((item: any, key: number) => (
-              <li key={key}>
-                <Link
-                  href={item.link}
-                  className='line-clamp-1 rounded-lg text-sm font-medium capitalize leading-10 hover:text-primary'
-                  onClick={() => setShowMenu(false)}
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          {menuActive?.handle === 'collections' &&
-            collections.data?.map((item: any, key: number) => (
+  if (isShow) {
+    return (
+      <section className='absolute left-0 top-full h-fit w-full origin-top-left bg-white transition-all duration-500 ease-in-out'>
+        <div
+          className='h-fit w-full'
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+        >
+          <ul className='container grid w-full grid-cols-4 gap-1 border-t py-2 lg:grid-cols-5'>
+            {collections.data?.map((item: any, key: number) => (
               <li key={key}>
                 <Link
                   href={`${item.link}?page=1&limit=20`}
                   className='line-clamp-1 rounded-lg text-sm font-medium capitalize leading-10 hover:text-primary'
-                  onClick={() => setShowMenu(false)}
                 >
                   {item.name}
                 </Link>
               </li>
             ))}
+          </ul>
+        </div>
+        <div className='fixed left-0 z-[19] h-full w-full cursor-pointer bg-black/40 backdrop-blur-md transition-all duration-300'></div>
+      </section>
+    );
+  }
+}
+
+export default function Navigation({ className }: Props) {
+  const [active, setActive] = useState<MenuItem | null>(null);
+  const [showCollecitonsMenu, setShowCollecitonsMenu] = useState(false);
+  const [menu, hasCollections] = navigationStore((state) => {
+    const menu = state.headerMenu.items;
+    const hasCollections =
+      state.headerMenu.items.find(
+        (item: any) => item.handle === 'collections'
+      ) != undefined;
+    return [menu, hasCollections];
+  });
+
+  return (
+    <nav
+      className={cn('relative hidden h-full w-full md:block', className)}
+      onMouseLeave={() => setShowCollecitonsMenu(false)}
+    >
+      <section className='container h-fit'>
+        <ul className='flex h-full flex-wrap items-center'>
+          {menu?.map((item: MenuItem, key: number) => {
+            if (item?.children?.length) {
+              return (
+                <li
+                  key={key}
+                  className='relative text-sm collapsible'
+                  onMouseEnter={() => {
+                    setActive(item);
+                    if (item.handle === 'collections')
+                      setShowCollecitonsMenu(true);
+                  }}
+                  onMouseLeave={() => {
+                    setActive(null);
+                  }}
+                >
+                  {item.link ? (
+                    <Link
+                      href={item.link}
+                      className={cn(
+                        'inline-block px-3 leading-[48px] hover:text-primary',
+                        active?.handle === item.handle &&
+                          'text-primary [&>i]:rotate-180'
+                      )}
+                    >
+                      {item.name}
+                      <i className='far fa-angle-down ml-2 duration-300 group-hover:rotate-180'></i>
+                    </Link>
+                  ) : (
+                    <span
+                      className={cn(
+                        'inline-block px-3 leading-[48px] hover:text-primary',
+                        active?.handle === item.handle &&
+                          'text-primary [&>i]:rotate-180'
+                      )}
+                    >
+                      {item.name}
+                      <i className='far fa-angle-down ml-2 duration-300 group-hover:rotate-180'></i>
+                    </span>
+                  )}
+                  {item.handle !== 'collections' && (
+                    <ul className='absolute left-0 top-full min-w-full bg-background shadow-md collapsible-content'>
+                      {item.children.map((subItem: any, subKey: number) => (
+                        <li key={subKey} className='border-b border-gray-50'>
+                          <Link
+                            href={subItem.link}
+                            className='inline-block w-full px-4 py-3 hover:text-primary'
+                          >
+                            {subItem.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              );
+            } else {
+              return (
+                <li
+                  key={key}
+                  className='text-sm hover:text-primary'
+                  onMouseEnter={() => setShowCollecitonsMenu(false)}
+                >
+                  <Link
+                    href={item.link}
+                    className='inline-block px-3 leading-[48px]'
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              );
+            }
+          })}
         </ul>
-      </div>
-      <div className='fixed left-0 z-[19] h-full w-full cursor-pointer bg-black/40 backdrop-blur-md transition-all duration-300'></div>
-    </section>
+      </section>
+      {hasCollections && (
+        <CollectionsMenu
+          isShow={showCollecitonsMenu}
+          setClose={setShowCollecitonsMenu}
+          setActive={setActive}
+        />
+      )}
+    </nav>
   );
 }

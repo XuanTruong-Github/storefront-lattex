@@ -2,3 +2,15 @@
   border: solid 1px var(--primary);
   padding: 1px;
 }
+.collapsible {
+  .collapsible-content {
+    transform: rotate3d(1, 0, 0, -90deg);
+    visibility: hidden;
+    transform-origin: 0 0 0;
+    transition: all 0.3s;
+  }
+  &:hover .collapsible-content {
+    transform: rotate3d(0, 0, 0, 0deg);
+    visibility: inherit;
+  }
+}
