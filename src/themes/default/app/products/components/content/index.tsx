@@ -2,6 +2,7 @@
 import { Fragment, useEffect, useState } from 'react';
 import Reviews from './reviews';
 import Widgets from './widgets';
+
 import type { Product } from '@/core/modules/product/type';
 import productStore from '@/core/modules/product/store';
 
@@ -26,7 +27,7 @@ export default function ProductContent({ product }: Props) {
     return (
       <Fragment>
         <Reviews productId={product.id} className='mb-4' />
-        <Widgets sku={product.sku}/>
+        <Widgets sku={product.sku} />
       </Fragment>
     );
 }

@@ -1,6 +1,7 @@
 'use client';
+import PickForYou from '@default/components/widgets/pick-for-you';
 import { useQuery } from '@tanstack/react-query';
-import upsellStore from '@/core/modules/upsell/store';
+import upSellStore from '@/core/modules/upsell/store';
 import useResponsive from '@/core/hooks/useResponsive';
 import { cn } from '@/core/lib/utils';
 type Props = {
@@ -9,7 +10,7 @@ type Props = {
 };
 export default function Widgets({ sku, className }: Props) {
   const { isDesktop } = useResponsive();
-  const getWidgets = upsellStore((state) => state.getProductWidgets);
+  const getWidgets = upSellStore((state) => state.getProductWidgets);
   useQuery({
     queryKey: ['PRODUCT-WIDGETS', sku, isDesktop],
     queryFn: () => {
@@ -24,5 +25,9 @@ export default function Widgets({ sku, className }: Props) {
     },
     enabled: !!sku,
   });
-  return <div className={cn(className)}></div>;
+  return (
+    <div className={cn(className)}>
+      <PickForYou />
+    </div>
+  );
 }
