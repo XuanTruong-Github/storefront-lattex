@@ -53,31 +53,34 @@ function CollectionsMenu({
       }
     },
   });
-  if (isShow) {
-    return (
-      <section className='absolute left-0 top-full h-fit w-full origin-top-left bg-white transition-all duration-500 ease-in-out'>
-        <div
-          className='h-fit w-full'
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
-        >
-          <ul className='container grid w-full grid-cols-4 gap-1 border-t py-2 lg:grid-cols-5'>
-            {collections.data?.map((item: any, key: number) => (
-              <li key={key}>
-                <Link
-                  href={`${item.link}?page=1&limit=20`}
-                  className='line-clamp-1 rounded-lg text-sm font-medium capitalize leading-10 hover:text-primary'
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className='fixed left-0 z-[19] h-full w-full cursor-pointer bg-black/40 backdrop-blur-md transition-all duration-300'></div>
-      </section>
-    );
-  }
+  return (
+    <section
+      className={cn(
+        'absolute left-0 top-full hidden h-fit w-full origin-top-left bg-white transition-all duration-500 ease-in-out',
+        isShow && 'block'
+      )}
+    >
+      <div
+        className='h-fit w-full'
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
+        <ul className='container grid w-full grid-cols-4 gap-1 border-t py-2 lg:grid-cols-5'>
+          {collections.data?.map((item: any, key: number) => (
+            <li key={key}>
+              <Link
+                href={`${item.link}?page=1&limit=20`}
+                className='line-clamp-1 rounded-lg text-sm font-medium capitalize leading-10 hover:text-primary'
+              >
+                {item.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className='fixed left-0 z-[19] h-full w-full cursor-pointer bg-black/40 backdrop-blur-md transition-all duration-300'></div>
+    </section>
+  );
 }
 
 export default function Navigation({ className }: Props) {
@@ -104,7 +107,7 @@ export default function Navigation({ className }: Props) {
               return (
                 <li
                   key={key}
-                  className='relative text-sm collapsible'
+                  className='collapsible relative text-sm'
                   onMouseEnter={() => {
                     setActive(item);
                     if (item.handle === 'collections')
@@ -139,7 +142,7 @@ export default function Navigation({ className }: Props) {
                     </span>
                   )}
                   {item.handle !== 'collections' && (
-                    <ul className='absolute left-0 top-full min-w-full bg-background shadow-md collapsible-content'>
+                    <ul className='collapsible-content absolute left-0 top-full min-w-full bg-background shadow-md'>
                       {item.children.map((subItem: any, subKey: number) => (
                         <li key={subKey} className='border-b border-gray-50'>
                           <Link

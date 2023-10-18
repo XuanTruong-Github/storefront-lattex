@@ -3,6 +3,8 @@ import { Button } from 'ui/button';
 import ReactPaginate from 'react-paginate';
 import { cn } from '@/core/lib/utils';
 import useResponsive from '@/core/hooks/useResponsive';
+import { Input } from '@/core/components/ui/input';
+import { ChangeEvent } from 'react';
 
 export type PaginationProps = {
   className?: string;
@@ -14,13 +16,7 @@ export type PaginationProps = {
 
 export default function Pagination(props: PaginationProps) {
   //Props
-  const {
-    className,
-    page = 1,
-    length = 1,
-    totalVisible = 4,
-    onChange,
-  } = props;
+  const { className, page = 1, length = 1, totalVisible = 4, onChange } = props;
   // States
   const { isMobile } = useResponsive();
   const pageStyle =
@@ -42,33 +38,45 @@ export default function Pagination(props: PaginationProps) {
       onChange(page + 1);
     }
   }
-
+  const onMobileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    onChange(Number(event.target.value))
+  }
   // Render
   if (isMobile) {
     return (
-      <div
-        className={cn('flex w-fit items-center gap-3', className)}
-      >
-        <span>{`${page} of (${length})`}</span>
-        <div>
-          <Button
-            variant='outline'
-            disabled={page == 1}
-            className='mr-1'
-            onClick={onMobilePrev}
-          >
-            <i className='fas fa-chevron-left mr-2'></i>
-            Previous
-          </Button>
-          <Button
-            variant='outline'
-            disabled={page == length}
-            onClick={onMobileNext}
-          >
-            Next
-            <i className='fas fa-chevron-right ml-2'></i>
-          </Button>
+      <div className={cn('flex w-fit items-center gap-2 text-sm', className)}>
+        <div className='relative'>
+          <Input
+            type='number'
+            className='input-no-buttons w-fit pr-9'
+            value={page}
+            min={1}
+            max={100}
+            onChange={onMobileInputChange}
+          />
+          <span className='absolute right-2 top-1/2 -translate-y-1/2'>
+            / {length}
+          </span>
         </div>
+
+        <Button
+          variant={'outline'}
+          disabled={page == 1}
+          className='!text-sm'
+          onClick={onMobilePrev}
+        >
+          <i className='fas fa-chevron-left mr-2'></i>
+          Previous
+        </Button>
+        <Button
+          variant={'outline'}
+          disabled={page == length}
+          className='!text-sm'
+          onClick={onMobileNext}
+        >
+          Next
+          <i className='fas fa-chevron-right ml-2'></i>
+        </Button>
       </div>
     );
   }
