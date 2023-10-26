@@ -142,9 +142,9 @@ export default function Navigation({ className }: Props) {
                     </span>
                   )}
                   {item.handle !== 'collections' && (
-                    <ul className='collapsible-content absolute left-0 top-full min-w-full bg-background shadow-md'>
+                    <ul className='collapsible-content absolute left-0 top-full min-w-full bg-background shadow-md overflow-hidden rounded-br-md rounded-bl-md'>
                       {item.children.map((subItem: any, subKey: number) => (
-                        <li key={subKey} className='border-b border-gray-50'>
+                        <li key={subKey} className='border-b border-gray-100'>
                           <Link
                             href={subItem.link}
                             className='inline-block w-full px-4 py-3 hover:text-primary'
